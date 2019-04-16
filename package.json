@@ -1,0 +1,26 @@
+{
+  "name": "AMiDEAST",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "nodemon index.js --prefix Back",
+    "start:client": "npm start --prefix Client",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\" "
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACG6/AMiDEAST.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACG6/AMiDEAST/issues"
+  },
+  "homepage": "https://github.com/FACG6/AMiDEAST#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
