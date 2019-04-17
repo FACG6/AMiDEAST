@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import Courses from '../../contanier/student/coures/index';
-import Apply from '../../contanier/student/apply/index';
-import Profile from '../../contanier/student/profile/index';
-import Login from '../../contanier/auth/login';
+import Header from '../../header/index';
+import Footer from '../../footer/index';
+import Courses from '../../../contanier/student/coures/index';
+import Apply from '../../../contanier/student/apply/index';
+import Profile from '../../../contanier/student/profile/index';
+import Login from '../../../contanier/auth/login';
 
 export default class Mobile extends Component {
   state = {
@@ -19,9 +19,9 @@ export default class Mobile extends Component {
           <>
             <Header />
             <Switch>
-              <Route exact path={'/courses'} component={() => <Courses />} />
-              <Route exact path={'/apply'} component={() => <Apply />} />
-              <Route exact path={'/profile'} component={() => <Profile />} />
+              <Route exact path={'/courses'} component={Courses} />
+              <Route exact path={'/apply'} component={Apply} />
+              <Route exact path={'/profile'} component={Profile} />
               <Route component={() => <div>404</div>} />
             </Switch>
             <Footer />

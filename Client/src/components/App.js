@@ -1,11 +1,11 @@
 import React from 'react';
-// import Mobile from './common/layout/mobile';
-import Descktop from './common/layout/descktop';
+import Mobile from './common/layout/Mobile/index';
+import Descktop from './common/layout/Desktop/index';
 
 export default function App() {
   return (
     <div>
-      {/* <Mobile /> */}
+      <Mobile />
       <Descktop />
     </div>
   )
