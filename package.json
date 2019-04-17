@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "NODE_ENV=dev nodemon server/index.js",
+    "test:query": "NODE_ENV=test tape ./server/test/query-test.js | tap-spec",
+    "test:router": "NODE_ENV=test tape ./server/test/router-test.js | tap-spec",
     "start:server": "nodemon index.js --prefix Back",
     "start:client": "npm start --prefix Client",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\" "
@@ -20,6 +23,8 @@
   },
   "homepage": "https://github.com/FACG6/AMiDEAST#readme",
   "devDependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
   }
 }
