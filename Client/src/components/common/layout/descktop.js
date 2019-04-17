@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import Footer from '../FooterDescktop';
-import Sidenav from '../sidebar';
+import Footer from '../footerDescktop/FooterDescktop';
+import Sidenav from '../sidebar/sidebar';
 import Courses from '../../contanier/staff/Courses/index';
 import Student from '../../contanier/staff/Student/index';
 import Login from '../../contanier/auth/login';

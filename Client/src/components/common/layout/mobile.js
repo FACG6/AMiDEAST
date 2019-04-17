@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import Header from '../header';
-import Footer from '../footer';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 import Courses from '../../contanier/student/coures/index';
 import Apply from '../../contanier/student/apply/index';
 import Profile from '../../contanier/student/profile/index';
