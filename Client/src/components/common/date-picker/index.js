@@ -1,5 +1,6 @@
 import React from "react";
-function Datepicker() {
+
+function DatePicker() {
   return (
     <select>
       <option value="0">Sat - Mon - Wen</option>
@@ -7,4 +8,4 @@ function Datepicker() {
     </select>
   );
 }
-export default Datepicker;
+export default DatePicker;
