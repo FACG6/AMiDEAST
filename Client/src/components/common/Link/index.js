@@ -5,5 +5,4 @@ return(
    <li>{props.link}</li>
 );
 }
-
 export default Link;
