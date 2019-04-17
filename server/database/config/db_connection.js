@@ -14,8 +14,6 @@ if (process.env.NODE_ENV === 'test') {
 }
 const params = url.parse(DB_URL);
 const [user, password] = params.auth.split(':');
-console.log(params);
-
 const options = {
   host: params.hostname,
   port: params.port,
