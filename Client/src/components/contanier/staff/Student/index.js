@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Addstudent from './addstudent/index';
-import Editstudent from './editstudent/index';
-import Viewstudent from './viewstudent/index'
+import AddStudent from './AddStudent';
+import EditStudent from './EditStudent';
+import ViewStudent from './ViewStudent'
 
 export default class Student extends Component {
   render() {
     return (
       <div>
-        <Addstudent />
-        <Editstudent />
-        <Viewstudent />
+        <AddStudent />
+        <EditStudent />
+        <ViewStudent />
       </div>
     )
   }

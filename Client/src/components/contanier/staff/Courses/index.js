@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import Addcourses from './addcourse/index'
-import Viewcourses from './viewcourse/index'
+import AddCourse from './AddCourse'
+import ViewCourses from './ViewCourse'
 
 export default class Courses extends Component {
   render() {
     return (
       <div>
-        <Addcourses />
-        <Viewcourses />        
+        <AddCourse />
+        <ViewCourses />        
       </div>
     )
   }

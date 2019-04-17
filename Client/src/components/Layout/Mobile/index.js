@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import Header from '../../header/index';
-import Footer from '../../footer/index';
-import Courses from '../../../contanier/student/coures/index';
-import Apply from '../../../contanier/student/apply/index';
-import Profile from '../../../contanier/student/profile/index';
-import Login from '../../../contanier/auth/login';
+import Header from './../Header';
+import Footer from './../MobileFooter';
+import Courses from '../../contanier/student/Coures';
+import Apply from '../../contanier/student/Apply';
+import Profile from '../../contanier/student/Profile';
+import Login from '../../contanier/Auth';
 
 export default class Mobile extends Component {
   state = {
