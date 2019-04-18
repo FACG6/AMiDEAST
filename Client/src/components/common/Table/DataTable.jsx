@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Cell from './cell';
-import './table.css';
+import './index.css';
 
 const DataTable = ({ headings, rows }) => {
   return (
@@ -16,7 +16,7 @@ const DataTable = ({ headings, rows }) => {
       <tbody>
         {rows.map((row,index) => {
           return (
-            <tr key={index}>
+            <tr className='table-row' key={index}>
               {row.map((rowcontent, index) => {
                 return (
                   <Cell
