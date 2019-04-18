@@ -1,8 +1,3 @@
-*{
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-}
 .SideBar{
   position: absolute;
   width: 50%;
@@ -10,8 +5,8 @@
   height: 82vh;
   z-index: 5;
   animation: animate 0.5s;
-  
 }
+
 @keyframes animate{
   0%{
     width: 0;
@@ -20,6 +15,7 @@
     width: 50%;
   }
 }
+
 .SideBar-name{
   color: white;
   text-align: center;
@@ -30,6 +26,7 @@
   padding-bottom: 50px;
   font-family: Lato;
 }
+
 .SideBar-text{
   color: white;
   font-size: 20px;
@@ -38,6 +35,7 @@
   text-decoration: none;
   animation-delay: 0.5s;
 }
+
 .SidBar-link{
   display: flex;
   justify-content: start;
@@ -48,6 +46,7 @@
   animation: animatecontent 1s;
   overflow: hidden;
 }
+
 @keyframes animatecontent{
   0%{
     width: 0%;
@@ -56,10 +55,12 @@
     width: 100%;
   }
 }
+
 .SideBar-img{
   width: 35px;
   height: 35px;
 }
+
 i{
   color: white;
 }
