@@ -22,12 +22,14 @@ export default class Mobile extends Component {
 
   render() {
     const { login } = this.state;
+    const { handleMenuClick, handleLinkClick } = this;
+    const { menuOpen } = this.state;
     return (
       <BrowserRouter className='mobile-container'>
         {login ? (
           <>
-            <Header handleMenuClick={this.handleMenuClick} menuOpen={this.state.menuOpen} />
-            <SideBar handleLinkClick={this.handleLinkClick} menuOpen={this.state.menuOpen} />
+            <Header handleMenuClick={handleMenuClick} menuOpen={menuOpen} />
+            <SideBar handleLinkClick={handleLinkClick} menuOpen={menuOpen} />
             <Switch>
               <Route exact path={'/courses'} component={Courses} />
               <Route exact path={'/apply'} component={Apply} />
