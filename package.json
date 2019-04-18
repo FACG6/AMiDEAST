@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test tape test/testQueries.js | tap-spec && NODE_ENV=test tape test/testRoutes.js | tap-spec",
+    "test": "node test/testQueires.js | tap-spec",
     "start:server": "nodemon index.js --prefix Back",
     "start:client": "npm start --prefix Client",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\" "
