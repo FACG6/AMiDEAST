@@ -19,7 +19,7 @@ const options = {
   password,
   host: params.hostname,
   port: params.port,
-  database: params.path.split('/')[1],
+  database: params.pathname.split('/')[1],
   ssl: process.env.host !== 'localhost',
 };
 
