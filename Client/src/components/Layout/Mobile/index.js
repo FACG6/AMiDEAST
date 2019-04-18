@@ -21,9 +21,8 @@ export default class Mobile extends Component {
   }
 
   render() {
-    const { login } = this.state;
+    const { login, menuOpen } = this.state;
     const { handleMenuClick, handleLinkClick } = this;
-    const { menuOpen } = this.state;
     return (
       <BrowserRouter className='mobile-container'>
         {login ? (
