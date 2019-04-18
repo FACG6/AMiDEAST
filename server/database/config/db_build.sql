@@ -4,10 +4,10 @@ CREATE TABLE student (
 	id SERIAL  PRIMARY KEY,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR(20) NOT NULL,
-    isActive boolean,
+    isActive BOOLEAN default(false),
     homePhone VARCHAR(15),
 	mobilePhone VARCHAR(15) NOT NULL,
-    studentlevel INTEGER NOT NULL,
+    level INTEGER NOT NULL,
 	password VARCHAR NOT NULL
 );
 
@@ -15,7 +15,7 @@ CREATE TABLE staff (
 	id SERIAL  PRIMARY KEY,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR NOT NULL,
-    email varchar NOT NULL,
+    email VARCHAR NOT NULL,
 	mobilePhone VARCHAR NOT NULL UNIQUE,
 	password VARCHAR NOT NULL
 );
@@ -40,7 +40,7 @@ CREATE TABLE studentcourse (
     courseid INT REFERENCES course(id),
     studentid	INT REFERENCES student(id)
 );
-INSERT INTO student (firstname,lastname,isActive,homePhone,mobilePhone,studentlevel,password) values
+INSERT INTO student (firstname,lastname,isActive,homePhone,mobilePhone,level,password) values
 ('Nareman','Hilles',true,'05999999','445788',1,'123456'),
 ('abdullah','ammar',false,'05994433','44578558',2,'789456');
 INSERT INTO staff (firstname,lastname,email,mobilePhone,password)
