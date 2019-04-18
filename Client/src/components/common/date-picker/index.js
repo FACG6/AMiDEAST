@@ -1,10 +1,12 @@
 import React from "react";
-
+import "./style.css";
+const days = ["Sat-Mon-Wedn", "Sun-Tues-Thurs"];
 function DatePicker() {
   return (
-    <select>
-      <option value="0">Sat - Mon - Wen</option>
-      <option value="1">Sun - Tues - Thurs </option>
+    <select className="select">
+      {days.map(day => (
+        <option>{day}</option>
+      ))}
     </select>
   );
 }
