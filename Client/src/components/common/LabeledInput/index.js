@@ -13,4 +13,4 @@ export default LabeledInput;
 
 // How to use the componente
 // pass all proprty you need for the input and label
-// for ex htmlFor, id, name, placeholder
+// for ex htmlFor, id, name, placeholder, function for onChange
