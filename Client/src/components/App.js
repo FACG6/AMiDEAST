@@ -1,10 +1,12 @@
 import React from 'react';
-import Sidebar from './common/Sidebar';
+import Mobile from './Layout/Mobile';
+// import Descktop from './Layout/Desktop';
 
 export default function App() {
   return (
     <div>
-      <Sidebar/>
+      <Mobile />
+      {/* <Descktop /> */}
     </div>
   )
 }
