@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import NavElement from './NavElement'
-import logout from '../../assets/Image/logout.png'
-import course from '../../assets/Image/translator.png'
-import profile from '../../assets/Image/curriculum.png'
 import './index.css'
+import elements from './staticData';
 
 export default class SideBar extends Component {
   state = {
@@ -12,26 +10,7 @@ export default class SideBar extends Component {
   render() {
     const {menuOpen, handleLinkClick} = this.props;
     const { studentName } = this.state;
-    const elements = [
-      {
-        id:0,
-        text: 'Profile',
-        link: 'profile',
-        icon: profile,
-      },
-      {
-        id:1,
-        text: 'All Courses',
-        link: 'courses',
-        icon: course,
-      },
-      {
-        id:2,
-        text: 'Logout',
-        link: 'logout',
-        icon: logout,
-      }
-    ]
+  console.log(elements)
     if (menuOpen) {
       return (
         <div className='SideBar'>
