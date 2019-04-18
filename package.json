@@ -9,7 +9,8 @@
     "test:router": "NODE_ENV=test tape ./server/test/router-test.js | tap-spec",
     "start:server": "nodemon index.js --prefix Back",
     "start:client": "npm start --prefix Client",
-    "start": "concurrently \"npm run start:server\" \"npm run start:client\" "
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\" ",
+    "kill": "fuser -k 7777/tcp"
   },
   "repository": {
     "type": "git",
