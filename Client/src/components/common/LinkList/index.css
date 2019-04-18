@@ -1,0 +1,11 @@
+.li-links{
+  padding: 7px;
+}
+
+.link{
+  list-style-type: none;
+  padding-left: 10px;
+}
+.icon{
+  padding-left: 15px;
+}

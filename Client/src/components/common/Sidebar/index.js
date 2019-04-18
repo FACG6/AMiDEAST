@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css'
-import Linklst from './Linklst/index';
+import Linklst from '../LinkList/index';
 const links = [[['Home'],['Course'], ['Student']]];
 
 export default function Sidebar() {

@@ -1,8 +1,0 @@
-.sublink{
-  padding: 7px;
-  cursor: pointer;
-}
-
-.sublink:active{
-  border-left: 2px solid #eee;
-}
