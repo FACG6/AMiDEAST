@@ -14,10 +14,10 @@ export default class Mobile extends Component {
     login: true,
   }
   handleLinkClick = () => {
-    this.setState({menuOpen: false});
+    this.setState({ menuOpen: false });
   }
   handleMenuClick = () => {
-    this.setState({menuOpen:!this.state.menuOpen});
+    this.setState({ menuOpen: !this.state.menuOpen });
   }
 
   render() {
@@ -26,8 +26,8 @@ export default class Mobile extends Component {
       <BrowserRouter>
         {login ? (
           <>
-            <Header handleMenuClick={this.handleMenuClick} menuOpen={this.state.menuOpen}/>
-            <SideBar handleLinkClick={this.handleLinkClick} menuOpen={this.state.menuOpen}/>
+            <Header handleMenuClick={this.handleMenuClick} menuOpen={this.state.menuOpen} />
+            <SideBar handleLinkClick={this.handleLinkClick} menuOpen={this.state.menuOpen} />
             <Switch>
               <Route exact path={'/courses'} component={Courses} />
               <Route exact path={'/apply'} component={Apply} />
@@ -37,12 +37,8 @@ export default class Mobile extends Component {
             <Footer />
           </>
         ) : (
-            <>
-              <Switch>
-                <Route exact path={'/login'} component={() => <Login />} />
-                <Route component={() => <Redirect to="/login" />} />
-              </Switch>
-            </>
+          null
+            // <Redirect to="/login" />
           )}
       </BrowserRouter>
     )
