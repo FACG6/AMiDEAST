@@ -13,7 +13,7 @@ export default class Descktop extends Component {
   render() {
     const { login } = this.state;
     return (
-      <BrowserRouter>
+      <BrowserRouter className='desktop-container'>
         {login ? (
           <>
             <SideBar />
