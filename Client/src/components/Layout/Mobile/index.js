@@ -6,18 +6,29 @@ import Courses from '../../contanier/student/Coures';
 import Apply from '../../contanier/student/Apply';
 import Profile from '../../contanier/student/Profile';
 import Login from '../../contanier/Auth';
+import SideBar from '../SideBar';
 
 export default class Mobile extends Component {
   state = {
+    menuOpen: false,
     login: true,
   }
+  handleLinkClick = () => {
+    this.setState({ menuOpen: false });
+  }
+  handleMenuClick = () => {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
   render() {
-    const { login } = this.state;
+    const { login, menuOpen } = this.state;
+    const { handleMenuClick, handleLinkClick } = this;
     return (
-      <BrowserRouter>
+      <BrowserRouter className='mobile-container'>
         {login ? (
           <>
-            <Header />
+            <Header handleMenuClick={handleMenuClick} menuOpen={menuOpen} />
+            <SideBar handleLinkClick={handleLinkClick} menuOpen={menuOpen} />
             <Switch>
               <Route exact path={'/courses'} component={Courses} />
               <Route exact path={'/apply'} component={Apply} />
@@ -27,12 +38,8 @@ export default class Mobile extends Component {
             <Footer />
           </>
         ) : (
-            <>
-              <Switch>
-                <Route exact path={'/login'} component={() => <Login />} />
-                <Route component={() => <Redirect to="/login" />} />
-              </Switch>
-            </>
+          null
+            // <Redirect to="/login" />
           )}
       </BrowserRouter>
     )
