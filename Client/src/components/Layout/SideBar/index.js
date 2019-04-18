@@ -4,13 +4,15 @@ import './index.css'
 import elements from './staticData';
 
 export default class SideBar extends Component {
+  
   state = {
     studentName: 'Abdallah Ammar'
   }
+
   render() {
     const {menuOpen, handleLinkClick} = this.props;
     const { studentName } = this.state;
-  console.log(elements)
+
     if (menuOpen) {
       return (
         <div className='SideBar'>
