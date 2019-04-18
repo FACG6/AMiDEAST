@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from '../Link/index';
+import Link from '../Link';
 import './index.css';
 
 const sublink = [
@@ -10,13 +10,13 @@ const sublink = [
 export default function Linklst({ index, link }) {
   return (
     <>
-      <li className='li-links'>   <i className="fas fa-home icon"></i>  {link[0]}</li>
-      <li className='li-links'> <i className="fas fa-certificate icon"></i>  {link[1]}
+      <li className='li-links'><i className="fas fa-home icon"></i>{link[0]}</li>
+      <li className='li-links'> <i className="fas fa-certificate icon"></i>{link[1]}
         <ul className='link'>
           {sublink[0].map((link, index) => <Link key={index} link={link} />)}
         </ul>
       </li>
-      <li className='li-links'> <i className="fas fa-users icon"></i>  {link[2]}
+      <li className='li-links'> <i className="fas fa-users icon"></i>{link[2]}
         <ul className='link'>
           {sublink[1].map((link, index) => <Link key={index} link={link} />)}
         </ul>

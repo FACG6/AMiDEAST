@@ -11,17 +11,21 @@
   color: #eee;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .img{
   margin:50px 20px 30px 20px;
 }
+
 .title{
 text-align: center;
 }
+
 .hr{
   width: 70%;
   margin: 10px auto;
 }
-.linklst{
+
+.linklist{
   margin-left: 12px;
   list-style-type: none;
 }

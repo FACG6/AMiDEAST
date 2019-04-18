@@ -1,6 +1,5 @@
 import React from 'react';
-import Sidebar from './common/Sidebar/index';
-
+import Sidebar from './common/Sidebar';
 
 export default function App() {
   return (

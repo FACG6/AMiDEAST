@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css'
-import Linklst from '../LinkList/index';
+import Linklst from '../LinkList';
 const links = [[['Home'],['Course'], ['Student']]];
 
 export default function Sidebar() {
@@ -10,7 +10,7 @@ export default function Sidebar() {
       <h3 className='title' >AMIDEAST EL</h3>
       <hr className='hr' />
       <br />
-      <ul className='linklst'>
+      <ul className='linklist'>
         {links.map((link, index) => <Linklst key={index} link={link} />)}
       </ul>
     </div>
