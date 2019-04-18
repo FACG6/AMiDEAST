@@ -2,25 +2,26 @@ import * as React from 'react';
 import Cell from './cell';
 import './index.css';
 
+
 const DataTable = ({ headings, rows }) => {
   return (
     <table className="Table">
-      <thead> 
-        {headings.map((head,index) =>
+      <thead className='table-head'>
+        {headings.map((head, index) =>
           <Cell
-          key={index}
+            key={index}
             content={head}
             header={true} />)
         }
       </thead>
       <tbody>
-        {rows.map((row,index) => {
+        {rows.map((row, index) => {
           return (
             <tr className='table-row' key={index}>
               {row.map((rowcontent, index) => {
                 return (
                   <Cell
-                    key={index  }
+                    key={index}
                     content={rowcontent}
                   />
                 )
@@ -31,5 +32,26 @@ const DataTable = ({ headings, rows }) => {
       </tbody>
     </table>
   );
+}
+
+DataTable.defaultProps = {
+  headings: ['Title 1',
+    'Title 2',
+    'Title 3',
+    'Title 4'],
+  rows: [
+    [
+      'Reading',
+      '1-1-2019',
+      2,
+      '80%'
+    ],
+    [
+      'Writting',
+      '1-1-2019',
+      2,
+      '70%'
+    ],
+  ]
 }
 export default DataTable;

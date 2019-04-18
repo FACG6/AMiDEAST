@@ -1,10 +1,12 @@
 import React from 'react';
 import Mobile from './Layout/Mobile';
-import Table from './common/Table'
+import DataTable from './common/Table/DataTable'
+
 export default function App() {
   return (
     <div>
-      <Table/>
+      <DataTable/>
     </div>
   )
 }
+

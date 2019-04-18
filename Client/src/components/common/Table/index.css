@@ -1,5 +1,4 @@
 .Table {
-  
   margin: 50px auto;
   border-spacing: 0px;
   background: #fff;
@@ -9,15 +8,20 @@
 }
 
 .Cell {
-  border: 1px solid #f4f6f8;
+  min-width: 150px;
+  border: 1.2px solid white;
   padding: 9px;
   text-align: center;
 }
 
 .table-row:nth-child(odd) {
-  background-color: #E4E4E4;
+  background-color: #f7f4f4;
 }
 
 .table-row:nth-child(even) {
-  background: #f7f4f4;
+  background-color: #f1f0f0;
+}
+
+.table-head{
+  background: #D0CFCF;
 }
