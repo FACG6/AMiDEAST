@@ -28,10 +28,6 @@
     "tape": "^4.10.1"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
-    "dotenv": "^7.0.0",
-    "i": "^0.3.6",
-    "jsonwebtoken": "^8.5.1",
-    "npm": "^6.9.0"
+    
   }
 }
