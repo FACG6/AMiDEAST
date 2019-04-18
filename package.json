@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "NODE_ENV=test tape test/testQueries.js | tap-spec && NODE_ENV=test tape test/testRoutes.js | tap-spec",
     "start:server": "nodemon index.js --prefix Back",
     "start:client": "npm start --prefix Client",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\" "
@@ -20,6 +21,17 @@
   },
   "homepage": "https://github.com/FACG6/AMiDEAST#readme",
   "devDependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "dotenv": "^7.0.0",
+    "i": "^0.3.6",
+    "jsonwebtoken": "^8.5.1",
+    "npm": "^6.9.0"
   }
 }
