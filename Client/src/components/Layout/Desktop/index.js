@@ -24,10 +24,8 @@ export default class Descktop extends Component {
             <Footer />
           </>
         ) : (
-            <Switch>
-              <Route exact path={'/login'} Component={Login} />
-              <Route component={() => <Redirect to= '/login' />} />
-            </Switch>
+          null
+          // <Redirect to= '/login' />
           )
         }
       </BrowserRouter>
