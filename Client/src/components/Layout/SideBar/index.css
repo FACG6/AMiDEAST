@@ -24,14 +24,12 @@
   padding-top: 50px;
   letter-spacing: 1px;
   padding-bottom: 50px;
-  font-family: Lato;
 }
 
 .SideBar-text{
   color: white;
   font-size: 20px;
   padding-left: 20px;
-  font-family: Lato;
   text-decoration: none;
   animation-delay: 0.5s;
 }
@@ -59,8 +57,4 @@
 .SideBar-img{
   width: 35px;
   height: 35px;
-}
-
-i{
-  color: white;
 }
