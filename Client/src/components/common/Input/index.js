@@ -1,10 +1,9 @@
 import React from 'react';
-import './index.css';
 
 const Input = props => {
-  const {name, placeholder, id, onChange} = props
+  const {name, placeholder, id, onChange, inputClassName} = props
   return (
-    <input name={name} placeholder={placeholder} id={id} onChange={onChange} />
+    <input name={name} placeholder={placeholder} id={id} onChange={onChange} className={inputClassName} />
   )
 };
 

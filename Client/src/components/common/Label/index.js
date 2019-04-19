@@ -1,10 +1,9 @@
 import React from 'react';
-import './index.css';
 
 const Label = props => {
-  const { input: Input, id, labelText} = props;
+  const { input: Input, id, labelText, labelClassName} = props;
   return (
-    <label htmlFor={id} >
+    <label htmlFor={id} className={labelClassName} >
       {labelText}
       {<Input {...props}/>}
     </label>
