@@ -1,25 +1,25 @@
-.sidebar{
-  width:240px;
-  background-color:#2980B9;
+.sidebar {
+  width: 20%;
+  background-color: #2980B9;
   min-height: 100vh;
   color: #eee;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.img{
-  margin:50px 20px 30px 20px;
+.sidebar-desktop-logo {
+  margin: 50px 20px 30px 20px;
 }
 
-.title{
-text-align: center;
+.sidebar-title {
+  text-align: center;
 }
 
-.hr{
+.hr {
   width: 70%;
   margin: 10px auto;
 }
 
-.linklist{
-  margin-left: 12px;
+.sidebar-linklist {
+  margin-left: 28px;
   list-style-type: none;
 }

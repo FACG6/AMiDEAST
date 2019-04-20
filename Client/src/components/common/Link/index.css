@@ -1,10 +1,6 @@
 .sublink{
   font-size: 16px;
-  padding: 7px;
+  padding: 6px;
   cursor: pointer;
   margin-left: 25px;
-}
-
-.sublink:active{
-  border-left: 2px solid #eee;
 }
