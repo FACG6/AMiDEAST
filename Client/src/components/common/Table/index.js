@@ -5,15 +5,17 @@ import './index.css';
 
 const Table = ({ headings, rows }) => {
   return (
-    <table className="Table">
+    <table className="table">
       <thead className='table-head'>
-        {headings.map((head, index) =>
-          <Cell
-            key={index}
-            content={head}
-            header={true}
-          />)
-        }
+        <tr>
+          {headings.map((head, index) =>
+            <Cell
+              key={index}
+              content={head}
+              header={true}
+            />)
+          }
+        </tr>
       </thead>
       <tbody>
         {rows.map((row, index) => {
@@ -47,14 +49,14 @@ Table.defaultProps = {
       '1-1-2019',
       2,
       '80%',
-      <i className="fas fa-calendar-times icon"></i>
+      <i className="fas fa-calendar-times table-icon"></i>
     ],
     [
       'Writting',
       '1-1-2019',
       2,
       '70%',
-      <i className="fas fa-calendar-times icon"></i>
+      <i className="fas fa-calendar-times table-icon"></i>
     ],
   ]
 }

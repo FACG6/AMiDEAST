@@ -1,15 +1,15 @@
-.Table {
-  margin: 50px auto;
+.table {
+  margin: 10px auto;
   border-spacing: 0px;
   background: #fff;
   box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
   font-size: 14px;
-  width: 80%;
+  width: 70%;
 }
 
-.Cell {
+.table-cell {
   border: 1.2px solid white;
-  padding:9px 6px;
+  padding: 9px 6px;
   text-align: center;
   border-radius: 5px;
   color: #333;
@@ -23,11 +23,11 @@
   background-color: #f1f0f0;
 }
 
-.table-head{
+.table-head {
   background: #D0CFCF;
 }
 
-.icon{
+.table-icon {
   color: #333;
   cursor: pointer;
 }
