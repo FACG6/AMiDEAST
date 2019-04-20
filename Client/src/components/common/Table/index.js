@@ -37,28 +37,4 @@ const Table = ({ headings, rows }) => {
   );
 }
 
-Table.defaultProps = {
-  headings: ['Title 1',
-    'Title 2',
-    'Title 3',
-    'Title 4',
-    ''],
-  rows: [
-    [
-      'Reading',
-      '1-1-2019',
-      2,
-      '80%',
-      <i className="fas fa-calendar-times table-icon"></i>
-    ],
-    [
-      'Writting',
-      '1-1-2019',
-      2,
-      '70%',
-      <i className="fas fa-calendar-times table-icon"></i>
-    ],
-  ]
-}
-
 export default Table;
