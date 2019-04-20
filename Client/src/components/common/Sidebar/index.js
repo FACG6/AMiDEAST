@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css'
-import Linklst from '../LinkList';
+import Linklist from '../LinkList';
 
 
 export default function Sidebar({ linklist }) {
@@ -8,10 +8,10 @@ export default function Sidebar({ linklist }) {
     <div className='sidebar'>
       <img src='https://i.imgur.com/m6QdXqO.png' alt='AMDIEAST logo' className='sidebar-desktop-logo' width='200px' />
       <h3 className='sidebar-title' >AMIDEAST EL</h3>
-      <hr className='hr' />
+      <hr className='sidebar-hr' />
       <br />
       <ul className='sidebar-linklist'>
-        {linklist.map((linklist, index) => <Linklst key={index} links={linklist} />)}
+        {linklist.map((linklist, index) => <Linklist key={index} links={linklist} />)}
       </ul>
     </div>
   )
@@ -20,12 +20,12 @@ export default function Sidebar({ linklist }) {
 Sidebar.defaultProps = {
   linklist: [
     {
-      fontawesomeClass: 'fas fa-home sidebar-icon',
+      fontawesome: 'fas fa-home sidebar-icon',
       title: 'Home',
       links: []
     },
     {
-      fontawesomeClass: 'fas fa-certificate sidebar-icon',
+      fontawesome: 'fas fa-certificate sidebar-icon',
       title: 'Courses',
       links: [
         { title: 'Add Course', to: '/add-course' },
@@ -33,11 +33,12 @@ Sidebar.defaultProps = {
       ]
     },
     {
-      fontawesomeClass: 'fas fa-users sidebar-icon',
+      fontawesome: 'fas fa-users sidebar-icon',
       title: 'Student',
       links: [
         { title: 'Add student', to: '/add-student' },
-        { title: 'view Student', to: '/view-student' }
+        { title: 'view Student', to: '/view-student' },
+        { title: 'Edit Student', to: '/Edit-student' }
       ]
     }
   ]
