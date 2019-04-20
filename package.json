@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test/testQueires.js | tap-spec",
+    "dev": "NODE_ENV=development nodemon server/index.js",
+    "test:query": "NODE_ENV=testing tape ./server/test/query-test.js | tap-spec",
+    "test:router": "NODE_ENV=testing tape ./server/test/router-test.js | tap-spec",
     "start:server": "nodemon index.js --prefix Back",
     "start:client": "npm start --prefix Client",
-    "start": "concurrently \"npm run start:server\" \"npm run start:client\" "
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\" ",
+    "kill": "fuser -k 7777/tcp"
   },
   "repository": {
     "type": "git",
