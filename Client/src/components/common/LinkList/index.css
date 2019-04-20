@@ -1,0 +1,10 @@
+.List {
+    border-top-right-radius: 10px;   
+    color:white;
+    min-width: 30vh;
+    float:left;
+    box-sizing: border-box;
+    border-right: 1px solid #ddd;
+    list-style: none;
+    padding-top: 10vh;
+}

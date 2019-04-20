@@ -1,0 +1,16 @@
+.listitem {
+    background-color:blue;
+    padding-top: 1.5vh;
+    list-style: none;
+    font-family: 'Lato';
+    padding-bottom: 1.5vh;
+    padding-left:1.5vh;
+    color:white;
+    padding-right:2vh;
+}
+.listitem .fas {
+    float: left;
+    margin-left:10px;
+    margin-right:10px;
+    padding-right: 10px;
+}
