@@ -5,7 +5,7 @@ const Label = props => {
   return (
     <label htmlFor={id} className={labelClassName} >
       {labelText}
-      {<Input name={name} placeholder={placeholder} onChange={onChange} inputClassName={inputClassName} />}
+      <Input name={name} placeholder={placeholder} onChange={onChange} inputClassName={inputClassName} />
     </label>
   )
 };
