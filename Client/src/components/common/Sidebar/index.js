@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Linklist from '../LinkList';
-import './index.css'
+import data from './staticdata';
+import './index.css';
 
 export default function Sidebar({ linklist }) {
   return (
@@ -17,29 +18,4 @@ export default function Sidebar({ linklist }) {
   )
 }
 
-Sidebar.defaultProps = {
-  linklist: [
-    {
-      fontawesome: 'fas fa-home sidebar-icon',
-      title: 'Home',
-      links: []
-    },
-    {
-      fontawesome: 'fas fa-certificate sidebar-icon',
-      title: 'Courses',
-      links: [
-        { title: 'Add Course', to: '/add-course' },
-        { title: 'view Course', to: '/view-course' }
-      ]
-    },
-    {
-      fontawesome: 'fas fa-users sidebar-icon',
-      title: 'Student',
-      links: [
-        { title: 'Add student', to: '/add-student' },
-        { title: 'view Student', to: '/view-student' },
-        { title: 'Edit Student', to: '/Edit-student' }
-      ]
-    }
-  ]
-};
+Sidebar.defaultProps = data;
