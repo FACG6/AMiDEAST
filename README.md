@@ -1,16 +1,16 @@
 # AMiDEAST
 
-AMIDEAST is an website that allows the staff members add and view courses,it can also mange students,in the other hands the student can see the proposed courses and select one to apply for.
+AMIDEAST is a website that allows the staff members to add and view courses,it can also mange students,in the other hands the student can see the proposed courses and select one to apply for.
 
 ## Problem statement
 
-- English Language (EL) staff spend alot of time collecting registration, and doing refund and texting students to get thier money back.
+- English Language (EL) staff spend a lot of time in collecting registrations, and doing refund and texting students to get thier money back.
 - difficulty in reaching the students who are already enrolled in AMIDEAST.
 
 ## Our Solution
 
 - bulid website allows the staff to add and view courses so that we reduce time and effort.
-- manger can determine students prefered time/days.
+- manager can determine students preferred time/days.
 
 ## User Stories
 
@@ -23,7 +23,7 @@ AMIDEAST is an website that allows the staff members add and view courses,it can
 - I want to add a new student. so that they can apply to the courses.
 - I want to edit any student. so that I can restore any data that got wrong or forgotten.
 - I want to view a student so that I can access data and edit it.
-- I want to search for a student so that I can find any student easily and without
+- I want to search for a student so that I can find any student easily .
 
 ---
 
@@ -44,19 +44,9 @@ AMIDEAST is an website that allows the staff members add and view courses,it can
 
 3- `npm i`
 
-3- `cd server`
+4- `cd Client && npm i && cd ../server && npm i && cd .. && npm start`
 
 - add .env file include local database url and secret variable .
-
-- `npm i`
-
-4- `cd Client`
-
-- `npm i`
-
-5- `cd ..`
-
-- `npm start`
 
 ## Database Schema
 
