@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Course from '../../../common/Course'
 import Button from '../../../common/Button'
 import data from './staticData'
