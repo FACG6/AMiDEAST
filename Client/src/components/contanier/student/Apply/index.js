@@ -9,12 +9,13 @@ export default class Apply extends Component {
     course: {
       id:0,
       titel: 'Writing & Speaking',
-      desc: 'In this course you will learn the fundemtal of speaking and writign skills'
+      desc: 'In this course you will learn the fundemtal of speaking and writign skills',
+      days: ["Pick a day ..", "Sat - Mon - Wedn", "Sun - Tues - Thurs"],
+      hours: ["Pick a time ..", "8:00 - 10:00 PM", "10:00 - 12:00 PM", "12:00 - 14:00 AM"]
     }
   }
   render() {
-    const days = ["Pick a day ..", "Sat - Mon - Wedn", "Sun - Tues - Thurs"];
-    const hours = ["Pick a time ..", "8:00 - 10:00 PM", "10:00 - 12:00 PM", "12:00 - 14:00 AM"];
+    const { days, hours } = this.state
     return (
       <div className='apply'>
         <h1 className='apply-titel'>Apply</h1>
