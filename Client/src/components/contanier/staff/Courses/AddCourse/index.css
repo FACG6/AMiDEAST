@@ -1,0 +1,148 @@
+.add-course {
+  width: 1081px;
+  height: 641px;
+  background-color: #eee;
+}
+.add-course-titel {
+  color: #06468f;
+  letter-spacing: 1px;
+  font-size: 34px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-left: 39px;
+  margin-bottom: 9px;
+}
+.add-course-line {
+  width: 204px;
+  border: 1.5px solid #06468f;
+  margin-top: 100px;
+  margin-left: 39px;
+  margin-bottom: 73px;
+}
+
+.course-name-label {
+  color: #06468f;
+  font-size: 14px;
+  margin-left: 82px;
+  margin-bottom: 7px;
+}
+.course-name-input {
+  width: 350px;
+  height: 39px;
+  background-color: #e0e0e0;
+  margin-left: 82px;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
+.numbers-of-students-label {
+  color: #06468f;
+  font-size: 14px;
+  margin-left: 82px;
+  margin-bottom: 7px;
+}
+.numbers-of-students-input {
+  background-color: #e0e0e0;
+  margin-left: 82px;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  height: 39px;
+  width: 100px;
+}
+
+.description-label {
+  color: #06468f;
+  font-size: 14px;
+  margin-left: 82px;
+  margin-bottom: 7px;
+}
+.description-input {
+  background-color: #e0e0e0;
+  margin-left: 82px;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  width: 350px;
+  height: 143px;
+}
+
+.level-label {
+  margin-left: 558px;
+  color: #06468f;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+.level-input {
+  width: 350px;
+  height: 39px;
+  background-color: #e0e0e0;
+  margin-left: 558px;
+  margin-bottom: 34px;
+  margin-top: 7px;
+}
+
+.days-label {
+  margin-left: 558px;
+  color: #06468f;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+.days-input {
+  width: 350px;
+  height: 39px;
+  background-color: #e0e0e0;
+  margin-left: 558px;
+  margin-bottom: 34px;
+  margin-top: 7px;
+}
+
+.start-label {
+  margin-left: 558px;
+  color: #06468f;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+.start-input {
+  width: 108px;
+  height: 39px;
+  background-color: #e0e0e0;
+  margin-left: 558px;
+  margin-bottom: 34px;
+  margin-top: 7px;
+}
+
+.end-label {
+  margin-left: 696px;
+  color: #06468f;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+.end-input {
+  width: 108px;
+  height: 39px;
+  background-color: #e0e0e0;
+  margin-left: 696px;
+  margin-bottom: 34px;
+  margin-top: 7px;
+}
+
+.add-dates-button {
+  width: 60px;
+  height: 36px;
+  color: white;
+  background-color: #2980b9;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  margin-left: 760px;
+}
+.add-course-button {
+  width: 148px;
+  height: 41px;
+  color: white;
+  background-color: #2980b9;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  margin-top: 40px;
+  margin-left: 761px;
+}

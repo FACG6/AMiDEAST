@@ -1,13 +1,29 @@
-import React from 'react';
+import React from "react";
 
 const Label = props => {
-  const { input: Input, id, labelText, labelClassName, name, placeholder, onChange, inputClassName} = props;
+  const {
+    input: Input,
+    id,
+    labelText,
+    labelClassName,
+    name,
+    placeholder,
+    onChange,
+    inputClassName,
+    type
+  } = props;
   return (
-    <label htmlFor={id} className={labelClassName} >
+    <label htmlFor={id} className={labelClassName}>
       {labelText}
-      <Input name={name} placeholder={placeholder} onChange={onChange} inputClassName={inputClassName} />
+      <Input
+        name={name}
+        placeholder={placeholder}
+        onChange={onChange}
+        inputClassName={inputClassName}
+        type={type}
+      />
     </label>
-  )
+  );
 };
 
-export default Label
+export default Label;
