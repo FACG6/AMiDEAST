@@ -1,0 +1,22 @@
+.courses-titel {
+  color: rgb(77, 78, 80);
+  margin-left: 20px;
+  margin-top: 35px;
+  letter-spacing: 1px;
+}
+
+.courses-card {
+  position: relative;
+}
+
+.courses-btn {
+  position: absolute;
+  top: 70%;
+  left: 65%;
+  width: 80px;
+  height: 30px;
+  color: white;
+  background-color: #06468F;
+  border-radius: 5px;
+  outline: none;
+}
