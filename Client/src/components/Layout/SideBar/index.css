@@ -1,0 +1,60 @@
+.SideBar{
+  position: absolute;
+  width: 50%;
+  background-color: #0558B5;
+  height: 82vh;
+  z-index: 5;
+  animation: animate 0.5s;
+}
+
+@keyframes animate{
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 50%;
+  }
+}
+
+.SideBar-name{
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 50px;
+  letter-spacing: 1px;
+  padding-bottom: 50px;
+}
+
+.SideBar-text{
+  color: white;
+  font-size: 20px;
+  padding-left: 20px;
+  text-decoration: none;
+  animation-delay: 0.5s;
+}
+
+.SidBar-link{
+  display: flex;
+  justify-content: start;
+  padding: 20px 10px;
+  padding-right: 0px;
+  text-decoration: none;
+  animation-delay: 1s;
+  animation: animatecontent 1s;
+  overflow: hidden;
+}
+
+@keyframes animatecontent{
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+.SideBar-img{
+  width: 35px;
+  height: 35px;
+}
