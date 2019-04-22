@@ -1,0 +1,29 @@
+.table {
+  border-spacing: 0px;
+  font-size: 14px;
+}
+
+.table-cell {
+  border: 1.2px solid white;
+  padding: 9px 6px;
+  text-align: center;
+  border-radius: 5px;
+  color: #333;
+}
+
+.table-row:nth-child(odd) {
+  background-color: #f7f4f4;
+}
+
+.table-row:nth-child(even) {
+  background-color: #f1f0f0;
+}
+
+.table-head {
+  background: #D0CFCF;
+}
+
+.table-icon {
+  color: #333;
+  cursor: pointer;
+}
