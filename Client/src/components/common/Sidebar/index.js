@@ -1,7 +1,7 @@
 import React from 'react';
-import './index.css'
-import Linklist from '../LinkList';
 
+import Linklist from '../LinkList';
+import './index.css'
 
 export default function Sidebar({ linklist }) {
   return (
