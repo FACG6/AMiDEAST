@@ -34,7 +34,7 @@ AMIDEAST is a website that allows the staff members to add and view courses,it c
 - I want to apply to a course so that I want to take it.
 - I want to see my information so that I can check my info.
 
-### Devloper Experince:
+### Developer Experience:
 
 1- clone our repo.
 
