@@ -1,7 +1,7 @@
-import  React from 'react';
+import React from 'react';
 
 export default function Cell({ content, header }) {
-  const cellMarkup = header ? (
+  return (header ? (
     <th className='table-cell table-cell-header'>
       {content}
     </th>
@@ -9,6 +9,6 @@ export default function Cell({ content, header }) {
       <td className='table-cell'>
         {content}
       </td>
-    );
-  return (cellMarkup);
+    )
+  );
 }

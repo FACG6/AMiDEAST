@@ -2,7 +2,6 @@ import React from 'react';
 import Cell from './cell';
 import './index.css';
 
-
 const Table = ({ headings, rows }) => {
   return (
     <table className="table">
