@@ -29,14 +29,10 @@
 .login-btn {
   width: 80%;
   height: 50px;
-  color: white;
-  background-color: #06468F;
-  border-radius: 5px;
-  outline: none;
   font-size: 26px;
   margin-top: 20px;
 }
 
-.container { 
+.mobile-container { 
   width: 80%;
 }
