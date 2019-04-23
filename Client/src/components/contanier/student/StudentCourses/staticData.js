@@ -16,4 +16,4 @@ const data = [
     time: '12 - 3 PM'
   }
 ]
-export default data
+export default data;
