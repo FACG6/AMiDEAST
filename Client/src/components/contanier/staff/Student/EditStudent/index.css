@@ -1,29 +1,29 @@
-.editstudent {
+.edit-student {
   margin: 50px;
 }
 
-.editstudent-title, .editstudent-contanier, .editstudent-title-border {
+.edit-student-title, .edit-student-contanier, .edit-student-title-border {
   color: #06468F;
 }
 
-.editstudent-contanier {
+.edit-student-contanier {
   width: 80%;
   display: flex;
   margin: 50px auto;
 }
 
-.editstudent-title-border {
+.edit-student-title-border {
   border-bottom: 2px solid;
 }
 
-.editstudent-contanier-center {
+.edit-student-contanier-center {
   margin: auto 30px;
   width: 4px;
   background-color: #e0e0e0;
   height: 340px;
 }
 
-.editstudent-btn {
+.edit-student-btn {
   border: none;
   background-color: #2980B9;
   margin-top: 36px;

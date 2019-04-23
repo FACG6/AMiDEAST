@@ -4,17 +4,17 @@ import Button from './../../../../common/Button';
 
 import './index.css';
 
-export default class Editstudent extends Component {
+export default class EditStudent extends Component {
   render() {
     return (
-      <div className='editstudent'>
-        <h1 className='editstudent-title'>
-          <span className='editstudent-title-border'>
+      <div className='edit-student'>
+        <h1 className='edit-student-title'>
+          <span className='edit-student-title-border'>
             Edit Student
         </span>
         </h1>
-        <div className='editstudent-contanier'>
-          <div className='editstudent-contanier-left'>
+        <div className='edit-student-contanier'>
+          <div className='edit-student-contanier-left'>
             <LabeledInput
               labelText='First name'
               id='firstname'
@@ -40,8 +40,8 @@ export default class Editstudent extends Component {
               placeholder='Phone Number '
             />
           </div>
-          <div className='editstudent-contanier-center'></div>
-          <div className='editstudent-contanier-right'>
+          <div className='edit-student-contanier-center'></div>
+          <div className='edit-student-contanier-right'>
             <LabeledInput
               labelText='Last name'
               id='lastname'
@@ -60,7 +60,7 @@ export default class Editstudent extends Component {
               name='password'
               placeholder='Password'
             />
-            <Button content='Save' className='editstudent-btn' />
+            <Button content='Save' className='edit-student-btn' />
           </div>
         </div>
       </div>
