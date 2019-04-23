@@ -2,7 +2,7 @@ import React from 'react'
 
 import'./index.css'
 
-export default function CoursCard(props) {
+export default function CourseCard(props) {
   const { title, desc, date, days, time } =props
   return (
     <div className='course-card'>
