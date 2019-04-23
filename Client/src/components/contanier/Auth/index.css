@@ -13,7 +13,7 @@
   color: #06468F;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
   font-size: 20px;
 }
 
@@ -35,4 +35,8 @@
   outline: none;
   font-size: 26px;
   margin-top: 20px;
+}
+
+.container { 
+  width: 80%;
 }

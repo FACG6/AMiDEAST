@@ -5,6 +5,10 @@ import logo from '../../assets/Image/amideasblue.png'
 import './index.css'
 
 export default class Login extends Component {
+
+  handleClick = (e) => {
+    e.preventdefault()
+  }
   render() {
     const first = {
       LabeledInputClassName: 'container',
@@ -26,10 +30,12 @@ export default class Login extends Component {
     }
     return (
       <div className='login'>
-        <img src={logo} alt="amideast logo" className='login-logo' />  
-        <LabeledInput {...first}/>
-        <LabeledInput {...second}/>
-        <Button content='Login' btnClassName='login-btn'/>    
+        <img src={logo} alt="amideast logo" className='login-logo' /> 
+        <div className='container'>
+          <LabeledInput {...first}/>
+          <LabeledInput {...second}/>  
+        </div> 
+        <Button content='Login' className='login-btn' onClick={this.handleClick}/>    
       </div>
     )
   }
