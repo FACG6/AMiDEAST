@@ -24,7 +24,7 @@ export default class Apply extends Component {
           <CourseCard { ...this.state.course }/>
         </div>
         <hr className='apply-line' />
-        <h4 className='apply-tep'>Select from available options below</h4>
+        <h4 className='apply-note'>Select from available options below</h4>
         <PickDay option={days}/>
         <PickDay option={hours}/>
         <Button className='apply-btn' content='Apply'/>
