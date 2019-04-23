@@ -1,12 +1,13 @@
 import React from 'react'
+
 import'./index.css'
 
-export default function CoursCard(props) {
-  const { titel, desc } =props
+export default function CourseCard (props) {
+  const { title, desc } = props
   return (
-    <div className='CoursCard'>
-      <h3 className='CoursCard-titel'>{titel}</h3>
-      <p className='CoursCard-desc'>{desc}</p>
+    <div className='course-card'>
+      <h3 className='course-card-title'>{title}</h3>
+      <p className='course-card-description'>{desc}</p>
     </div>
   )
 }

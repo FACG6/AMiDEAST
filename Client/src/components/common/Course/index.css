@@ -1,19 +1,15 @@
-.CoursCard {
+.course-card {
   border-radius: 2px;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
-  width: 80vw;
   height: 20vh;
-  margin: 30px auto;
   padding: 10px;
 }
 
-.CoursCard-titel {
-  text-align: left;
+.course-card-title {
   color: #06468F;
 }
 
-.CoursCard-desc {
-  text-align: left;
+.course-card-description {
   color: #5F5F5F;
   font-weight: bolder;
   padding: 5px;

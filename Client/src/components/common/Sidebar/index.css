@@ -1,0 +1,25 @@
+.sidebar {
+  width: 20%;
+  background-color: #2980B9;
+  min-height: 100vh;
+  color: #eee;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.sidebar-desktop-logo {
+  margin: 50px 20px 30px 20px;
+}
+
+.sidebar-title {
+  text-align: center;
+}
+
+.sidebar-hr {
+  width: 70%;
+  margin: 10px auto;
+}
+
+.sidebar-linklist {
+  margin-left: 28px;
+  list-style-type: none;
+}
