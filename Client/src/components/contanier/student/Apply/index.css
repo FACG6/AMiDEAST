@@ -1,0 +1,32 @@
+.apply-title {
+  color: rgb(77, 78, 80);
+  margin: 35px 0px 0px 20px;
+  letter-spacing: 1px;
+}
+
+.apply-card {
+  margin: 10px 0px 10px 37px;
+  width: 80%;
+}
+
+.apply-line {
+  width: 70%;
+  margin: 0 auto;
+  border: 1.5px solid #515151;
+}
+
+.apply-note {
+  text-align: center;
+  margin: 15px;
+}
+
+.apply-btn {
+  width: 80%;
+  height: 50px;
+  color: white;
+  background-color: #06468F;
+  border-radius: 5px;
+  outline: none;
+  font-size: 24px;
+  margin: 15px 0px 0px 35px;
+}

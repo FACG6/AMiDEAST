@@ -1,0 +1,13 @@
+.picker {
+  font-size: 14px;
+  font-family: Arial;
+  width: 180px;
+  color: darkblue;
+  height: 40px;
+  background-color: #d3d3d3;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin: 10px 0px 10px 100px;
+}
