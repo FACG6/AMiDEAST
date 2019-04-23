@@ -10,4 +10,4 @@ const data = [
     desc: 'In this course you will learn the fundemtal of speaking and writign skills'
   }
 ]
-export default data
+export default data;
