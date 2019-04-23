@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon server/index.js",
-    "test:query": "NODE_ENV=testing tape ./server/test/query-test.js | tap-spec",
-    "test:router": "NODE_ENV=testing tape ./server/test/router-test.js | tap-spec",
-    "test": "concurrently \"npm run test:query\" \"npm run test:router\" ",
+    "test": "node ./server/test | tap-spec",
     "start:server": "nodemon index.js --prefix Back",
     "start:client": "npm start --prefix Client",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\" ",
