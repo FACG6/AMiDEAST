@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default function Button(props) {
-  const {content, onClickFunc, btnClassName} = props
+  const {content, onClick, btnClassName} = props
   return (
-    <button type="submit" onClick={onClickFunc} className={btnClassName}>{content}</button>
+    <button type="submit" onClick={onClick} className={btnClassName}>{content}</button>
   )
 }
