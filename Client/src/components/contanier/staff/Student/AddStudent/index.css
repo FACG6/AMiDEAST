@@ -1,0 +1,26 @@
+.addstudent{
+  margin:50px;
+}
+
+.addstudent-title ,
+.addstudent-contanier,
+.addstudent-title-border {
+  color: #06468F;
+}
+
+.addstudent-contanier {
+  width: 80%;
+  display: flex;
+  margin: 30px auto;
+}
+
+.addstudent-title-border{
+  border-bottom: 2px solid ;
+}
+
+.addstudent-contanier-center{
+  margin: 0 15px;
+  width: 4px;
+  background-color: #e0e0e0;
+  height: 340px;
+}
