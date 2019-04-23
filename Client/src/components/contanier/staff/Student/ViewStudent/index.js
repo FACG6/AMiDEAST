@@ -24,17 +24,26 @@ export default class ViewStudent extends Component {
         </h1>
 
         <div className="view-student">
-          <Input
-            name="search"
-            placeholder="Search by student number ...."
-            inputClassName="search-input"
-            type="text"
-          />
-          <div className="search-button">
-            <Button btnClassName="search-button" content="search" />
+          <div className="search-button-div">
+            <Input
+              name="search"
+              placeholder="Search by student number ...."
+              inputClassName="search-input"
+              className="search-input"
+              type="text"
+            />
+            <Button
+              btnClassName="search-button"
+              content="search"
+              className="search-button"
+            />
           </div>
-          <span>Result:</span>
-          <Table headings={headings} rows={rows} />
+
+          <div className="result">Result:</div>
+
+          <div className="tabel">
+            <Table headings={headings} rows={rows} className="student-table" />
+          </div>
         </div>
       </>
     );

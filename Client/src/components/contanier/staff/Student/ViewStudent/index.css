@@ -1,0 +1,42 @@
+.view-student-titel {
+  color: #06468f;
+  font-size: 34px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-left: 39px;
+  margin-bottom: 9px;
+}
+.view-student-line {
+  width: 204px;
+  border-bottom: 1.5px solid #06468f;
+  margin-top: 100px;
+  margin-left: 39px;
+}
+.view-student {
+  width: 80%;
+  height: 641px;
+}
+
+.search-button-div {
+  display: flex;
+}
+.search-input {
+  margin-left: 82px;
+  margin-bottom: 35px;
+  margin-top: 15px;
+}
+.search-button {
+  font-size: 14px;
+  border: none;
+  margin-top: 20px;
+  margin-left: 35px;
+}
+.result {
+  color: #9d9d9d;
+  margin-left: 82px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.tabel {
+  margin-left: 82px;
+}
