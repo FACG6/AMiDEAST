@@ -9,14 +9,12 @@
   position: relative;
 }
 
-.courses-btn {
+.courses-card--div {
   position: absolute;
   top: 70%;
   left: 65%;
+}
+
+.courses-card-btn {
   width: 80px;
-  height: 30px;
-  color: white;
-  background-color: #06468F;
-  border-radius: 5px;
-  outline: none;
 }
