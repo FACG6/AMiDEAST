@@ -5,7 +5,7 @@ import './index.css'
 
 export default function link({ title, to }) {
   return (to ?
-    <Link to={to}>
+    <Link  className='sidebar-linklist-link'to={to}>
       <li className='sidebar-sublink'> {title} </li>
     </Link  >
     :
