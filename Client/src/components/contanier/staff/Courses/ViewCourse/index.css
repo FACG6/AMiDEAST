@@ -1,0 +1,20 @@
+.view-course-titel {
+  color: #06468f;
+  font-size: 34px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-left: 39px;
+  margin-bottom: 9px;
+}
+.view-course-line {
+  width: 204px;
+  border-bottom: 1.5px solid #06468f;
+  margin-top: 100px;
+  margin-left: 39px;
+  margin-bottom: 73px;
+}
+.view-course {
+  width: 80%;
+  height: 641px;
+  display: flex;
+}
