@@ -15,7 +15,9 @@ export default class Courses extends Component {
           return (
             <div className='courses-card' key={item.id}>
               <Course {...item}/>
-              <Button content='Apply' btnClassName='courses-btn'/>
+              <div className='courses-card--div'>
+                <Button content='Apply' className='courses-card-btn' />
+              </div>
             </div>
           )
         })}
