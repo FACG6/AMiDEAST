@@ -1,29 +1,29 @@
-.addstudent {
+.add-student {
   margin: 50px;
 }
 
-.addstudent-title, .addstudent-contanier, .addstudent-title-border {
+.add-student-title, .add-student-contanier, .add-student-title-border {
   color: #06468F;
 }
 
-.addstudent-contanier {
+.add-student-contanier {
   width: 80%;
   display: flex;
   margin: 50px auto;
 }
 
-.addstudent-title-border {
+.add-student-title-border {
   border-bottom: 2px solid;
 }
 
-.addstudent-contanier-center {
+.add-student-contanier-center {
   margin: auto 30px;
   width: 193px;
   background-color: #e0e0e0;
   height: 340px;
 }
 
-.addstudent-btn{
+.add-student-btn{
   border: none;
   background-color: #2980B9;
   margin-top: 36px;

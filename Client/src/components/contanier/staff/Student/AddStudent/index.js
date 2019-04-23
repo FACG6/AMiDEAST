@@ -4,17 +4,17 @@ import Button from './../../../../common/Button';
 
 import './index.css';
 
-export default class Addstudent extends Component {
+export default class AddStudent extends Component {
   render() {
     return (
-      <div className='addstudent'>
-        <h1 className='addstudent-title'>
-          <span className='addstudent-title-border'>
-            Add Student
-        </span>
+      <div className='add-student'>
+        <h1 className='add-student-title'>
+          <span className='add-student-title-border'>
+            Add  Student                        
+          </span>
         </h1>
-        <div className='addstudent-contanier'>
-          <div className='addstudent-contanier-left'>
+        <div className='add-student-contanier'>
+          <div className='add-student-contanier-left'>
             <LabeledInput
               labelText='First name'
               id='firstname'
@@ -40,8 +40,8 @@ export default class Addstudent extends Component {
               placeholder='Phone Number '
             />
           </div>
-          <div className='addstudent-contanier-center'></div>
-          <div className='addstudent-contanier-right'>
+          <div className='add-student-contanier-center'></div>
+          <div className='add-student-contanier-right'>
             <LabeledInput
               labelText='Last name'
               id='lastname'
@@ -60,7 +60,7 @@ export default class Addstudent extends Component {
               name='password'
               placeholder='Password'
             />
-            <Button content='Add' className='addstudent-btn'/>
+            <Button content='Add' className='add-student-btn'/>
           </div>
         </div>
       </div>
