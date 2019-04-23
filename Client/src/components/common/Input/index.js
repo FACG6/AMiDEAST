@@ -3,7 +3,7 @@ import './index.css';
 
 const Input = props => {
   return (
-    <input {...props} className={'input ' + props.className}/>
+    <input {...props} className={'general-input ' + props.className}/>
   )
 };
 
