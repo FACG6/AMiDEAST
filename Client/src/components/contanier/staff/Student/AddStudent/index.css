@@ -22,3 +22,12 @@
   background-color: #e0e0e0;
   height: 340px;
 }
+
+.addstudent-btn{
+  border: none;
+  background-color: #2980B9;
+  margin-top: 36px;
+  height: 40px;
+  width: 140px;
+  margin-left: 210px;
+}

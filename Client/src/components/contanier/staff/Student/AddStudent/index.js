@@ -60,7 +60,7 @@ export default class Addstudent extends Component {
               name='password'
               placeholder='Password'
             />
-            <Button/>
+            <Button content='Add' className='addstudent-btn'/>
           </div>
         </div>
       </div>
