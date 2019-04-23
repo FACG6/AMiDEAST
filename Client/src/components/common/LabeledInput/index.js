@@ -5,7 +5,7 @@ import './index.css';
 
 const LabeledInput = props => {
   return (
-    <div className='LabeledInput'>
+    <div className='labeled-input'>
       <Label input={Input} {...props} />
     </div>
   )
