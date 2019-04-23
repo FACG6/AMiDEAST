@@ -7,8 +7,17 @@ fs.readdir(testFolder, (err, files) => {
   } else {
     files.forEach((file) => {
       if (file !== 'index.js') {
-        require(`./${file}`);
-      }
+        fs.readdir(`${testFolder}/${file}`, (err, files) => {
+          if (err) {
+            console.log(err)
+          } else {
+            console.log(file)
+            files.forEach((subFile) => {
+              require(`./${file}/${subFile}`);
+            });
+          }
+        });
+      };
     });
-  }
+  };
 });
