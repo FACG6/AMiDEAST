@@ -1,7 +1,7 @@
 const data = [
   {
     id:0,
-    titel: 'Writing & Speaking',
+    title: 'Writing & Speaking',
     desc: 'In this course you will learn the fundemtal of speaking and writign skills',
     date: '1/5/2019',
     days: 'Sat - Mon - Sun',
@@ -9,11 +9,11 @@ const data = [
   },
   {
     id:1,
-    titel: 'Writing & Speaking',
+    title: 'Writing & Speaking',
     desc: 'In this course you will learn the fundemtal of speaking and writign skills',
     date: '1/5/2019',
     days: 'Sat - Mon - Sun',
     time: '12 - 3 PM'
   }
 ]
-export default data
+export default data;
