@@ -1,10 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Input = props => {
-  const {inputClassName} = props
-  return (
-    <input {...props} className={inputClassName}/>
-  )
+  const { inputClassName } = props;
+  return <input {...props} className={inputClassName} />;
 };
 
-export default Input
+export default Input;
