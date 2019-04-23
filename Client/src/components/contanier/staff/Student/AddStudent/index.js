@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LabeledInput from './../../../../common/LabeledInput'
-// import Button from './../../../../common/Button'
+import Button from './../../../../common/Button';
+
 import './index.css';
 
 export default class Addstudent extends Component {
@@ -59,7 +60,7 @@ export default class Addstudent extends Component {
               name='password'
               placeholder='Password'
             />
-            {/* <Button/> */}
+            <Button/>
           </div>
         </div>
       </div>
