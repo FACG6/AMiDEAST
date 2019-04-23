@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+
 import "./index.css";
 
 function Picker(props) {
@@ -11,4 +12,4 @@ function Picker(props) {
     </select>
   );
 }
-export default Picker;
+export default Picker

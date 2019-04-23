@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import CourseCard from '../../../common/Course'
 import PickDay from '../../../common/PickDay'
 import Button from '../../../common/Button'
