@@ -16,30 +16,30 @@ export default class Addcourse extends Component {
               LabeledInputClassName="course-name"
               id="courseName"
               labelText="Course Name:"
-              labelClassName="course-name-label"
+              labelClassName="course-label"
               type="text"
               name="courseName"
-              inputClassName="course-name-input"
+              inputClassName="course-input"
             />
             <LabeledInput
               LabeledInputClassName="numbers-of-students"
               id="NO"
               labelText="Numbers Of Students:"
-              labelClassName="numbers-of-students-label"
+              labelClassName="course-label"
               min="3"
               max="30"
               type="number"
               name="numberOfStudent"
-              inputClassName="numbers-of-students-input"
+              inputClassName="course-input"
             />
             <LabeledInput
               LabeledInputClassName="description"
               id="desc"
               labelText="Description:"
-              labelClassName="description-label"
+              labelClassName="course-label"
               type="text"
               name="description"
-              inputClassName="description-input"
+              inputClassName="course-input"
             />
           </div>
           <div className="right">
@@ -47,48 +47,50 @@ export default class Addcourse extends Component {
               LabeledInputClassName="level"
               id="level"
               labelText="Level"
-              labelClassName="level-label"
+              labelClassName="course-label"
               type="number"
               name="level"
               min="1"
               max="12"
-              inputClassName="level-input"
+              inputClassName="course-input"
             />
             <LabeledInput
               LabeledInputClassName="days"
               id="days"
               labelText="Days:"
-              labelClassName="days-label"
+              labelClassName="course-label"
               type="text"
               name="days"
-              inputClassName="days-input"
+              inputClassName="course-input"
             />
             <div className="dates">
               <LabeledInput
                 LabeledInputClassName="start"
                 id="start"
                 labelText="Start:"
-                labelClassName="start-label"
+                labelClassName="course-label"
                 type="number"
                 name="start"
                 min="8"
                 max="17"
-                inputClassName="start-input"
+                inputClassName="course-input time-input"
               />
               <LabeledInput
                 LabeledInputClassName="end"
                 id="end"
                 labelText="End:"
-                labelClassName="end-label"
+                labelClassName="course-label margin"
                 type="number"
                 name="end"
                 min="9"
                 max="18"
-                inputClassName="end-input"
+                inputClassName="course-input time-input margin"
               />
-              <Button btnClassName="add-dates-button" content="Add Dates" />
+              <div className="add-dates">
+                <Button btnClassName="add-dates-button" content="Add Dates" />
+              </div>
             </div>
-            <div className="add-button">
+            <div className="add-course-btn">
               <Button btnClassName="add-course-button" content="Add" />
             </div>
           </div>

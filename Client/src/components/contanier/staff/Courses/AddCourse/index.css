@@ -1,8 +1,3 @@
-.add-course {
-  width: 80%;
-  height: 641px;
-  display: flex;
-}
 .add-course-titel {
   color: #06468f;
   letter-spacing: 1px;
@@ -19,151 +14,50 @@
   margin-left: 39px;
   margin-bottom: 73px;
 }
-
+.add-course {
+  width: 80%;
+  height: 641px;
+  display: flex;
+}
 .left {
   width: 45%;
 }
 .right {
   width: 55%;
 }
-
-.course-name-label {
+.course-label {
   color: #06468f;
   font-size: 14px;
-  margin-left: 82px;
+  margin-left: 160px;
   margin-bottom: 7px;
 }
-.course-name-input {
+
+.course-input {
   width: 350px;
   height: 39px;
   background-color: #e0e0e0;
-  margin-left: 82px;
+  margin-left: 160px;
   margin-bottom: 7px;
-  margin-top: 7px;
-  border: none;
-}
-
-.numbers-of-students-label {
-  color: #06468f;
-  font-size: 14px;
-  margin-left: 82px;
-  margin-bottom: 7px;
-}
-.numbers-of-students-input {
-  width: 350px;
-  height: 39px;
-  background-color: #e0e0e0;
-  margin-left: 82px;
-  margin-bottom: 7px;
-  margin-top: 7px;
-  border: none;
-}
-
-.description-label {
-  color: #06468f;
-  font-size: 14px;
-  margin-left: 82px;
-  margin-bottom: 7px;
-}
-.description-input {
-  background-color: #e0e0e0;
-  margin-left: 82px;
-  margin-bottom: 7px;
-  margin-top: 7px;
-  width: 350px;
-  height: 143px;
-  border: none;
-}
-.level-label {
-  flex-direction: column;
-  display: flex;
-  color: #06468f;
-  font-size: 14px;
-  margin-bottom: 7px;
-}
-.level-input {
-  width: 350px;
-  height: 39px;
-  background-color: #e0e0e0;
-  margin-bottom: 34px;
-  margin-top: 7px;
-  border: none;
-}
-
-.days-label {
-  display: flex;
-  flex-direction: column;
-  color: #06468f;
-  font-size: 14px;
-  margin-bottom: 7px;
-}
-.days-input {
-  width: 350px;
-  height: 39px;
-  background-color: #e0e0e0;
-  margin-bottom: 34px;
   margin-top: 7px;
   border: none;
 }
 .dates {
   display: flex;
 }
-.start-label {
-  display: flex;
-  flex-direction: column;
-  color: #06468f;
-  font-size: 14px;
-  margin-bottom: 7px;
-  margin-right: 16px;
-}
-.start-input {
+.time-input {
   width: 108px;
-  height: 39px;
-  background-color: #e0e0e0;
   margin-bottom: 34px;
-  margin-top: 7px;
-  border: none;
 }
-
-.end-label {
-  display: flex;
-  flex-direction: column;
-  color: #06468f;
+.margin {
+  margin-left: 27px;
+}
+.add-dates {
   font-size: 14px;
-  margin-bottom: 7px;
+  margin-top: 48px;
+  margin-left: 4px;
 }
-.end-input {
-  width: 108px;
-  height: 39px;
-  background-color: #e0e0e0;
-  margin-bottom: 34px;
-  margin-top: 7px;
-  border: none;
-}
-
-.add-dates-button {
-  width: 84px;
-  height: 36px;
-  color: white;
-  background-color: #2980b9;
-  border-radius: 5px;
-  outline: none;
+.add-course-btn {
   font-size: 14px;
-  margin-top: 22px;
-  margin-left: 18px;
-  border: none;
-}
-.add-button {
-}
-.add-course-button {
-  width: 108px;
-  height: 36px;
-  color: white;
-  background-color: #2980b9;
-  border-radius: 5px;
-  outline: none;
-  font-size: 14px;
-  margin-top: -30px;
-  margin-right: 900px;
-  border: none;
+  margin-top: -15px;
+  float: right;
 }
