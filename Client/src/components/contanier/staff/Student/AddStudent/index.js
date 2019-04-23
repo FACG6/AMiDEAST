@@ -3,6 +3,7 @@ import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
 import './logic'
 import './index.css';
+import Label from '../../../../common/Label';
 
 export default class AddStudent extends Component {
   state = {
@@ -13,15 +14,30 @@ export default class AddStudent extends Component {
     lastname: '',
     mobilenumber: '',
     password: '',
+    Error: ''
   }
 
-  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
+  handleInput = ({ target: { value, name } }) => {
+    if (name === 'firstname') {
+
+      const d = document.getElementById(name);
+      if (value.length >= 3 && value.length <= 15) {
+        this.setState({ Error: ''})
+        d.setAttribute('class', 'general-input  success-value')
+      } else {
+        this.setState({ Error: 'should be bettween 3 and 15s' })
+        return d.setAttribute('class', 'general-input danger-value')
+      }
+    }
+
+    this.setState({ [name]: value.trim() })
+  }
   handleClick = (e) => {
     e.preventDefault();
     // console.log(this.state)
   }
   render() {
-    const { firstname, address, level, phonenumber, lastname, mobilenumber, password } = this.state;
+    const { firstname, address, level, phonenumber, lastname, mobilenumber, password, Error } = this.state;
     return (
       <div className='add-student'>
         <h1 className='add-student-title'>
@@ -39,6 +55,7 @@ export default class AddStudent extends Component {
               placeholder='First name '
               onChange={this.handleInput}
             />
+            <label>{Error}</label>
             <LabeledInput
               labelText='Address'
               id='address'

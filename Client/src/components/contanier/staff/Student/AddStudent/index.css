@@ -31,3 +31,13 @@
   width: 140px;
   margin-left: 210px;
 }
+
+.danger-value{
+  border: 2px solid red;
+  box-shadow: 1px 0px 0px -1px red;
+}
+
+.success-value{
+  border: 2px solid green;
+  box-shadow: 1px 0px 0px -1px green;
+}
