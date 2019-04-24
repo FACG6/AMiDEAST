@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+
 import NavElement from './NavElement'
-import './index.css'
 import elements from './staticData';
+import './index.css'
 
 export default class SideBar extends Component {
   
