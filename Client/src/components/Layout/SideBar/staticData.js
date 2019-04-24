@@ -1,6 +1,7 @@
 import logout from '../../assets/Image/logout.png'
 import course from '../../assets/Image/translator.png'
 import profile from '../../assets/Image/curriculum.png'
+import mycourses from '../../assets/Image/mycourses.png'
 
 const elements = [{
     id: 0,
@@ -16,6 +17,12 @@ const elements = [{
   },
   {
     id: 2,
+    text: 'My Courses',
+    link: 'mycourses',
+    icon: mycourses,
+  },
+  {
+    id: 3,
     text: 'Logout',
     link: 'logout',
     icon: logout,
