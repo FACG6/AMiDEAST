@@ -23,8 +23,6 @@
   },
   "homepage": "https://github.com/FACG6/AMiDEAST#readme",
   "devDependencies": {
-    "concurrently": "^4.1.0",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.10.1"
+    "concurrently": "^4.1.0"
   }
 }
