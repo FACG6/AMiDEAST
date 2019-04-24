@@ -4,9 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "NODE_ENV=development nodemon server/index.js",
-    "test:query": "NODE_ENV=testing tape ./server/test/query-test.js | tap-spec",
-    "test:router": "NODE_ENV=testing tape ./server/test/router-test.js | tap-spec",
-    "start:server": "npm start  --prefix server",
+    "test": "NODE_ENV=testing node ./server/test | tap-spec",
+    "start:server": "nodemon index.js --prefix Back",
     "start:client": "npm start --prefix Client",
     "start": "concurrently  \"npm run start:client\" \" npm run start:server\" ",
     "kill": "fuser -k 7777/tcp"
