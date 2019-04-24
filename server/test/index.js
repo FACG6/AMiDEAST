@@ -1,2 +1,2 @@
-require('./Endpoints/router-test');
-require('./Queries/query-test');
+require('./Endpoints');
+require('./Queries');
