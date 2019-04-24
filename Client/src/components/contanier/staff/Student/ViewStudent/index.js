@@ -29,20 +29,15 @@ export default class ViewStudent extends Component {
               name="search"
               placeholder="Search by student number ...."
               inputClassName="search-input"
-              className="search-input"
               type="text"
             />
-            <Button
-              btnClassName="search-button"
-              content="search"
-              className="search-button"
-            />
+            <Button content="search" className="search-button" />
           </div>
 
           <div className="result">Result:</div>
 
-          <div className="tabel">
-            <Table headings={headings} rows={rows} className="student-table" />
+          <div className="view-student">
+            <Table headings={headings} rows={rows} />
           </div>
         </div>
       </>
