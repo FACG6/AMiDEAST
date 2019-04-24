@@ -6,10 +6,7 @@ before_script:
   - "psql -c \"CREATE USER foo WITH PASSWORD 'bar';\" -U postgres"
 env: 
   global: 
-    - PGPORT=5432
-language: node_js
-node_js: 
-  - node
+  - PGPORT=5432
 services: 
   - postgresql
 test: 
