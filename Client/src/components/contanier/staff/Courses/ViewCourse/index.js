@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
 import Table from "../../../../common/Table";
+import Button from "../../../../common/Button";
 
 export default class Viewcourse extends Component {
   render() {
@@ -24,7 +25,6 @@ export default class Viewcourse extends Component {
           <span className="view-course-line ">View Course</span>
         </h1>
         <div className="view-course">
-        
           <Table headings={headings} rows={rows} />
         </div>
       </>
