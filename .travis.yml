@@ -1,3 +1,14 @@
 language: node_js
 node_js:
  - "node"
+services:
+  - postgresql
+before_script:
+  - psql -c "CREATE DATABASE testing_db;" -U postgres
+  - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
+test:
+  adapter: postgresql
+  database: testing_db
+env:
+  global:
+  - PGPORT=5433
