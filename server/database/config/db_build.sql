@@ -67,7 +67,7 @@ INSERT INTO course
 	('reading', 'dfgsfsdfsfds', 6, 20, '18/12/2019');
 
 INSERT INTO dates 
-	(fromm,too,courseid,days)
+	(h_from,h_to,courseid,days)
 	values
 	(2,3,1,'sat-sun-tus'),
 	(1,2,2,'wen-thers-fri'),
