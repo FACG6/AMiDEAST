@@ -1,9 +1,10 @@
 const test = require('tape');
 
 const getStudent = require('../../database/queries/getStudent');
+const dbBuild = require('../../database/config/db_build');
 
 test('test query for get student information', (t) => {
-  getStudent(12345)
+  dbBuild().then(() => getStudent(12345))
     .then((res) => {
       if (res.rowCount !== 0) {
         t.equal(res.rowCount !== 0, true, 'There is student in the database');
