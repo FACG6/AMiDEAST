@@ -16,22 +16,24 @@ export default class AddStudent extends Component {
     password: '',
     Error: {}
   }
-  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value.trim() })
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value.trim() });
+
   handleClick = (e) => {
     e.preventDefault();
-    this.setState({ ...this.state.Error, Error: '' })
+    this.setState({ Error: '' })
     addStudentSchema
       .validate({ ...this.state }, {
         abortEarly: false
       })
+      .then((value) => {
+        // right fetch here 
+      })
       .catch(({ inner }) => {
         const errors = inner.reduce((acc, item) => {
-          if (item.type === 'min') {
-            acc[item.path] = (item.message);
-          }
+          acc[item.path] = (item.message);
           return acc;
         }, {});
-        this.setState({ ...this.state.Error, Error: { ...errors } })
+        this.setState({ Error: { ...errors } })
       })
   }
   render() {
@@ -116,7 +118,6 @@ export default class AddStudent extends Component {
             <Button type='submit' content='Add' className='add-student-btn' onClick={(e) => this.handleClick(e)} />
           </div>
         </form>
-        <label className='error-label'>{Error['Msg']}</label>
       </div>
     )
   }
