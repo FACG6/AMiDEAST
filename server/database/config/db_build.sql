@@ -35,8 +35,8 @@ CREATE TABLE course (
 
 CREATE TABLE dates (
 	id SERIAL PRIMARY KEY,
-    h_from DATE NOT NULL,
-    h_to DATE NOT NULL,
+    h_from INTEGER NOT NULL,
+    h_to INTEGER NOT NULL,
     courseid INT REFERENCES course(id),
     days VARCHAR NOT NULL
 );
