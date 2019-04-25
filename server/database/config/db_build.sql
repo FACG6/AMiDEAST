@@ -3,9 +3,10 @@ BEGIN;
 DROP TABLE IF EXISTS student, staff, course, dates, studentcourse CASCADE;
 
 CREATE TABLE student (
-	id SERIAL  PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR(20) NOT NULL,
+	amideastId INTEGER NOT NULL,
     isActive BOOLEAN default(false),
     homePhone VARCHAR(15),
 	mobilePhone VARCHAR(15) NOT NULL,
@@ -14,7 +15,7 @@ CREATE TABLE student (
 );
 
 CREATE TABLE staff (
-	id SERIAL  PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR NOT NULL,
     email VARCHAR NOT NULL,
@@ -33,22 +34,23 @@ CREATE TABLE course (
 
 CREATE TABLE dates (
 	id SERIAL PRIMARY KEY,
-    h_from INTEGER NOT NULL,
-    h_to INTEGER NOT NULL,
+    fromm INTEGER NOT NULL,
+    too INTEGER NOT NULL,
     courseid INT REFERENCES course(id),
-    dayes VARCHAR NOT NULL
+    days VARCHAR NOT NULL
 );
 
 CREATE TABLE studentcourse (
     courseid INT REFERENCES course(id),
-    studentid	INT REFERENCES student(id)
+    studentid INT REFERENCES student(id),
+	datesid Int REFERENCES dates(id)
 );
 
 INSERT INTO student 
-	(firstname,lastname,isActive,homePhone,mobilePhone,level,password) 
+	(firstname,lastname,amideastId,isActive,homePhone,mobilePhone,level,password) 
 	values
-	('Nareman','Hilles',true,'05999999','445788',1,'123456'),
-	('abdullah','ammar',false,'05994433','44578558',2,'789456');
+	('Nareman','Hilles',12345,true,'05999999','445788',7,'123456'),
+	('abdullah','ammar',56789,false,'05994433','44578558',9,'789456');
 
 INSERT INTO staff 
 	(firstname,lastname,email,mobilePhone,password)
@@ -60,18 +62,22 @@ INSERT INTO course
 	(title,description,targetLevel,numberOfStudent,publishDate)
 	values
 	('grammer','this course is',3,30,'30/6/2014'),
-	('transleating','about how translate',5,40,'18/7/2005');
+	('transleating','about how translate',5,40,'18/7/2005'),
+	('reading', 'dfgsfsdfsfds', 6, 20, '18/12/2019');
 
 INSERT INTO dates 
-	(h_from,h_to,courseid,dayes)
+	(fromm,too,courseid,days)
 	values
 	(2,3,1,'sat-sun-tus'),
-	(1,2,2,'wen-thers-fri');
+	(1,2,2,'wen-thers-fri'),
+	(5,8,3,'qw,dsf,fdg');
 
 INSERT INTO studentcourse 
-	(courseid,studentid)
+	(courseid,studentid,datesid)
 	values
-	(1,1),
-	(2,1);
+	(1,1,1),
+	(2,1,2),
+	(3,1,3),
+	(2,2,2);
 
 COMMIT;
