@@ -1,3 +1,8 @@
-.general-label-input{
+.general-label-input {
   margin-top: 20px;
+}
+
+.error {
+  font-size: 14px;
+  color: red;
 }
