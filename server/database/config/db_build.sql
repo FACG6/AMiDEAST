@@ -1,6 +1,6 @@
 BEGIN; 
 
-DROP TABLE IF EXISTS student, staff, course, dates, studentcourse CASCADE;
+DROP TABLE IF EXISTS student, staff, course, dates, student_course CASCADE;
 
 CREATE TABLE student (
 	firstname VARCHAR(20) NOT NULL,

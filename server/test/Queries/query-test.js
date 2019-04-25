@@ -19,7 +19,7 @@ test('test query for get student information', (t) => {
         const student = res[0];
         t.deepEqual(
           Object.keys(student),
-          ['amideastid', 'firstname', 'lastname', 'mobilephone', 'level', 'isactive'], 'Same Data',
+          ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'Same Data',
         );
         t.end();
       }
