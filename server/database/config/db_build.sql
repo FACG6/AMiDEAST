@@ -6,6 +6,8 @@ CREATE TABLE student (
 	id SERIAL  PRIMARY KEY,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR(20) NOT NULL,
+	address VARCHAR(20) NOT NULL,
+	amideastId VARCHAR(20) NOT NULL,
     isActive BOOLEAN default(false),
     homePhone VARCHAR(15),
 	mobilePhone VARCHAR(15) NOT NULL,
@@ -45,10 +47,10 @@ CREATE TABLE studentcourse (
 );
 
 INSERT INTO student 
-	(firstname,lastname,isActive,homePhone,mobilePhone,level,password) 
+	(firstname,lastname,address,amideastId,isActive,homePhone,mobilePhone,level,password) 
 	values
-	('Nareman','Hilles',true,'05999999','445788',1,'123456'),
-	('abdullah','ammar',false,'05994433','44578558',2,'789456');
+	('Nareman','Hilles','gaza','123458',true,'05999999','445788',1,'123456'),
+	('abdullah','ammar','jabalia','789456',false,'05994433','44578558',2,'789456');
 
 INSERT INTO staff 
 	(firstname,lastname,email,mobilePhone,password)
