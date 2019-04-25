@@ -20,7 +20,7 @@ export default class AddStudent extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    this.setState({ Error: '' })
+    this.setState({ Error: {} })
     addStudentSchema
       .validate({ ...this.state }, {
         abortEarly: false
@@ -45,7 +45,7 @@ export default class AddStudent extends Component {
             Add  Student
           </span>
         </h1>
-        <form onSubmit={(e) => this.handleClick(e)} className='add-student-contanier'>
+        <form className='add-student-contanier'>
           <div className='add-student-contanier-left'>
             <LabeledInput
               labelText='First name'
@@ -57,13 +57,13 @@ export default class AddStudent extends Component {
               Error={Error['firstname']}
             />
             <LabeledInput
-              labelText='Address'
-              id='address'
-              name='address'
-              value={address}
-              placeholder='Address'
+              labelText='Last name'
+              id='lastname'
+              name='lastname'
+              value={lastname}
+              placeholder='Last name '
               onChange={this.handleInput}
-              Error={Error['address']}
+              Error={Error['lastname']}
             />
             <LabeledInput
               labelText='Level'
@@ -88,15 +88,6 @@ export default class AddStudent extends Component {
           <div className='add-student-contanier-center'></div>
           <div className='add-student-contanier-right'>
             <LabeledInput
-              labelText='Last name'
-              id='lastname'
-              name='lastname'
-              value={lastname}
-              placeholder='Last name '
-              onChange={this.handleInput}
-              Error={Error['lastname']}
-            />
-            <LabeledInput
               labelText='Mobile number'
               id='mobilenumber'
               name='mobilenumber'
@@ -104,6 +95,15 @@ export default class AddStudent extends Component {
               placeholder='Mobile number'
               onChange={this.handleInput}
               Error={Error['mobilenumber']}
+            />
+            <LabeledInput
+              labelText='Address'
+              id='address'
+              name='address'
+              value={address}
+              placeholder='Address'
+              onChange={this.handleInput}
+              Error={Error['address']}
             />
             <LabeledInput
               labelText='Password'
@@ -115,7 +115,8 @@ export default class AddStudent extends Component {
               onChange={this.handleInput}
               Error={Error['password']}
             />
-            <Button type='submit' content='Add' className='add-student-btn' onClick={(e) => this.handleClick(e)} />
+            <br />
+            <Button type='submit' content='Add' className='add-student-btn' onClick={this.handleClick} />
           </div>
         </form>
       </div>

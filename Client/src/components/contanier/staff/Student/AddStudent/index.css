@@ -1,5 +1,6 @@
 .add-student {
   margin: 50px;
+  width: 100%;
 }
 
 .add-student-title, .add-student-contanier, .add-student-title-border {
@@ -17,19 +18,18 @@
 }
 
 .add-student-contanier-center {
-  margin: auto 30px;
+  margin: auto 35px;
   width: 4px;
   background-color: #e0e0e0;
-  height: 340px;
+  height: 375px;
 }
 
 .add-student-btn {
   border: none;
   background-color: #2980B9;
-  margin-top: 36px;
+  margin-top: 27px;
   height: 40px;
-  width: 140px;
-  margin-left: 210px;
+  width: 100%;
 }
 
 .danger-value {
@@ -44,9 +44,5 @@
 
 .general-input {
   outline: none;
-}
-
-.error-label {
-  color: red;
-  margin-left: 100px;
+  margin-top: 8px;
 }
