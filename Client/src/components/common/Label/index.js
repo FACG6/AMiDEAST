@@ -7,7 +7,7 @@ const Label = props => {
       {labelText}
       <Input name={name} id={id} type={type} placeholder={placeholder} onChange={onChange} inputClassName={inputClassName} />
       <br />
-      <span className='error'>{Error}</span>
+      <span className='error-label'>{Error}</span>
     </label>
   )
 };
