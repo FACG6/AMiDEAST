@@ -10,6 +10,7 @@ CREATE TABLE student (
     isActive BOOLEAN default(false),
     homePhone VARCHAR(15),
 	mobilePhone VARCHAR(15) NOT NULL,
+	address VARCHAR(50) NOT NULL,
     level INTEGER NOT NULL,
 	password VARCHAR NOT NULL
 );
@@ -47,10 +48,10 @@ CREATE TABLE studentcourse (
 );
 
 INSERT INTO student 
-	(firstname,lastname,amideastId,isActive,homePhone,mobilePhone,level,password) 
+	(firstname,lastname,amideastId,isActive,homePhone,mobilePhone,address,level,password) 
 	values
-	('Nareman','Hilles',12345,true,'05999999','445788',7,'123456'),
-	('abdullah','ammar',56789,false,'05994433','44578558',9,'789456');
+	('Nareman','Hilles',12345,true,'05999999','445788','rafh',7,'123456'),
+	('abdullah','ammar',56789,false,'05994433','44578558','gaza',9,'789456');
 
 INSERT INTO staff 
 	(firstname,lastname,email,mobilePhone,password)
