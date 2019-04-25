@@ -4,7 +4,7 @@ const url = require('url');
 
 let DB_URL = '';
 switch (process.env.NODE_ENV) {
-  case 'testing': DB_URL = process.env.DATABASE_TESTING; break;
+  case 'testing': DB_URL = process.env.testing_db; break;
   case 'production': DB_URL = process.env.DATABASE_HEROCU; break;
   case 'development': DB_URL = process.env.DATABASE_LOCAL; break;
   default: throw new Error('not found the DB_URL');
