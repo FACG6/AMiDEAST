@@ -1,40 +1,38 @@
 import React, { Component } from 'react'
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
-import './logic'
+import { addStudentSchema } from './../../../../../helpers/validation-schema'
 import './index.css';
-import Label from '../../../../common/Label';
+let valid;
 
 export default class AddStudent extends Component {
   state = {
     firstname: '',
     address: '',
-    level: '',
+    level: 0,
     phonenumber: '',
     lastname: '',
     mobilenumber: '',
     password: '',
-    Error: ''
+    Error: {}
   }
-
-  handleInput = ({ target: { value, name } }) => {
-    if (name === 'firstname') {
-
-      const d = document.getElementById(name);
-      if (value.length >= 3 && value.length <= 15) {
-        this.setState({ Error: ''})
-        d.setAttribute('class', 'general-input  success-value')
-      } else {
-        this.setState({ Error: 'should be bettween 3 and 15s' })
-        return d.setAttribute('class', 'general-input danger-value')
-      }
-    }
-
-    this.setState({ [name]: value.trim() })
-  }
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value.trim() })
   handleClick = (e) => {
     e.preventDefault();
-    // console.log(this.state)
+    this.setState({ ...this.state.Error, Error: '' })
+    addStudentSchema
+      .validate({ ...this.state }, {
+        abortEarly: false
+      })
+      .catch(({ inner }) => {
+        const errors = inner.reduce((acc, item) => {
+          if (item.type === 'min') {
+            acc[item.path] = (item.message);
+          }
+          return acc;
+        }, {});
+        this.setState({ ...this.state.Error, Error: { ...errors } })
+      })
   }
   render() {
     const { firstname, address, level, phonenumber, lastname, mobilenumber, password, Error } = this.state;
@@ -50,12 +48,12 @@ export default class AddStudent extends Component {
             <LabeledInput
               labelText='First name'
               id='firstname'
-              name='firstname' encodeURIComponent
+              name='firstname'
               value={firstname}
               placeholder='First name '
               onChange={this.handleInput}
+              Error={Error['firstname']}
             />
-            <label>{Error}</label>
             <LabeledInput
               labelText='Address'
               id='address'
@@ -63,6 +61,7 @@ export default class AddStudent extends Component {
               value={address}
               placeholder='Address'
               onChange={this.handleInput}
+              Error={Error['address']}
             />
             <LabeledInput
               labelText='Level'
@@ -71,6 +70,8 @@ export default class AddStudent extends Component {
               value={level}
               placeholder='Level'
               onChange={this.handleInput}
+              type='Number'
+              Error={Error['level']}
             />
             <LabeledInput
               labelText='Phone number '
@@ -79,6 +80,7 @@ export default class AddStudent extends Component {
               value={phonenumber}
               placeholder='Phone Number '
               onChange={this.handleInput}
+              Error={Error['phonenumber']}
             />
           </div>
           <div className='add-student-contanier-center'></div>
@@ -90,6 +92,7 @@ export default class AddStudent extends Component {
               value={lastname}
               placeholder='Last name '
               onChange={this.handleInput}
+              Error={Error['lastname']}
             />
             <LabeledInput
               labelText='Mobile number'
@@ -98,18 +101,22 @@ export default class AddStudent extends Component {
               value={mobilenumber}
               placeholder='Mobile number'
               onChange={this.handleInput}
+              Error={Error['mobilenumber']}
             />
             <LabeledInput
               labelText='Password'
+              type='password'
               id='password'
               value={password}
               name='password'
               placeholder='Password'
               onChange={this.handleInput}
+              Error={Error['password']}
             />
             <Button type='submit' content='Add' className='add-student-btn' onClick={(e) => this.handleClick(e)} />
           </div>
         </form>
+        <label className='error-label'>{Error['Msg']}</label>
       </div>
     )
   }

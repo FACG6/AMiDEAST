@@ -23,7 +23,7 @@
   height: 340px;
 }
 
-.add-student-btn{
+.add-student-btn {
   border: none;
   background-color: #2980B9;
   margin-top: 36px;
@@ -32,12 +32,21 @@
   margin-left: 210px;
 }
 
-.danger-value{
+.danger-value {
   border: 2px solid red;
   box-shadow: 1px 0px 0px -1px red;
 }
 
-.success-value{
+.success-value {
   border: 2px solid green;
   box-shadow: 1px 0px 0px -1px green;
+}
+
+.general-input {
+  outline: none;
+}
+
+.error-label {
+  color: red;
+  margin-left: 100px;
 }
