@@ -16,7 +16,15 @@ export default class AddStudent extends Component {
     password: '',
     Error: {}
   }
-  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value.trim() });
+  handleInput = ({ target: { value, name } }) => {
+    if (name === 'level') {
+      if (!isNaN(Number(value))) {
+        this.setState({ level: value })
+      }
+    }
+
+    this.setState({ [name]: value.trim() });
+  }
 
   handleClick = (e) => {
     e.preventDefault();
