@@ -2,14 +2,8 @@ const test = require('tape');
 const request = require('supertest');
 const app = require('../../app');
 const dbBuild = require('../../database/config/db_build');
-// const connection = require('../../database/config/db_connection');
-
-// const selectFirstUser = () => connection.query('select id from student LIMIT 1');
 
 test('Get student information from /api/v1/student/user/12345', (t) => {
-  // selectFirstUser()
-  //   .then(res => console.log(res.rows[0].id))
-  //   .catch(err =>console.log(22222, err))
   dbBuild()
     .then(() => {
       request(app)
