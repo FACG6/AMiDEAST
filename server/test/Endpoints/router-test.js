@@ -26,4 +26,29 @@ test('Get student information from /api/v1/student/user/12345', (t) => {
     .catch(err => t.error(err));
 });
 
+test('Get all available courses for the student', (t) => {
+  dbBuild()
+    .then(() => {
+      request(app)
+        .get('/api/v1/student/course/allcourses')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+          const obj = JSON.parse(res.text);
+          if (err) {
+            t.error(err);
+          } else if (obj.error) {
+            t.error(err);
+          } else {
+            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description'], 'get Same data expected');
+            t.equal(obj.data[0].title, 'grammer', 'Course title is correct');
+            t.end();
+          }
+        });
+    })
+    .catch((err) => {
+      t.error(err);
+    });
+});
+
 test.onFinish(() => process.exit(0));
