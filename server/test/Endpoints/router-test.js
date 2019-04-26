@@ -51,4 +51,29 @@ test('Get all available courses for the student', (t) => {
     });
 });
 
+test('Get all applied courses for the student from /api/v1/student/course/mycourse', (t) => {
+  dbBuild()
+    .then(() => {
+      request(app)
+        .get('/api/v1/student/course/mycourses')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+          const obj = JSON.parse(res.text);
+          if (err) {
+            t.error(err);
+          } else if (obj.error) {
+            t.error(err);
+          } else {
+            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description', 'publish_date', 'days', 'h_from', 'h_to'], 'get Same data expected');
+            t.equal(obj.data[0].title, 'grammer', 'Course title is correct');
+            t.end();
+          }
+        });
+    })
+    .catch((err) => {
+      t.error(err);
+    });
+});
+
 test.onFinish(() => process.exit(0));
