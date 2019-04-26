@@ -4,7 +4,8 @@ const getStudent = require('../../database/queries/getStudent');
 const dbBuild = require('../../database/config/db_build');
 
 test('test query for get student information', (t) => {
-  dbBuild().then(() => getStudent(12345))
+  dbBuild()
+    .then(() => getStudent(12345))
     .then((res) => {
       if (res.rowCount !== 0) {
         const student = res.rows[0];
