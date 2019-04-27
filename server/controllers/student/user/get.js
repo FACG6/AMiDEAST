@@ -1,6 +1,6 @@
 const getStudentInformation = require('../../../database/queries/getStudent');
 
-exports.get = (req, res) => {
+exports.getUserInformation = (req, res) => {
   const { id } = req.params;
   getStudentInformation(id)
     .then((information) => {
