@@ -3,7 +3,9 @@
   width: 100%;
 }
 
-.add-student-title, .add-student-contanier, .add-student-title-border {
+.add-student-title, 
+.add-student-contanier, 
+.add-student-title-border {
   color: #06468F;
 }
 
