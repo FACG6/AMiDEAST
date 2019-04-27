@@ -19,7 +19,7 @@ const Table = ({ headings, rows, history }) => {
       <tbody>
         {rows.map((row, index) => {
           return (
-            <tr className='table-row' key={index} onClick={() => history.push(index)}>
+            <tr className='table-row' key={index} onClick={() => history.push(row.id)}>
               {row.map((rowcontent, index) =>
                 <Cell
                   key={index}
