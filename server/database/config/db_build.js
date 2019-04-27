@@ -7,5 +7,4 @@ const dbBuild = () => {
   const sql = readFileSync(filepath).toString();
   return connection.query(sql);
 };
-
 module.exports = dbBuild;
