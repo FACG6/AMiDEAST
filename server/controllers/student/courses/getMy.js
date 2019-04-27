@@ -1,6 +1,6 @@
 const getStudentCourses = require('../../../database/queries/getMyCourses');
 
-exports.getMy = (req, res) => {
+exports.getMyCourses = (req, res) => {
   const { id } = req.body;
   getStudentCourses(id)
     .then((myCourses) => {

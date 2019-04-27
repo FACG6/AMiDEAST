@@ -1,16 +1,11 @@
 const router = require('express').Router();
-const { getAll } = require('./getAll');
-const { getMy } = require('./getMy');
-// const { post } = require('./postApply');
+const { getAllCourses } = require('./getAll');
+const { getMyCourses } = require('./getMy');
 
-router
-  .route('/allcourses')
-  .get(getAll);
+router.route('/allcourses')
+  .get(getAllCourses);
 
 router.route('/mycourses')
-  .get(getMy);
-
-// router.route('/applycourse')
-//   .post(post);
+  .get(getMyCourses);
 
 module.exports = router;

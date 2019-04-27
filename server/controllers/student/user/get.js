@@ -10,7 +10,7 @@ exports.getUserInformation = (req, res) => {
           data: null,
         });
       } else {
-        res.status(200).send({
+        res.send({
           error: null,
           data: information.rows,
         });
