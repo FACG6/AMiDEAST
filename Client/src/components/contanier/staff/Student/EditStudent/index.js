@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
+import { studentSchema } from './../../../../../helpers/validation-schema'
 
 import './index.css';
 
@@ -41,7 +42,7 @@ export default class EditStudent extends Component {
     studentSchema
       .validate({ ...this.state }, {
         abortEarly: false
-      })  
+      })
       .catch(({ inner }) => {
         const errors = inner.reduce((acc, item) => {
           acc[item.path] = (item.message);
@@ -65,6 +66,7 @@ export default class EditStudent extends Component {
         <form className='edit-student-contanier'>
           <div className='edit-student-contanier-left'>
             {
+
               leftSectionInfo.map(info => {
                 return <LabeledInput
                   labelText={info[1]}
@@ -73,7 +75,7 @@ export default class EditStudent extends Component {
                   placeholder={info[1]}
                   onChange={this.handleChange}
                   value={this.state[info[0]]}
-                  Error={Error[info[0]]}
+                  Error={this.state.Error[info[0]]}
                 />
               })
             }
@@ -88,10 +90,10 @@ export default class EditStudent extends Component {
                 placeholder={info[1]}
                 onChange={this.handleChange}
                 value={this.state[info[0]]}
-                Error={Error[info[0]]}
+                Error={this.state.Error[info[0]]}
               />
             })}
-            <Button type='submit' content='Save' className='edit-student-btn' onClick={this.handleClick}/>
+            <Button type='submit' content='Save' className='edit-student-btn' onClick={this.handleClick} />
           </div>
         </form>
       </div>
