@@ -82,9 +82,7 @@ test('Post new course for the student at /api/v1/student/course/applycourse', (t
       request(app)
         .post('/api/v1/student/course/applycourse')
         .send({
-          name: 'logicteca',
-          dsescription: 'Custom built task management system',
-          row: 'fsg',
+          
         })
         .expect(200)
         .expect('Content-Type', /json/)
