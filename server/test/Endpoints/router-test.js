@@ -51,6 +51,30 @@ test('Get all available courses for the student', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/student/course/allcourses')
+        .send({ level: 2 })
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+          const obj = JSON.parse(res.text);
+          if (err) {
+            t.error(err);
+          } else {
+            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description'], 'get same data');
+            t.end();
+          }
+        });
+    })
+    .catch((err) => {
+      t.error(err);
+    });
+});
+
+test('Get when no available courses for the student', (t) => {
+  dbBuild()
+    .then(() => {
+      request(app)
+        .get('/api/v1/student/course/allcourses')
+        .send({ level: 20 })
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -58,10 +82,7 @@ test('Get all available courses for the student', (t) => {
           if (err) {
             t.error(err);
           } else if (obj.error) {
-            t.error(err);
-          } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description'], 'get Same data expected');
-            t.equal(obj.data[0].title, 'grammer', 'Course title is correct');
+            t.equal(obj.error, 'No courses available for this level', 'get Same error expected');
             t.end();
           }
         });
