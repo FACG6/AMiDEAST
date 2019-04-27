@@ -50,11 +50,13 @@ export default class EditStudent extends Component {
         if (fetchError) {
           // handle fetch Error
         }
-        const errors = inner.reduce((acc, item) => {
-          acc[item.path] = (item.message);
-          return acc;
-        }, {});
-        this.setState({ Error: { ...errors } })
+        if (inner) {
+          const errors = inner.reduce((acc, item) => {
+            acc[item.path] = (item.message);
+            return acc;
+          }, {});
+          this.setState({ Error: { ...errors } })
+        }
       })
   }
 

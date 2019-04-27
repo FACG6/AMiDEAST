@@ -15,7 +15,8 @@ export default class AddStudent extends Component {
     password: '',
     Error: {}
   }
-  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value.trim() });
+
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
 
   handleClick = (e) => {
     e.preventDefault();
@@ -30,11 +31,13 @@ export default class AddStudent extends Component {
         if (fetchError) {
           // handle fetch Error
         }
-        const errors = inner.reduce((acc, item) => {
-          acc[item.path] = (item.message);
-          return acc;
-        }, {});
-        this.setState({ Error: { ...errors } })
+        if (inner) {
+          const errors = inner.reduce((acc, item) => {
+            acc[item.path] = (item.message);
+            return acc;
+          }, {});
+          this.setState({ Error: { ...errors } })
+        }
       })
   }
   render() {
