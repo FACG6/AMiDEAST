@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
-import { addStudentSchema } from './../../../../../helpers/validation-schema'
+import { studentSchema } from './../../../../../helpers/validation-schema'
 import './index.css';
-let valid;
 
 export default class AddStudent extends Component {
   state = {
@@ -21,7 +20,7 @@ export default class AddStudent extends Component {
   handleClick = (e) => {
     e.preventDefault();
     this.setState({ Error: {} })
-    addStudentSchema
+    studentSchema
       .validate({ ...this.state }, {
         abortEarly: false
       })
