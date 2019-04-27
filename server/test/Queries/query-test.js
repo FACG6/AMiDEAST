@@ -5,7 +5,7 @@ const dbBuild = require('../../database/config/db_build');
 const getAvailableCourses = require('../../database/queries/getAllCourses');
 const getStudentCourses = require('../../database/queries/getMyCourses');
 
-test('test query for get student information', (t) => {
+test('Test query for get student information', (t) => {
   dbBuild()
     .then(() => getStudent(12345))
     .then((res) => {
@@ -26,7 +26,7 @@ test('test query for get student information', (t) => {
     });
 });
 
-test('test query for get student information', (t) => {
+test('Test query for get all available courses information', (t) => {
   dbBuild()
     .then(() => getAvailableCourses(2))
     .then((res) => {
@@ -47,7 +47,7 @@ test('test query for get student information', (t) => {
     });
 });
 
-test('test query for get student applied courses', (t) => {
+test('Test query for get student applied courses', (t) => {
   dbBuild()
     .then(() => getStudentCourses(12345))
     .then((res) => {

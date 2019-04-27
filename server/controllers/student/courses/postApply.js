@@ -1,6 +1,6 @@
 const postApplyCourse = require('../../../database/queries/postApplyCourse');
 
-exports.post = (req, res) => {
+exports.postCourse = (req, res) => {
   const { id, datesId, courseId } = req.body;
   postApplyCourse(courseId, id, datesId)
     .then((appliedCourse) => {

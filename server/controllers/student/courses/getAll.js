@@ -1,16 +1,24 @@
 const getAvailableCourses = require('../../../database/queries/getAllCourses');
 
-exports.getAll = (req, res) => {
-  getAvailableCourses('2')
+exports.getAllCourses = (req, res) => {
+  const { level } = req.body;
+  getAvailableCourses(level)
     .then((allCourses) => {
-      res.send({
-        error: null,
-        data: allCourses.rows,
-      });
+      if (!allCourses.rowCount) {
+        res.send({
+          error: 'No courses available for this level',
+          data: null,
+        });
+      } else {
+        res.send({
+          error: null,
+          data: allCourses.rows,
+        });
+      }
     })
-    .catch((error) => {
-      res.send({
-        error,
+    .catch(() => {
+      res.status(500).send({
+        error: 'Sorry we have some issues',
         data: null,
       });
     });

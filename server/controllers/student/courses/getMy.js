@@ -1,16 +1,24 @@
 const getStudentCourses = require('../../../database/queries/getMyCourses');
 
-exports.getMy = (req, res) => {
-  getStudentCourses(12345)
+exports.getMyCourses = (req, res) => {
+  const { id } = req.body;
+  getStudentCourses(id)
     .then((myCourses) => {
-      res.send({
-        error: null,
-        data: myCourses.rows,
-      });
+      if (!myCourses.rowCount) {
+        res.send({
+          error: 'No courses are applied for this student',
+          data: null,
+        });
+      } else {
+        res.send({
+          error: null,
+          data: myCourses.rows,
+        });
+      }
     })
-    .catch((err) => {
-      res.send({
-        error: err,
+    .catch(() => {
+      res.status(500).send({
+        error: 'Sorry we have some issues',
         data: null,
       });
     });

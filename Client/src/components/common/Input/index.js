@@ -2,9 +2,9 @@ import React from 'react';
 import './index.css';
 
 const Input = props => {
-  const { inputClassName } = props;
+  const { className } = props;
   return (
-    <input {...props} className={'general-input ' + inputClassName} />
+    <input {...props} className={'general-input ' + className} />
   )
 };
 
