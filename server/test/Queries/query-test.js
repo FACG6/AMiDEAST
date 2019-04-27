@@ -2,9 +2,11 @@ const test = require('tape');
 
 const getStudent = require('../../database/queries/getStudent');
 const dbBuild = require('../../database/config/db_build');
+const getAvailableCourses = require('../../database/queries/getAllCourses');
 
-test('test query for get student information', (t) => {
-  dbBuild().then(() => getStudent(12345))
+test('Test query for get student information', (t) => {
+  dbBuild()
+    .then(() => getStudent(12345))
     .then((res) => {
       if (res.rowCount !== 0) {
         const student = res.rows[0];
@@ -15,6 +17,27 @@ test('test query for get student information', (t) => {
         t.end();
       } else {
         t.equal(res.rowCount === 0, true, 'The student is not exist in the database');
+        t.end();
+      }
+    })
+    .catch((error) => {
+      t.error(error);
+    });
+});
+
+test('Test query for get all available courses information', (t) => {
+  dbBuild()
+    .then(() => getAvailableCourses(2))
+    .then((res) => {
+      if (res.rowCount !== 0) {
+        const courses = res.rows[0];
+        t.deepEqual(
+          Object.keys(courses),
+          ['title', 'description'], 'Same Data for the course',
+        );
+        t.end();
+      } else {
+        t.equal(res.rowCount === 0, true, 'No courses in the database');
         t.end();
       }
     })
