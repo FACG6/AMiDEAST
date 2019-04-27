@@ -2,7 +2,7 @@ import React from 'react';
 import Cell from './cell';
 import './index.css';
 
-const Table = ({ headings, rows }) => {
+const Table = ({ headings, rows, history }) => {
   return (
     <table className="table">
       <thead className='table-head'>
@@ -19,7 +19,7 @@ const Table = ({ headings, rows }) => {
       <tbody>
         {rows.map((row, index) => {
           return (
-            <tr className='table-row' key={index}>
+            <tr className='table-row' key={index} onClick={() => history.push(index)}>
               {row.map((rowcontent, index) =>
                 <Cell
                   key={index}
