@@ -137,4 +137,58 @@ test('Get all applied courses for the student dose not exist from /api/v1/studen
     });
 });
 
+test('Post new course for the student at /api/v1/student/course/applycourse', (t) => {
+  dbBuild()
+    .then(() => {
+      request(app)
+        .post('/api/v1/student/course/applycourse')
+        .send({
+          courseId: 1,
+          id: 12345,
+          datesId: 2,
+        })
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+          const obj = JSON.parse(res.text);
+          if (err) {
+            t.error(err);
+          } else {
+            t.equal(obj.data, 'Course add succesfuly', 'The course added in the database');
+            t.end();
+          }
+        });
+    })
+    .catch((err) => {
+      t.error(err);
+    });
+});
+
+test('Post new course for the student with fallen data at /api/v1/student/course/applycourse', (t) => {
+  dbBuild()
+    .then(() => {
+      request(app)
+        .post('/api/v1/student/course/applycourse')
+        .send({
+          courseId: 1,
+          id: 45,
+          datesId: 2,
+        })
+        .expect(500)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+          const obj = JSON.parse(res.text);
+          if (err) {
+            t.error(err);
+          } else if (obj.error) {
+            t.equal(obj.error, 'Course add failed', 'get the same error expected');
+            t.end();
+          }
+        });
+    })
+    .catch((err) => {
+      t.error(err);
+    });
+});
+
 test.onFinish(() => process.exit(0));
