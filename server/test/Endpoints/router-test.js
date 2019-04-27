@@ -76,4 +76,33 @@ test('Get all applied courses for the student from /api/v1/student/course/mycour
     });
 });
 
+test('Post new course for the student at /api/v1/student/course/applycourse', (t) => {
+  dbBuild()
+    .then(() => {
+      request(app)
+        .post('/api/v1/student/course/applycourse')
+        .send({
+          name: 'logicteca',
+          dsescription: 'Custom built task management system',
+          row: 'fsg',
+        })
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+          const obj = JSON.parse(res.text);
+          if (err) {
+            t.error(err);
+          } else if (obj.error) {
+            t.error(err);
+          } else {
+            t.equal(obj.data, 'Course add succesfuly', 'The course added in the database');
+            t.end();
+          }
+        });
+    })
+    .catch((err) => {
+      t.error(err);
+    });
+});
+
 test.onFinish(() => process.exit(0));
