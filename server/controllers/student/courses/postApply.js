@@ -1,7 +1,8 @@
 const postApplyCourse = require('../../../database/queries/postApplyCourse');
 
 exports.post = (req, res) => {
-  postApplyCourse(1, 12345, 2)
+  const { id, datesId, courseId } = req.body;
+  postApplyCourse(courseId, id, datesId)
     .then((appliedCourse) => {
       if (!appliedCourse.rowsCount) {
         res.send({
@@ -9,15 +10,15 @@ exports.post = (req, res) => {
           data: 'Course add succesfuly',
         });
       } else {
-        res.send({
-          error: 'Coures add failed',
+        res.status(500).send({
+          error: 'Course add failed',
           data: null,
         });
       }
     })
-    .catch((err) => {
-      res.send({
-        error: err,
+    .catch(() => {
+      res.status(500).send({
+        error: 'Course add failed',
         data: null,
       });
     });
