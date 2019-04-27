@@ -2,7 +2,14 @@
   margin: 50px;
 }
 
-.edit-student-title, .edit-student-contanier, .edit-student-title-border {
+.edit-student {
+  margin: 50px;
+  width: 100%;
+}
+
+.edit-student-title, 
+.edit-student-contanier, 
+.edit-student-title-border {
   color: #06468F;
 }
 
@@ -17,17 +24,31 @@
 }
 
 .edit-student-contanier-center {
-  margin: auto 30px;
+  margin: auto 35px;
   width: 4px;
   background-color: #e0e0e0;
-  height: 340px;
+  height: 375px;
 }
 
 .edit-student-btn {
   border: none;
   background-color: #2980B9;
-  margin-top: 36px;
+  margin-top: 47px;
   height: 40px;
-  width: 140px;
-  margin-left: 210px;
+  width: 100%;
+}
+
+.danger-value {
+  border: 2px solid red;
+  box-shadow: 1px 0px 0px -1px red;
+}
+
+.success-value {
+  border: 2px solid green;
+  box-shadow: 1px 0px 0px -1px green;
+}
+
+.general-input {
+  outline: none;
+  margin-top: 8px;
 }

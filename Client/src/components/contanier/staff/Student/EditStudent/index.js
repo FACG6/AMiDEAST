@@ -4,7 +4,56 @@ import Button from './../../../../common/Button';
 
 import './index.css';
 
+const leftSectionInfo = [
+  ['firstname', 'First name'],
+  ['lastname', 'Last name'],
+  ['level', 'Level'],
+  ['phonenumber', 'Phone number '],
+];
+const rightSectionInfo = [
+  ['mobilenumber', 'Mobile number'],
+  ['address', 'Address'],
+  ['password', 'Password']
+];
+
 export default class EditStudent extends Component {
+  state = {
+    firstname: '',
+    address: '',
+    level: 0,
+    phonenumber: '',
+    lastname: '',
+    mobilenumber: '',
+    password: '',
+    Error: {}
+  }
+  handleChange = ({ target: { value, name } }) => {
+    if (name === 'level') {
+      if (!isNaN(Number(value))) {
+        this.setState({ [name]: value });
+      }
+    } else this.setState({ [name]: value });
+  }
+
+  handleClick = (e) => {
+    e.preventDefault();
+    this.setState({ Error: {} })
+    studentSchema
+      .validate({ ...this.state }, {
+        abortEarly: false
+      })  
+      .catch(({ inner }) => {
+        const errors = inner.reduce((acc, item) => {
+          acc[item.path] = (item.message);
+          return acc;
+        }, {});
+        this.setState({ Error: { ...errors } })
+      })
+      .then((value) => {
+        // write fetch here 
+      })
+  }
+
   render() {
     return (
       <div className='edit-student'>
@@ -13,56 +62,38 @@ export default class EditStudent extends Component {
             Edit Student
         </span>
         </h1>
-        <div className='edit-student-contanier'>
+        <form className='edit-student-contanier'>
           <div className='edit-student-contanier-left'>
-            <LabeledInput
-              labelText='First name'
-              id='firstname'
-              name='firstname'
-              placeholder='First name '
-            />
-            <LabeledInput
-              labelText='Address'
-              id='address'
-              name='address'
-              placeholder='Address'
-            />
-            <LabeledInput
-              labelText='Level'
-              id='level'
-              name='level'
-              placeholder='Level'
-            />
-            <LabeledInput
-              labelText='Phone number '
-              id='phonenumber'
-              name='phonenumber'
-              placeholder='Phone Number '
-            />
+            {
+              leftSectionInfo.map(info => {
+                return <LabeledInput
+                  labelText={info[1]}
+                  id={info[0]}
+                  name={info[0]}
+                  placeholder={info[1]}
+                  onChange={this.handleChange}
+                  value={this.state[info[0]]}
+                  Error={Error[info[0]]}
+                />
+              })
+            }
           </div>
           <div className='edit-student-contanier-center'></div>
           <div className='edit-student-contanier-right'>
-            <LabeledInput
-              labelText='Last name'
-              id='lastname'
-              name='lastname'
-              placeholder='Last name '
-            />
-            <LabeledInput
-              labelText='Mobile number'
-              id='mobilenumber'
-              name='mobilenumber'
-              placeholder='Mobile number'
-            />
-            <LabeledInput
-              labelText='Password'
-              id='password'
-              name='password'
-              placeholder='Password'
-            />
-            <Button content='Save' className='edit-student-btn' />
+            {rightSectionInfo.map(info => {
+              return <LabeledInput
+                labelText={info[1]}
+                id={info[0]}
+                name={info[0]}
+                placeholder={info[1]}
+                onChange={this.handleChange}
+                value={this.state[info[0]]}
+                Error={Error[info[0]]}
+              />
+            })}
+            <Button type='submit' content='Save' className='edit-student-btn' onClick={this.handleClick}/>
           </div>
-        </div>
+        </form>
       </div>
     )
   }
