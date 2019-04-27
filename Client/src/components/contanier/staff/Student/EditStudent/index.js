@@ -2,20 +2,9 @@ import React, { Component } from 'react'
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
 import { studentSchema } from './../../../../../helpers/validation-schema'
+import { leftSectionInfo, rightSectionInfo } from './staticdata';
 
 import './index.css';
-
-const leftSectionInfo = [
-  ['firstname', 'First name'],
-  ['lastname', 'Last name'],
-  ['level', 'Level'],
-  ['phonenumber', 'Phone number '],
-];
-const rightSectionInfo = [
-  ['mobilenumber', 'Mobile number'],
-  ['address', 'Address'],
-  ['password', 'Password']
-];
 
 export default class EditStudent extends Component {
   state = {
@@ -51,10 +40,7 @@ export default class EditStudent extends Component {
           // handle fetch Error
         }
         if (inner) {
-          const errors = inner.reduce((acc, item) => {
-            acc[item.path] = (item.message);
-            return acc;
-          }, {});
+          const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
           this.setState({ Error: { ...errors } })
         }
       })

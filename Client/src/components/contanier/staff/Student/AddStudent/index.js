@@ -32,10 +32,7 @@ export default class AddStudent extends Component {
           // handle fetch Error
         }
         if (inner) {
-          const errors = inner.reduce((acc, item) => {
-            acc[item.path] = (item.message);
-            return acc;
-          }, {});
+          const errors = inner.reduce((acc, item) => ({...acc, [item.path]: (item.message) }), {});
           this.setState({ Error: { ...errors } })
         }
       })
