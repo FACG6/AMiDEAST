@@ -1,6 +1,6 @@
 const getAvailableCourses = require('../../../database/queries/getAllCourses');
 
-exports.getAll = (req, res) => {
+exports.getAllCourses = (req, res) => {
   const { level } = req.body;
   getAvailableCourses(level)
     .then((allCourses) => {

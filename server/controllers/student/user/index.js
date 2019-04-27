@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const { get } = require('./get');
+const { getUserInformation } = require('./get');
 
 router
   .route('/:id')
-  .get(get);
+  .get(getUserInformation);
 
 module.exports = router;

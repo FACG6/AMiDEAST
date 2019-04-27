@@ -1,6 +1,6 @@
 const getStudentInformation = require('../../../database/queries/getStudent');
 
-exports.get = (req, res) => {
+exports.getUserInformation = (req, res) => {
   const { id } = req.params;
   getStudentInformation(id)
     .then((information) => {
@@ -10,7 +10,7 @@ exports.get = (req, res) => {
           data: null,
         });
       } else {
-        res.status(200).send({
+        res.send({
           error: null,
           data: information.rows,
         });
