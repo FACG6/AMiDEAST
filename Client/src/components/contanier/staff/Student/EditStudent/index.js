@@ -43,15 +43,18 @@ export default class EditStudent extends Component {
       .validate({ ...this.state }, {
         abortEarly: false
       })
-      .catch(({ inner }) => {
+      .then((value) => {
+        // write fetch here 
+      })
+      .catch(({ inner, fetchError }) => {
+        if (fetchError) {
+          // handle fetch Error
+        }
         const errors = inner.reduce((acc, item) => {
           acc[item.path] = (item.message);
           return acc;
         }, {});
         this.setState({ Error: { ...errors } })
-      })
-      .then((value) => {
-        // write fetch here 
       })
   }
 

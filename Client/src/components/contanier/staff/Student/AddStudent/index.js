@@ -23,16 +23,18 @@ export default class AddStudent extends Component {
     studentSchema
       .validate({ ...this.state }, {
         abortEarly: false
+      }).then((value) => {
+        //write fetch here
       })
-      .catch(({ inner }) => {
+      .catch(({ inner, fetchError }) => {
+        if (fetchError) {
+          // handle fetch Error
+        }
         const errors = inner.reduce((acc, item) => {
           acc[item.path] = (item.message);
           return acc;
         }, {});
         this.setState({ Error: { ...errors } })
-      })
-      .then((value) => {
-        // write fetch here 
       })
   }
   render() {
