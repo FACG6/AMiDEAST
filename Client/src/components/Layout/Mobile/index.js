@@ -35,6 +35,7 @@ export default class Mobile extends Component {
               <Route exact path={'/mycourses'} component={StudentCourses} />
               <Route exact path={'/apply'} component={Apply} />
               <Route exact path={'/profile'} component={Profile} />
+              <Route exact path={'/login'} component={Login} />
               <Route component={() => <div>404</div>} />
             </Switch>
             <Footer />
