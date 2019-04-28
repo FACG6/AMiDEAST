@@ -50,9 +50,7 @@ export default class EditStudent extends Component {
     return (
       <div className='edit-student'>
         <h1 className='edit-student-title'>
-          <span className='edit-student-title-border'>
-            Edit Student
-        </span>
+          Edit Student
         </h1>
         <form className='edit-student-contanier'>
           <div className='edit-student-contanier-left'>

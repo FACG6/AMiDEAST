@@ -32,7 +32,7 @@ export default class AddStudent extends Component {
           // handle fetch Error
         }
         if (inner) {
-          const errors = inner.reduce((acc, item) => ({...acc, [item.path]: (item.message) }), {});
+          const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
           this.setState({ Error: { ...errors } })
         }
       })
@@ -42,9 +42,7 @@ export default class AddStudent extends Component {
     return (
       <div className='add-student'>
         <h1 className='add-student-title'>
-          <span className='add-student-title-border'>
-            Add  Student
-          </span>
+          Add  Student
         </h1>
         <form className='add-student-contanier'>
           <div className='add-student-contanier-left'>
