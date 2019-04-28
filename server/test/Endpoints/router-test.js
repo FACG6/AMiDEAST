@@ -24,6 +24,8 @@ test('add course courses', (t) => {
       if (errr) {
         t.error(errr);
       } else {
+        console.log(res.body.data[0]);
+        console.log(res.body);
         t.equal(res.body.data[0].title, 'grammer', 'the title must be grammer');
         t.end();
       }
