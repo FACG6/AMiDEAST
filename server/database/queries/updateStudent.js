@@ -9,4 +9,4 @@ const putStudent = (userInfo, id) => {
   return connection.query(sql);
 };
 
-module.exports = putStudent;
+module.exports = { putStudent };
