@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
-import { addStudentSchema } from './../../../../../helpers/validation-schema'
+import { studentSchema } from './../../../../../helpers/validation-schema'
 import './index.css';
-let valid;
 
 export default class AddStudent extends Component {
   state = {
@@ -16,24 +15,27 @@ export default class AddStudent extends Component {
     password: '',
     Error: {}
   }
-  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value.trim() });
+
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
 
   handleClick = (e) => {
     e.preventDefault();
     this.setState({ Error: {} })
-    addStudentSchema
-      .validate({ ...this.state }, {
+    const { Error, ...student } = this.state;
+    studentSchema
+      .validate(student, {
         abortEarly: false
+      }).then((value) => {
+        //write fetch here
       })
-      .catch(({ inner }) => {
-        const errors = inner.reduce((acc, item) => {
-          acc[item.path] = (item.message);
-          return acc;
-        }, {});
-        this.setState({ Error: { ...errors } })
-      })
-      .then((value) => {
-        // write fetch here 
+      .catch(({ inner, fetchError }) => {
+        if (fetchError) {
+          // handle fetch Error
+        }
+        if (inner) {
+          const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
+          this.setState({ Error: { ...errors } })
+        }
       })
   }
   render() {
@@ -41,9 +43,7 @@ export default class AddStudent extends Component {
     return (
       <div className='add-student'>
         <h1 className='add-student-title'>
-          <span className='add-student-title-border'>
-            Add  Student
-          </span>
+          Add  Student
         </h1>
         <form className='add-student-contanier'>
           <div className='add-student-contanier-left'>

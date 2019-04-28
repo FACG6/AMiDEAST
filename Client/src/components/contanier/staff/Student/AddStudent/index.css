@@ -1,6 +1,5 @@
 .add-student {
   margin: 50px;
-  width: 100%;
 }
 
 .add-student-title, 
@@ -9,19 +8,19 @@
   color: #06468F;
 }
 
+.add-student-title{
+  width: fit-content;
+  border-bottom: 2px solid;
+}
 .add-student-contanier {
   width: 80%;
   display: flex;
   margin: 50px auto;
 }
 
-.add-student-title-border {
-  border-bottom: 2px solid;
-}
-
 .add-student-contanier-center {
   margin: auto 35px;
-  width: 4px;
+  width: 2px;
   background-color: #e0e0e0;
   height: 375px;
 }
@@ -29,19 +28,9 @@
 .add-student-btn {
   border: none;
   background-color: #2980B9;
-  margin-top: 27px;
+  margin-top: 47px;
   height: 40px;
   width: 100%;
-}
-
-.danger-value {
-  border: 2px solid red;
-  box-shadow: 1px 0px 0px -1px red;
-}
-
-.success-value {
-  border: 2px solid green;
-  box-shadow: 1px 0px 0px -1px green;
 }
 
 .general-input {
