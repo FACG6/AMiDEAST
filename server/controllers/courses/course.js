@@ -1,11 +1,11 @@
 const getCourseInformation = require('../../database/queries/getCourse');
 
-exports.getAllCourses = (req, res) => {
+const getCourse = (req, res) => {
   const { id } = req.params;
   getCourseInformation(id)
     .then((course) => {
-      if (course.rowCount) {
-        res.status(404).end({
+      if (!course.rowCount) {
+        res.status(404).send({
           error: 'Course not found',
           data: null,
         });
@@ -23,3 +23,5 @@ exports.getAllCourses = (req, res) => {
       });
     });
 };
+
+module.exports = { getCourse };

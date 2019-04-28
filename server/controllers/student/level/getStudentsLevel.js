@@ -1,11 +1,11 @@
 const getStudentsByLevel = require('../../../database/queries/getStudentsLevel');
 
-exports.getStudents = (req, res) => {
+const getStudents = (req, res) => {
   const { level } = req.params;
   getStudentsByLevel(level)
     .then((students) => {
       if (!students.rowCount) {
-        res.send({
+        res.status(404).send({
           error: 'No students for this level',
           data: null,
         });
@@ -21,3 +21,5 @@ exports.getStudents = (req, res) => {
       data: null,
     }));
 };
+
+module.exports = { getStudents };

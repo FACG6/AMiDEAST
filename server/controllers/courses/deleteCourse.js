@@ -1,6 +1,6 @@
-const deleteCourse = require('../../database/queries/deleteCourse');
+const { deleteCourse } = require('../../database/queries/deleteCourse');
 
-exports.getStudent = (req, res) => {
+const deleteCourseById = (req, res) => {
   const { id } = req.params;
   deleteCourse(id)
     .then((course) => {
@@ -21,3 +21,5 @@ exports.getStudent = (req, res) => {
       data: null,
     }));
 };
+
+module.exports = { deleteCourseById };

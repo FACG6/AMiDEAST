@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const { getStudents } = require('./getStudentsCourse');
+const { get } = require('./getCoursesStudent');
 
 router
-  .route('/:id')
-  .get(getStudents);
+  .route('/:studentId')
+  .get(get);
 
 module.exports = router;

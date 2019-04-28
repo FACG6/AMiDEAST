@@ -1,20 +1,21 @@
 const router = require('express').Router();
 
-const { students } = require('./getStudents');
-const { student } = require('./getStudent');
-const { studentsLvele } = require('./level');
-const { studentsCourse } = require('./course');
+const { getStudents } = require('./getStudents');
+const { getStudent } = require('./getStudent');
+const studentsLvele = require('./level');
+const studentsCourse = require('./course');
 const { updateStudent } = require('./updateStudent');
 const { deleteStudent } = require('./deleteStudent');
 const { addStudent } = require('./addStudent');
 
 router
   .route('/')
-  .get(students)
+  .get(getStudents)
   .post(addStudent);
 
 router
-  .route('/:id', student)
+  .route('/:id')
+  .get(getStudent)
   .put(updateStudent)
   .delete(deleteStudent);
 

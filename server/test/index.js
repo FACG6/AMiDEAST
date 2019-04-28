@@ -1,2 +1,2 @@
-// require('./Endpoints');
+require('./Endpoints');
 require('./Queries');

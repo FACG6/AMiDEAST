@@ -1,23 +1,23 @@
 const router = require('express').Router();
 
-const { courses } = require('./courses');
-const { course } = require('./course');
-const { coursesLevel } = require('./level');
-const { studentCourses } = require('./sudent');
+const { getAllCourses } = require('./courses');
+const { getCourse } = require('./course');
+const coursesLevel = require('./level');
+const studentCourses = require('./sudent');
 const { applyCourse } = require('./postApplyCourse');
 const { addCourse } = require('./addCourse');
-const { deleteCourse } = require('./deleteCourse');
+const { deleteCourseById } = require('./deleteCourse');
 
 router
   .route('/')
-  .get(courses)
+  .get(getAllCourses)
   .post(addCourse);
 
 router
   .route('/:id')
-  .get(course)
-  .put(applyCourse)
-  .delete(deleteCourse);
+  .get(getCourse)
+  .post(applyCourse)
+  .delete(deleteCourseById);
 
 router
   .use('/level', coursesLevel);

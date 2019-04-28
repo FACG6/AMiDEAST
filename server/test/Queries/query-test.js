@@ -3,7 +3,7 @@ const test = require('tape');
 const dbBuild = require('../../database/config/db_build');
 
 const getStudent = require('../../database/queries/getStudent');
-const getStudents = require('../../database/queries/getStudents');
+const { getStudentsInformation } = require('../../database/queries/getStudents');
 const getCourse = require('../../database/queries/getCourse');
 const getCourses = require('../../database/queries/getCourses');
 const { deleteStudent, updateStudentStatus } = require('../../database/queries/deleteStudent');
@@ -61,7 +61,7 @@ test('Test query for get one student information dose not exist', (t) => {
 
 test('Test query for get all student information', (t) => {
   dbBuild()
-    .then(() => getStudents())
+    .then(() => getStudentsInformation())
     .then((res) => {
       if (res.rowCount !== 0) {
         const students = res.rows[0];

@@ -6,7 +6,7 @@
   "keywords": [],
   "author": "",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "NODE_ENV=development nodemon index.js",
     "test": "NODE_ENV=testing node ./test | tap-spec"
   },
   "license": "ISC",

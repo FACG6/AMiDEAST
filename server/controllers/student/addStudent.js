@@ -1,7 +1,7 @@
-const addStudent = require('../../database/queries/addStudent');
+const { insertStudent } = require('../../database/queries/addStudent');
 
-exports.addStudent = (req, res) => {
-  addStudent({ ...req.body })
+const addStudent = (req, res) => {
+  insertStudent({ ...req.body })
     .then((student) => {
       if (!student.rowCount) {
         res.send({
@@ -20,3 +20,5 @@ exports.addStudent = (req, res) => {
       data: null,
     }));
 };
+
+module.exports = { addStudent };

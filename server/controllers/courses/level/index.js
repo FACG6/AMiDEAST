@@ -3,7 +3,7 @@ const router = require('express').Router();
 const { getCoursesLevel } = require('./getCoursesLevel');
 
 router
-  .route('/:id')
+  .route('/:level')
   .get(getCoursesLevel);
 
 module.exports = router;

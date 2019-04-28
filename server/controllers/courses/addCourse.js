@@ -1,4 +1,4 @@
-const insertCourse = require('../../database/queries/addCourse');
+const { insertCourse } = require('../../database/queries/addCourse');
 
 exports.addCourse = (req, res) => {
   insertCourse({ ...req.body })

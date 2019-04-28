@@ -5,14 +5,14 @@ exports.deleteStudent = (req, res) => {
   updateStudentStatus(id)
     .then((student) => {
       if (!student.rowCount) {
-        return res.send({
+        return res.status(404).send({
           error: 'student not found',
           data: null,
         });
       } return deleteStudent(id);
     }).then((studentInfo) => {
       if (!studentInfo.rowCount) {
-        res.send({
+        res.status(404).send({
           error: 'student not found ',
           data: null,
         });

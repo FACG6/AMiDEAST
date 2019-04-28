@@ -1,11 +1,11 @@
 const getCoursesStudent = require('../../../database/queries/getCoursesStudent');
 
-exports.get = (req, res) => {
+const get = (req, res) => {
   const { studentId } = req.params;
   getCoursesStudent(studentId)
     .then((courses) => {
       if (!courses.rowCount) {
-        res.send({
+        res.status(404).send({
           error: 'No courses for this student',
           data: null,
         });
@@ -23,3 +23,5 @@ exports.get = (req, res) => {
       });
     });
 };
+
+module.exports = { get };

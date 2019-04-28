@@ -1,6 +1,6 @@
 const getCoursesInformation = require('../../database/queries/getCourses');
 
-exports.getAllCourses = (req, res) => {
+const getAllCourses = (req, res) => {
   getCoursesInformation()
     .then((courses) => {
       if (!courses.rowCount) {
@@ -22,3 +22,5 @@ exports.getAllCourses = (req, res) => {
       });
     });
 };
+
+module.exports = { getAllCourses };

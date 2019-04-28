@@ -1,6 +1,6 @@
 const getStudentInformation = require('../../database/queries/getStudent');
 
-exports.getStudent = (req, res) => {
+const getStudent = (req, res) => {
   const { id } = req.params;
   getStudentInformation(id)
     .then((student) => {
@@ -21,3 +21,5 @@ exports.getStudent = (req, res) => {
       data: null,
     }));
 };
+
+module.exports = { getStudent };
