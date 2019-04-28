@@ -1,8 +1,9 @@
 const { postApplyCourse } = require('../../database/queries/postApplyCourse');
 
 const applyCourse = (req, res) => {
-  const { id, datesId, courseId } = req.body;
-  postApplyCourse(courseId, id, datesId)
+  const { id } = req.params;
+  const { datesId, studentid } = req.body;
+  postApplyCourse(id, studentid, datesId)
     .then((appliedCourse) => {
       if (!appliedCourse.rowsCount) {
         res.send({

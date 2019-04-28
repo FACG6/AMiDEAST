@@ -464,15 +464,14 @@ test('Get students by course dose not exist from /api/v1/course/student/15152345
     .catch(err => t.error(err));
 });
 
-test('Add new course for student from /api/v1/course/12345', (t) => {
+test('Add new course for student from /api/v1/course/1', (t) => {
   dbBuild()
     .then(() => {
       request(app)
-        .post('/api/v1/course/12345')
+        .post('/api/v1/course/1')
         .send({
-          id: 12345,
           datesId: 2,
-          courseId: 1,
+          studentid: 12345,
         })
         .expect(200)
         .expect('Content-Type', /json/)
