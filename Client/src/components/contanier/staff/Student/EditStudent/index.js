@@ -28,12 +28,14 @@ export default class EditStudent extends Component {
   handleClick = (e) => {
     e.preventDefault();
     this.setState({ Error: {} })
+    const { Error, ...student } = this.state;
     studentSchema
-      .validate({ ...this.state }, {
+      .validate(student, {
         abortEarly: false
       })
       .then((value) => {
         // write fetch here 
+        console.log(value)
       })
       .catch(({ inner, fetchError }) => {
         if (fetchError) {
