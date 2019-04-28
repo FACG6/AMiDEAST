@@ -1,10 +1,10 @@
-const getAvailableCourses = require('../../../database/queries/getAllCourses');
+const getCoursesByLevel = require('../../../database/queries/getCoursesLevel');
 
-exports.getAllCourses = (req, res) => {
-  const { level } = req.body;
-  getAvailableCourses(level)
-    .then((allCourses) => {
-      if (!allCourses.rowCount) {
+exports.getCoursesLevel = (req, res) => {
+  const { level } = req.params;
+  getCoursesByLevel(level)
+    .then((courses) => {
+      if (!courses.rowCount) {
         res.send({
           error: 'No courses available for this level',
           data: null,
@@ -12,7 +12,7 @@ exports.getAllCourses = (req, res) => {
       } else {
         res.send({
           error: null,
-          data: allCourses.rows,
+          data: courses.rows,
         });
       }
     })
