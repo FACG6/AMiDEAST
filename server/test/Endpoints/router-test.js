@@ -35,8 +35,8 @@ test('Get student information from /api/v1/student/12345', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'get same data that expected');
-            t.equal(obj.data[0].id, 12345, 'User ID for the correct');
+            t.deepEqual(Object.keys(obj.data), ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'get same data that expected');
+            t.equal(obj.data.id, 12345, 'User ID for the correct');
             t.end();
           }
         });
@@ -368,7 +368,7 @@ test('Add new course from /api/v1/course/', (t) => {
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
-          const course = (res.body.data[0]);
+          const course = (res.body.data);
           if (err) {
             t.error(err);
           } else {

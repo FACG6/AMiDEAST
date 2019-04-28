@@ -4,7 +4,7 @@ const addStudent = (req, res) => {
   insertStudent({ ...req.body })
     .then((student) => {
       if (!student.rowCount) {
-        res.send({
+        res.status(400).send({
           error: 'Student dose not added',
           data: null,
         });

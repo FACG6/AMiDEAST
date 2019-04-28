@@ -12,7 +12,7 @@ const getStudent = (req, res) => {
       } else {
         res.send({
           error: null,
-          data: student.rows,
+          data: student.rows[0],
         });
       }
     })

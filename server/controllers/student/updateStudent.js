@@ -5,7 +5,7 @@ exports.updateStudent = (req, res) => {
   putStudent(req.body, id)
     .then((updatedStudent) => {
       if (!updatedStudent.rowCount) {
-        res.send({
+        res.status(404).send({
           error: 'student not found ',
           data: null,
         });

@@ -4,14 +4,14 @@ exports.addCourse = (req, res) => {
   insertCourse({ ...req.body })
     .then((course) => {
       if (!course.rowCount) {
-        res.send({
+        res.status(400).send({
           error: 'Course not added database',
           data: null,
         });
       } else {
         res.send({
           error: null,
-          data: course.rows,
+          data: course.rows[0],
         });
       }
     })
