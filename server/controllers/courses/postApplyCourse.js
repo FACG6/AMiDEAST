@@ -8,7 +8,6 @@ const applyCourse = (req, res) => {
   const applyInfo = { datesId, studentid };
   const { error } = joi.validate(applyInfo, applyCourseSchema);
   if (error) {
-    console.log(error);
     res.status(400).send({
       data: null,
       error: error.details[0].message,
