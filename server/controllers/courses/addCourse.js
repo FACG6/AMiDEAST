@@ -24,7 +24,7 @@ exports.addCourse = (req, res) => {
       })
       .then(({ rows: dates }) => {
         if (!dates[0]) throw new Error('Bad Request');
-        return res.status(201).send({ data: { ...req.body } });
+        return res.status(201).send({ data: couresInofrmation });
       })
       .catch(error => res.status(400).send({ error }));
   }
