@@ -325,7 +325,7 @@ test('Delete course from /api/v1/course/1', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.equal(obj.data, 'Deleted Succesfully', 'User with the id deleted');
+            t.equal(obj.data, 'Deleted Successfully', 'User with the id deleted');
             t.end();
           }
         });
