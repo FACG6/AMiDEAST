@@ -1,9 +1,9 @@
 const joi = require('joi');
 const { insertCourse, insertDates } = require('../../database/queries/addCourse');
-const { addCourseShema } = require('../../helpers/validation-schema');
+const { addCourseSchema } = require('../../helpers/validation-schema');
 
 exports.addCourse = (req, res) => {
-  const { error } = joi.validate({ ...req.body }, addCourseShema);
+  const { error } = joi.validate({ ...req.body }, addCourseSchema);
   if (error) {
     res.send({ msg: error.details[0].message });
   } else {
