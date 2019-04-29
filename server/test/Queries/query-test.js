@@ -1,44 +1,72 @@
-const tape = require('tape');
+const test = require('tape');
 
-const { addStudent } = require('../../database/queries/addData');
+const getStudent = require('../../database/queries/getStudent');
+const dbBuild = require('../../database/config/db_build');
+const getAvailableCourses = require('../../database/queries/getAllCourses');
+const getStudentCourses = require('../../database/queries/getMyCourses');
 
-const build = require('../../database/config/db_build');
-
-
-tape('just for testing', (t) => {
-  t.equal(1, 1, 'on is equal one');
-  t.end();
-});
-
-
-tape('test of addstudent query', (test) => {
-
-  build()
-    .then(() => addStudent('fatma', 'siam', 'Rafah', '123456', 'true', '08 2152156', '+972 591223456', '5', '123'))
+test('Test query for get student information', (t) => {
+  dbBuild()
+    .then(() => getStudent(12345))
     .then((res) => {
-      test.equal(res.rowCount, 1, 'student added');
-      test.deepEqual(res.rows, [{
-        id: 3,
-        firstname: 'fatma',
-        lastname: 'siam',
-        address: 'Rafah',
-        amideastid: '123456',
-        isactive: true,
-        homephone: '08 2152156',
-        mobilephone: '+972 591223456',
-        level: 5,
-        password: '123',
-      }], 'student add');
-
-      test.end();
+      if (res.rowCount !== 0) {
+        const student = res.rows[0];
+        t.deepEqual(
+          Object.keys(student),
+          ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'Same Data',
+        );
+        t.end();
+      } else {
+        t.equal(res.rowCount === 0, true, 'The student is not exist in the database');
+        t.end();
+      }
     })
     .catch((error) => {
-      test.error(error);
-      test.end();
+      t.error(error);
     });
-
 });
 
-tape.onFinish(() => {
+test('Test query for get all available courses information', (t) => {
+  dbBuild()
+    .then(() => getAvailableCourses(2))
+    .then((res) => {
+      if (res.rowCount !== 0) {
+        const courses = res.rows[0];
+        t.deepEqual(
+          Object.keys(courses),
+          ['title', 'description'], 'Same Data for the course',
+        );
+        t.end();
+      } else {
+        t.equal(res.rowCount === 0, true, 'No courses in the database');
+        t.end();
+      }
+    })
+    .catch((error) => {
+      t.error(error);
+    });
+});
+
+test('Test query for get student applied courses', (t) => {
+  dbBuild()
+    .then(() => getStudentCourses(12345))
+    .then((res) => {
+      if (res.rowCount !== 0) {
+        const courses = res.rows[0];
+        t.deepEqual(
+          Object.keys(courses),
+          ['title', 'description', 'publish_date', 'days', 'h_from', 'h_to'], 'Same Data for the course',
+        );
+        t.end();
+      } else {
+        t.equal(res.rowCount === 0, true, 'No courses in the database');
+        t.end();
+      }
+    })
+    .catch((error) => {
+      t.error(error);
+    });
+});
+test.onFinish(() => {
   process.exit(0);
 });
