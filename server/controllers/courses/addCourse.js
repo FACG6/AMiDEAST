@@ -1,4 +1,5 @@
 const joi = require('joi');
+
 const { insertCourse, insertDates } = require('../../database/queries/addCourse');
 const { addCourseSchema } = require('../../helpers/validation-schema');
 

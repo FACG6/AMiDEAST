@@ -12,14 +12,27 @@ const addStudent = (req, res) => {
 
   const { error } = joi.validate({ ...req.body }, studentSchema);
   if (error) {
-    res.send({ msg: error.details[0].message });
+    res.send({
+      error: error.details[0].message,
+      data: null,
+    });
   } else {
     insertStudent(userInfo)
       .then(({ rows: student }) => {
         if (!student[0]) res.status(400).send({ error: 'Student dose not added' });
-        else res.status(201).send({ data: student[0] });
+        else {
+          res.status(201).send({
+            data: student[0],
+            error: null,
+          });
+        }
       })
-      .catch(() => res.status(500).send({ error: 'Sorry we have some issues' }));
+      .catch(() => {
+        res.status(500).send({
+          error: 'Sorry we have some issues',
+          data: null,
+        });
+      });
   }
 };
 
