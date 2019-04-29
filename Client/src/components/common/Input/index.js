@@ -2,16 +2,10 @@ import React from "react";
 import "./index.css";
 
 const Input = props => {
-  const { name, placeholder, inputClassName, type } = props;
+  const { className } = props;
   return (
-    <input
-      {...props}
-      className={"general-input " + inputClassName}
-      name={name}
-      placeholder={placeholder}
-      type={type}
-    />
-  );
+    <input {...props} className={'general-input ' + className} />
+  )
 };
 
 export default Input;

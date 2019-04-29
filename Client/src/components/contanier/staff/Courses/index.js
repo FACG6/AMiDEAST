@@ -1,14 +1,17 @@
-import React, { Component } from "react";
-import AddCourse from "./AddCourse";
-import ViewCourses from "./ViewCourse";
+import React, { Component } from 'react';
+import AddStudent from './AddStudent';
+import EditStudent from './EditStudent';
+import ViewStudent from './ViewStudent'
 
-export default class Courses extends Component {
+export default class Student extends Component {
   render() {
     return (
       <div>
-        {/*<AddCourse />*/}
-        <ViewCourses />
+        <AddStudent />
+        <EditStudent />
+        <ViewStudent />
       </div>
-    );
+    )
   }
 }
+

@@ -1,12 +1,13 @@
-import React from "react";
-import Mobile from "./Layout/Mobile";
-import Descktop from "./Layout/Desktop";
+import React from 'react';
+import Mobile from './Layout/Mobile';
+// import Descktop from './Layout/Desktop';
 
 export default function App() {
   return (
     <div>
-      {/*<Mobile />*/}
-      <Descktop />
+      <Mobile />
+      {/* <Descktop /> */}
     </div>
-  );
+  )
 }
+

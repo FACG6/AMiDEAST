@@ -1,11 +1,10 @@
-.add-course-titel {
+.add-course-title {
   color: #06468f;
   letter-spacing: 1px;
   font-size: 34px;
   font-weight: bold;
-  margin-top: 50px;
-  margin-left: 39px;
-  margin-bottom: 9px;
+  margin: 50px 0 9px 39px;
+ 
 }
 .add-course-line {
   width: 204px;
@@ -36,9 +35,7 @@
   width: 350px;
   height: 39px;
   background-color: #e0e0e0;
-  margin-left: 160px;
-  margin-bottom: 7px;
-  margin-top: 7px;
+  margin: 7px 0 7px 160px;
   border: none;
 }
 .dates {
