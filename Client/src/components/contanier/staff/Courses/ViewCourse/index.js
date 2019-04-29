@@ -22,7 +22,7 @@ export default class Viewcourse extends Component {
     return (
       <>
         <h1 className="view-course-titel">
-          <span className="view-course-line ">View Course</span>
+          <span className="view-course-line">View Course</span>
         </h1>
         <div className="view-course">
           <Table headings={headings} rows={rows} />

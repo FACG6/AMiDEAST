@@ -16,7 +16,7 @@ export default class Descktop extends Component {
     return (
       <BrowserRouter className="desktop-container">
         {login ? (
-          <div className="contanier">
+          <div className="view-courses-contanier">
             <Sidebar />
             <Switch>
               <Route exact path={"/courses"} component={Courses} />
@@ -25,7 +25,7 @@ export default class Descktop extends Component {
             <Footer />
           </div>
         ) : null
-        // <Redirect to= '/login' />
+          // <Redirect to= '/login' />
         }
       </BrowserRouter>
     );

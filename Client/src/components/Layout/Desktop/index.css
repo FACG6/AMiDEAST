@@ -1,7 +1,3 @@
-body {
-  background-color: #eee;
-}
-
-.contanier {
+.view-courses-contanier {
   display: flex;
 }
