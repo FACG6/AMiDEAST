@@ -1,6 +1,6 @@
 const joi = require('joi');
 
-exports.addCourseShema = joi.object().keys({
+exports.addCourseSchema = joi.object().keys({
   title: joi.string().min(3).max(30)
     .required(),
   numberOfStudent: joi.number().integer().min(0).max(50),
@@ -9,4 +9,14 @@ exports.addCourseShema = joi.object().keys({
   days: joi.string().min(3).max(50),
   start: joi.number().integer().min(8).max(17),
   end: joi.number().integer().min(9).max(18),
+});
+
+exports.studentSchema = joi.object().keys({
+  firstname: joi.string().min(3).max(15),
+  lastname: joi.string().min(3).max(15),
+  phonenumber: joi.string().min(7).max(10),
+  mobilenumber: joi.string().min(6).max(8),
+  address: joi.string().min(3).max(50),
+  level: joi.number().integer().min(0).max(12),
+  password: joi.string().min(3),
 });
