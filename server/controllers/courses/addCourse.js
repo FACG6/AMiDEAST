@@ -13,26 +13,26 @@ exports.addCourse = (req, res) => {
     days,
   } = req.body;
 
-  const courseInofrmation = {
+  const courseInformation = {
     courseInfo: { title, description, level, numberOfStudent },
     datesInfo: { start, end, days },
   };
-  const { error } = joi.validate({ ...courseInofrmation.courseInfo, ...courseInofrmation.datesInfo }, addCourseSchema);
+  const { error } = joi.validate({ ...courseInformation.courseInfo, ...courseInformation.datesInfo }, addCourseSchema);
   if (error) {
     res.status(400).send({
       msg: error.details[0].message,
       data: null,
     });
   } else {
-    insertCourse(courseInofrmation.courseInfo)
+    insertCourse(courseInformation.courseInfo)
       .then(({ rows: course }) => {
         if (!course[0]) throw new Error({ internalError: 'Bad Request' });
-        return insertDates(courseInofrmation.datesInfo, course[0].id);
+        return insertDates(courseInformation.datesInfo, course[0].id);
       })
       .then(({ rows: dates }) => {
         if (!dates[0]) throw new Error({ internalError: 'Bad Request' });
         return res.status(201).send({
-          data: courseInofrmation,
+          data: courseInformation,
         });
       })
       .catch(({ internalError }) => {

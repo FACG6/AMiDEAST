@@ -410,14 +410,14 @@ test('Get courses information by level dose not exist from /api/v1/course/level/
     .then(() => {
       request(app)
         .get('/api/v1/course/level/123456')
-        .expect(404)
+        .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const obj = res.body;
           if (err) {
             t.error(err);
-          } else if (obj.error) {
-            t.equal(obj.error, 'No courses available for this level', 'get same error that expected');
+          } else if (obj) {
+            t.deepEqual(obj.data, [], 'No courses for this level');
             t.end();
           }
         });

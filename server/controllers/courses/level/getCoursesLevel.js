@@ -5,9 +5,9 @@ exports.getCoursesLevel = (req, res) => {
   getCoursesByLevel(level)
     .then((courses) => {
       if (!courses.rowCount) {
-        res.status(404).send({
-          error: 'No courses available for this level',
-          data: null,
+        res.send({
+          error: null,
+          data: [],
         });
       } else {
         res.send({
