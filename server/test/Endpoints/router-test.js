@@ -360,12 +360,14 @@ test('Add new course from /api/v1/course/', (t) => {
         .post('/api/v1/course/')
         .send({
           title: 'new course',
+          numberOfStudent: 30,
           description: 'desc from new course',
-          target_level: 8,
-          number_of_student: 30,
-          publish_date: '18/12/2020',
+          level: 8,
+          days: 'sat-mon-wed',
+          start: 17,
+          end: 9,
         })
-        .expect(200)
+        .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const course = (res.body.data);
@@ -374,9 +376,8 @@ test('Add new course from /api/v1/course/', (t) => {
           } else {
             t.equal(course.title, 'new course', 'Same title');
             t.equal(course.description, 'desc from new course', 'Same description');
-            t.equal(course.target_level, 8, 'Same target_level');
-            t.equal(course.number_of_student, 30, 'Same number_of_student');
-            t.equal(course.publish_date, '18/12/2020', 'Same publish_date');
+            t.equal(course.level, 8, 'Same target_level');
+            t.equal(course.numberOfStudent, 30, 'Same number_of_student');
             t.end();
           }
         });

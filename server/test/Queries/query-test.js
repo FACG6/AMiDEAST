@@ -268,9 +268,8 @@ test('Test query for add course', (t) => {
     .then(() => insertCourse({
       title: 'new course',
       description: 'desc from new course',
-      target_level: 8,
-      number_of_student: 30,
-      publish_date: '18/12/2020',
+      level: 8,
+      numberOfStudent: 30,
     }))
     .then((res) => {
       if (res.rowCount !== 0) {
@@ -279,7 +278,6 @@ test('Test query for add course', (t) => {
         t.equal(course.description, 'desc from new course', 'Same description');
         t.equal(course.target_level, 8, 'Same target_level');
         t.equal(course.number_of_student, 30, 'Same number_of_student');
-        t.equal(course.publish_date, '18/12/2020', 'Same publish_date');
         t.end();
       } else {
         t.equal(res.rowCount === 0, true, 'The course not add in the database');
