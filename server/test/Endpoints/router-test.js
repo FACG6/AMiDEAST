@@ -370,7 +370,7 @@ test('Add new course from /api/v1/course/', (t) => {
         .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
-          const course = (res.body.data);
+          const course = (res.body.data.courseInfo);
           if (err) {
             t.error(err);
           } else {
