@@ -20,3 +20,8 @@ exports.studentSchema = joi.object().keys({
   level: joi.number().integer().min(0).max(12),
   password: joi.string().min(3),
 });
+
+exports.applyCourseSchema = joi.object().keys({
+  datesId: joi.number().integer(),
+  studentid: joi.number().integer(),
+});
