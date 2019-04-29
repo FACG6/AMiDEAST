@@ -1,6 +1,6 @@
 const { getStudentsInformation } = require('../../database/queries/getStudents');
 
-const getStudents = (req, res) => {
+module.exports = (req, res) => {
   getStudentsInformation()
     .then((students) => {
       if (!students.rowCount) {
@@ -21,4 +21,3 @@ const getStudents = (req, res) => {
     }));
 };
 
-module.exports = { getStudents };

@@ -9,7 +9,7 @@ const addStudent = (req, res) => {
           data: null,
         });
       } else {
-        res.send({
+        res.status(201).send({
           error: null,
           data: student.rows,
         });

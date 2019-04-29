@@ -9,7 +9,7 @@ exports.addCourse = (req, res) => {
           data: null,
         });
       } else {
-        res.send({
+        res.status(201).send({
           error: null,
           data: course.rows[0],
         });

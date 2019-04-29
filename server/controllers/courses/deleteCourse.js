@@ -10,7 +10,7 @@ const deleteCourseById = (req, res) => {
           data: null,
         });
       } else {
-        res.send({
+        res.status(202).send({
           error: null,
           data: 'Deleted Succesfully',
         });

@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const { getStudents } = require('./getStudents');
+const getStudents = require('./getStudents');
 const { getStudent } = require('./getStudent');
-const studentsLvele = require('./level');
+const studentLevel = require('./level');
 const studentsCourse = require('./course');
 const { updateStudent } = require('./updateStudent');
 const { deleteStudent } = require('./deleteStudent');
@@ -20,7 +20,7 @@ router
   .delete(deleteStudent);
 
 router
-  .use('/level', studentsLvele);
+  .use('/level', studentLevel);
 
 router
   .use('/course', studentsCourse);
