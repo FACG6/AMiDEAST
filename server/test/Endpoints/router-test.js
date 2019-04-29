@@ -110,28 +110,28 @@ test('Add new student from /api/v1/student/', (t) => {
       request(app)
         .post('/api/v1/student/')
         .send({
-          password: 'new student',
-          mobile_phone: '562649',
-          lastname: 'hasn',
-          home_phone: '49628462',
-          level: 7,
-          address: 'gaza',
-          firstname: 'ali',
+          firstname: 'firstname',
+          lastname: 'lastname',
+          phonenumber: '1234567898',
+          mobilenumber: '12345678',
+          address: 'address',
+          level: 5,
+          password: 'password',
         })
         .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
-          const student = (res.body.data[0]);
+          const student = (res.body.data);
           if (err) {
             t.error(err);
           } else {
-            t.equal(student.password, 'new student', 'Same password');
-            t.equal(student.mobile_phone, '562649', 'Same mobile_phone');
-            t.equal(student.lastname, 'hasn', 'Same lastname');
-            t.equal(student.home_phone, '49628462', 'Same home_phone');
-            t.equal(student.level, 7, 'Same level');
-            t.equal(student.address, 'gaza', 'Same address');
-            t.equal(student.firstname, 'ali', 'Same firstname');
+            t.equal(student.password, 'password', 'Same password');
+            t.equal(student.mobile_phone, '12345678', 'Same mobile_phone');
+            t.equal(student.lastname, 'lastname', 'Same lastname');
+            t.equal(student.home_phone, '1234567898', 'Same home_phone');
+            t.equal(student.level, 5, 'Same level');
+            t.equal(student.address, 'address', 'Same address');
+            t.equal(student.firstname, 'firstname', 'Same firstname');
             t.end();
           }
         });
