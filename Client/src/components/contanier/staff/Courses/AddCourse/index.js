@@ -6,8 +6,8 @@ import Button from "../../../../common/Button";
 export default class Addcourse extends Component {
   render() {
     return (
-      <>
-        <h1 className="add-course-titel">
+      <div>
+        <h1 className="add-course-title">
           <span className="add-course-line ">Add Course</span>
         </h1>
         <div className="add-course">
@@ -99,7 +99,7 @@ export default class Addcourse extends Component {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
