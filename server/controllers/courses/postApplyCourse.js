@@ -1,4 +1,5 @@
 const joi = require('joi');
+
 const { postApplyCourse } = require('../../database/queries/postApplyCourse');
 const { applyCourseSchema } = require('../../helpers/validation-schema');
 
@@ -21,7 +22,7 @@ const applyCourse = (req, res) => {
             data: 'Course added succesfuly',
           });
         } else {
-          res.status(500).send({
+          res.status(400).send({
             error: 'Course added failed',
             data: null,
           });
