@@ -6,7 +6,7 @@ const applyCourse = (req, res) => {
   postApplyCourse(id, studentid, datesId)
     .then((appliedCourse) => {
       if (!appliedCourse.rowsCount) {
-        res.send({
+        res.status(201).send({
           error: null,
           data: 'Course added succesfuly',
         });

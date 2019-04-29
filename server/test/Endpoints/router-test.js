@@ -69,7 +69,7 @@ test('Delete student from /api/v1/student/12345', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/student/12345')
-        .expect(200)
+        .expect(202)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const obj = (res.body);
@@ -118,7 +118,7 @@ test('Add new student from /api/v1/student/', (t) => {
           address: 'gaza',
           firstname: 'ali',
         })
-        .expect(200)
+        .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const student = (res.body.data[0]);
@@ -153,7 +153,7 @@ test('Update student from /api/v1/student/1', (t) => {
           level: 7,
           password: 'new student',
         })
-        .expect(200)
+        .expect(202)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const obj = (res.body);
@@ -318,7 +318,7 @@ test('Delete course from /api/v1/course/1', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/course/1')
-        .expect(200)
+        .expect(202)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const obj = (res.body);
@@ -474,7 +474,7 @@ test('Add new course for student from /api/v1/course/1', (t) => {
           datesId: 2,
           studentid: 12345,
         })
-        .expect(200)
+        .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const obj = (res.body);
