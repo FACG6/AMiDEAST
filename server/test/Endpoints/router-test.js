@@ -473,7 +473,7 @@ test('Add new course for student from /api/v1/course/1', (t) => {
           datesId: 2,
           studentid: 12345,
         })
-        .expect(200)
+        .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           const obj = (res.body);
