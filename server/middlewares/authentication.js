@@ -1,22 +1,23 @@
-const { checkCookie } = require('../helpers/checkCookie');
+const checkCookie = require('../helpers/checkCookie');
 
-const authentication = (req, res, next) => {
-  if (!req.cookies) {
-    res.redirect('/login');
-  } else if (!req.cookies.jwt) {
-    res.redirect('/login');
-  } else {
+module.exports = (req, res, next) => {
+  if (req.cookies.jwt) {
     checkCookie(req.cookies.jwt)
       .then((payload) => {
-        req.userId = payload.userId;
-        req.userName = payload.userName;
+        req.payload = payload;
         next();
       })
       .catch(() => {
         res.clearCookie('jwt');
-        res.redirect('/login');
+        res.status(401).send({
+          msg: 'you are not authenticated',
+          code: 401,
+        });
       });
+  } else {
+    res.status(401).send({
+      msg: 'you are not authenticated',
+      code: 401,
+    });
   }
 };
-
-authentication();

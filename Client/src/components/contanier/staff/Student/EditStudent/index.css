@@ -1,0 +1,39 @@
+.edit-student {
+  margin: 50px;
+}
+
+.edit-student-title, 
+.edit-student-contanier, 
+.edit-student-title-border {
+  color: #06468F;
+}
+
+.edit-student-title{
+  width: fit-content;
+  border-bottom: 2px solid;
+}
+.edit-student-contanier {
+  width: 80%;
+  display: flex;
+  margin: 50px auto;
+}
+
+.edit-student-contanier-center {
+  margin: auto 35px;
+  width: 2px;
+  background-color: #e0e0e0;
+  height: 375px;
+}
+
+.edit-student-btn {
+  border: none;
+  background-color: #2980B9;
+  margin-top: 47px;
+  height: 40px;
+  width: 100%;
+}
+
+.general-input {
+  outline: none;
+  margin-top: 8px;
+}

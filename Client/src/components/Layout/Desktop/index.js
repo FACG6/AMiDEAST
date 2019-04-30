@@ -4,30 +4,20 @@ import Footer from '../DesktopFooter';
 import SideBar from '../SideBar';
 import Courses from '../../contanier/staff/Courses';
 import Student from '../../contanier/staff/Student';
-import Login from '../../contanier/Auth';
 
 export default class Descktop extends Component {
   state = {
-    login: true,
   }
   render() {
     const { login } = this.state;
     return (
       <BrowserRouter className='desktop-container'>
-        {login ? (
-          <>
             <SideBar />
             <Switch>
-              <Route exact path={'/Courses'} component={Courses} />
-              <Route exact path={'/Student'} component={Student} />
+              <Route exact path={'/staff/courses'} component={Courses} />
+              <Route exact path={'/staff/student'} component={Student} />
             </Switch>
             <Footer />
-          </>
-        ) : (
-          null
-          // <Redirect to= '/login' />
-          )
-        }
       </BrowserRouter>
     )
   }

@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS student, staff, course, dates, student_course CASCADE;
 CREATE TABLE student (
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR(20) NOT NULL,
-	id INTEGER UNIQUE NOT NULL,
+	id SERIAL PRIMARY KEY,
     is_active BOOLEAN default(false),
     home_phone VARCHAR(15),
 	mobile_phone VARCHAR(15) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE student (
 );
 
 CREATE TABLE staff (
-	id SERIAL PRIMARY KEY,
+	id INT,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR NOT NULL,
     email VARCHAR NOT NULL,
@@ -36,14 +36,14 @@ CREATE TABLE dates (
 	id SERIAL PRIMARY KEY,
     h_from INTEGER NOT NULL,
     h_to INTEGER NOT NULL,
-    course_id INT REFERENCES course(id),
+    course_id INT REFERENCES course(id) ON DELETE CASCADE,
     days VARCHAR NOT NULL
 );
 
 CREATE TABLE student_course (
-    course_id INT REFERENCES course(id),
-    student_id INT REFERENCES student(id),
-	dates_id Int REFERENCES dates(id)
+    course_id INT REFERENCES course(id) ON DELETE CASCADE,
+    student_id INT REFERENCES student(id) ON DELETE CASCADE,
+	dates_id Int REFERENCES dates(id) ON DELETE CASCADE
 );
 
 INSERT INTO student 
@@ -53,10 +53,10 @@ INSERT INTO student
 	('abdullah','ammar',56789,false,'05994433','44578558','gaza',9,'789456');
 
 INSERT INTO staff 
-	(firstname,lastname,email,mobile_phone,password)
+	(id, firstname,lastname,email,mobile_phone,password)
 	values
-	('Nare','Hils','n@nn.com','0599999','741852'),
-	('abd','amr','a@ab.com','054433','456287');
+	(123456, 'Nare','Hils','n@nn.com','0599999','123456'),
+	(234567, 'abd','amr','a@ab.com','054433','123456');
 
 INSERT INTO course 
 	(title,description,target_level,number_of_student,publish_date)

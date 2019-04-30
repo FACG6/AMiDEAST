@@ -12,7 +12,6 @@ import StudentCourses from '../../contanier/student/StudentCourses'
 export default class Mobile extends Component {
   state = {
     menuOpen: false,
-    login: true,
   }
   handleLinkClick = () => {
     this.setState({ menuOpen: false });
@@ -26,24 +25,17 @@ export default class Mobile extends Component {
     const { handleMenuClick, handleLinkClick } = this;
     return (
       <BrowserRouter className='mobile-container'>
-        {login ? (
-          <>
             <Header handleMenuClick={handleMenuClick} menuOpen={menuOpen} />
-            <SideBar handleLinkClick={handleLinkClick} menuOpen={menuOpen} />
+            <SideBar handleLinkClick={handleLinkClick} menuOpen={menuOpen}  history={this.props.history} />
             <Switch>
-              <Route exact path={'/courses'} component={Courses} />
-              <Route exact path={'/mycourses'} component={StudentCourses} />
-              <Route exact path={'/apply'} component={Apply} />
-              <Route exact path={'/profile'} component={Profile} />
+              <Route exact path={'/student/courses'} component={Courses} />
+              <Route exact path={'/student/mycourses'} component={StudentCourses} />
+              <Route exact path={'/student/apply'} component={Apply} />
+              <Route exact path={'/student/profile'} component={Profile} />
               <Route exact path={'/login'} component={Login} />
               <Route component={() => <div>404</div>} />
             </Switch>
             <Footer />
-          </>
-        ) : (
-          null
-            // <Redirect to="/login" />
-          )}
       </BrowserRouter>
     )
   }
