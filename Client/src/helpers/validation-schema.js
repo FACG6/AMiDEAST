@@ -1,6 +1,6 @@
 const yup = require('yup');
 
-let addStudentSchema = yup.object().shape({
+let studentSchema = yup.object().shape({
   firstname: yup.string().min(3).max(15),
   address: yup.string().min(3).max(50),
   level: yup.number().lessThan(13).moreThan(0),
@@ -10,4 +10,4 @@ let addStudentSchema = yup.object().shape({
   password: yup.string().min(5).max(50)
 });
 
-export { addStudentSchema };
+export { studentSchema };
