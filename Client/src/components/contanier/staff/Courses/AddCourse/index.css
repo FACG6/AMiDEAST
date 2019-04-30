@@ -1,17 +1,12 @@
 .add-course-title {
   color: #06468f;
-  letter-spacing: 1px;
   font-size: 34px;
   font-weight: bold;
-  margin: 50px 0 9px 39px;
- 
+  margin: 50px 0px 9px 39px;
 }
 .add-course-line {
-  width: 204px;
   border-bottom: 1.5px solid #06468f;
-  margin-top: 100px;
   margin-left: 39px;
-  margin-bottom: 73px;
 }
 .add-course {
   width: 80%;
@@ -23,38 +18,33 @@
 }
 .right {
   width: 55%;
+  margin-left: 35px;
 }
 .course-label {
   color: #06468f;
   font-size: 14px;
   margin-left: 160px;
-  margin-bottom: 7px;
 }
 
 .course-input {
-  width: 350px;
-  height: 39px;
-  background-color: #e0e0e0;
-  margin: 7px 0 7px 160px;
-  border: none;
+  margin: 0px 0px 7px 160px;
 }
 .dates {
   display: flex;
 }
-.time-input {
-  width: 108px;
-  margin-bottom: 34px;
+.start input{
+  width: 187px;
+  margin-right: -142px;
 }
-.margin {
-  margin-left: 27px;
+.end input{
+  width: 187px;
 }
-.add-dates {
-  font-size: 14px;
-  margin-top: 48px;
-  margin-left: 4px;
+.add-dates{
+  margin-top: 41px;
+  margin-left: 20px;
 }
-.add-course-btn {
-  font-size: 14px;
-  margin-top: -15px;
-  float: right;
+.add-course-btn{
+  margin-top: 7px;
+  margin-left: 573px;
+  width: 50px;
 }
