@@ -540,7 +540,6 @@ test('Test query for getCourses by *** StudentId *** information "GET" ', (t) =>
       t.error(error);
     });
 });
-
 test.onFinish(() => {
   process.exit(0);
 });
