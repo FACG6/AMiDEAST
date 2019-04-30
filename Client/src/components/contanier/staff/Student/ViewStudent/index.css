@@ -2,9 +2,7 @@
   color: #06468f;
   font-size: 34px;
   font-weight: bold;
-  margin-top: 50px;
-  margin-left: 39px;
-  margin-bottom: 9px;
+  margin: 50px 0 9px 39px;
 }
 .view-student-line {
   width: 204px;
@@ -30,9 +28,7 @@
   height: 38px;
 }
 .search-button-div input {
-  margin-left: 82px;
-  margin-bottom: 35px;
-  margin-top: 15px;
+  margin: 15px 0 35px 82px;
   width: 900px;
 }
 .result {
