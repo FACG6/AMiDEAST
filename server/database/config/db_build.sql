@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS student, staff, course, dates, student_course CASCADE;
 CREATE TABLE student (
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR(20) NOT NULL,
-	id INTEGER UNIQUE NOT NULL,
+	id SERIAL PRIMARY KEY,
     is_active BOOLEAN default(false),
     home_phone VARCHAR(15),
 	mobile_phone VARCHAR(15) NOT NULL,
@@ -36,14 +36,14 @@ CREATE TABLE dates (
 	id SERIAL PRIMARY KEY,
     h_from INTEGER NOT NULL,
     h_to INTEGER NOT NULL,
-    course_id INT REFERENCES course(id),
+    course_id INT REFERENCES course(id) ON DELETE CASCADE,
     days VARCHAR NOT NULL
 );
 
 CREATE TABLE student_course (
-    course_id INT REFERENCES course(id),
-    student_id INT REFERENCES student(id),
-	dates_id Int REFERENCES dates(id)
+    course_id INT REFERENCES course(id) ON DELETE CASCADE,
+    student_id INT REFERENCES student(id) ON DELETE CASCADE,
+	dates_id Int REFERENCES dates(id) ON DELETE CASCADE
 );
 
 INSERT INTO student 

@@ -1,10 +1,10 @@
-const getStudentInformation = require('../../../database/queries/getStudent');
+const getStudentInformation = require('../../database/queries/getStudent');
 
-exports.getUserInformation = (req, res) => {
+const getStudent = (req, res) => {
   const { id } = req.params;
   getStudentInformation(id)
-    .then((information) => {
-      if (!information.rowCount) {
+    .then((student) => {
+      if (!student.rowCount) {
         res.status(404).send({
           error: 'The student dose not exist',
           data: null,
@@ -12,7 +12,7 @@ exports.getUserInformation = (req, res) => {
       } else {
         res.send({
           error: null,
-          data: information.rows,
+          data: student.rows[0],
         });
       }
     })
@@ -21,3 +21,5 @@ exports.getUserInformation = (req, res) => {
       data: null,
     }));
 };
+
+module.exports = { getStudent };
