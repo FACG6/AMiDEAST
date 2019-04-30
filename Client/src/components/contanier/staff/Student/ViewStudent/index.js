@@ -5,18 +5,19 @@ import Button from "../../../../common/Button";
 import Input from "../../../../common/Input";
 
 export default class ViewStudent extends Component {
-  render() {
-    const headings = [
+  state = {
+    headings: [
       "Student Name",
       "Student Number",
       "Level ",
-      "Mobile Number"
-    ];
-    const rows = [
+      "Mobile Number",
+    ],
+    rows: [
       ["John Doe", "356879", "3", "05971346997"],
-      ["John Doe", "356879", "3", "05971346997"]
-    ];
-
+      ["John Doe", "356879", "3", "05971346997"],
+    ],
+  }
+  render() {
     return (
       <>
         <h1 className="view-student-titel">
@@ -37,7 +38,7 @@ export default class ViewStudent extends Component {
           <div className="result">Result:</div>
 
           <div className="view-student">
-            <Table headings={headings} rows={rows} />
+            <Table headings={this.state.headings} rows={this.state.rows} />
           </div>
         </div>
       </>
