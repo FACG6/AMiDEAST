@@ -3,7 +3,6 @@ const cookieParser = require('cookie-parser');
 const {
   join
 } = require('path');
-const cors = require('cors');
 const router = require('./controllers');
 
 require('dotenv').config();
