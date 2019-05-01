@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Footer from '../DesktopFooter';
-import SideBar from '../SideBar';
-import Courses from '../../contanier/staff/Courses';
+import SideBar from '../../common/Sidebar';
 import Student from '../../contanier/staff/Student';
-import Login from '../../contanier/Auth';
+import Viewcourse from '../../contanier/staff/Courses/ViewCourse';
+import AddCourse from '../../contanier/staff/Courses/AddCourse'
+import ViewCourseDetails from '../../contanier/staff/Courses/ViewCourse-Details';
 
-export default class Descktop extends Component {
+export default class Desktop extends Component {
   state = {
-    login: true,
   }
   render() {
-    const { login } = this.state;
     return (
       <BrowserRouter className='desktop-container'>
-        {login ? (
-          <>
-            <SideBar />
+        <div className='contanier'>
+          <SideBar />
+          <div>
             <Switch>
-              <Route exact path={'/Courses'} component={Courses} />
-              <Route exact path={'/Student'} component={Student} />
+              <Route exact path={'/staff/courses/'} render={(props) => <Viewcourse {...props} />} />
+              <Route exact path={'/staff/courses/viewcourse'} render={(props) => <Viewcourse {...props} />} />
+              <Route exact path={'/staff/courses/addcourse'} render={(props) => <AddCourse {...props} />} />
+              <Route exact path={'/staff/courses/:id'} render={(props) => <ViewCourseDetails  {...props} />} />
+              <Route exact path={'/staff/courses/viewcourse/:id'} render={(props) => <ViewCourseDetails  {...props} />} />
+              <Route exact path={'/staff/student/'} component={Student} />
             </Switch>
+<div className='a'>
+</div>       
             <Footer />
-          </>
-        ) : (
-          null
-          // <Redirect to= '/login' />
-          )
-        }
+          </div>
+        </div>
       </BrowserRouter>
-    )
+    );
   }
 }

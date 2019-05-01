@@ -2,7 +2,8 @@ import React from 'react';
 import Cell from './cell';
 import './index.css';
 
-const Table = ({ headings, rows, history }) => {
+const Table = ({ headings, rows, history, pathname }) => {
+
   return (
     <table className="table">
       <thead className='table-head'>
@@ -18,9 +19,10 @@ const Table = ({ headings, rows, history }) => {
       </thead>
       <tbody>
         {rows.map((row, index) => {
+          const rowContents = row.slice(1);
           return (
-            <tr className='table-row' key={index} onClick={() => history.push(row.id)}>
-              {row.map((rowcontent, index) =>
+            <tr className='table-row' key={index} onClick={() => history.push(`${pathname}/${row[0]}`)}>
+              {rowContents.map((rowcontent, index) =>
                 <Cell
                   key={index}
                   content={rowcontent}

@@ -6,8 +6,13 @@
 
 body{
   font-family: Lato, sans-serif;
+  position: relative;
 }
 
 i{
   color: white;
+}
+
+.contanier{
+  display: flex;
 }
