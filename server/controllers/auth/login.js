@@ -24,7 +24,7 @@ module.exports = (req, res) => {
           const jwt = createCookie(payLoad);
           res.cookie('jwt', jwt, {
             maxAge: 7200000,
-            httpOnly: true,
+            secure: true,
           });
           res.send({
             error: null,
@@ -55,7 +55,7 @@ module.exports = (req, res) => {
           const jwt = createCookie(payLoad);
           res.cookie('jwt', jwt, {
             maxAge: 7200000,
-            httpOnly: true,
+            secure: true,
           });
           res.send({
             error: null,
