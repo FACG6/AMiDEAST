@@ -9,7 +9,6 @@ const router = require('./controllers');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
 
 app.disable('x-powered-by');
 app.use(express.json());
