@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
 
 import NavElement from './NavElement'
 import elements from './staticData';

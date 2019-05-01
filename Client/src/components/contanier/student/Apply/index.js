@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import CourseCard from '../../../common/Course'
 import PickDay from '../../../common/PickDay'
@@ -15,7 +16,15 @@ export default class Apply extends Component {
       hours: ["Pick a time ..", "8:00 - 10:00 PM", "10:00 - 12:00 PM", "12:00 - 14:00 AM"]
     }
   }
+
+  handleClick (e) {
+    e.preventDefault();
+    axios
+    .post()
+  }
   render() {
+    console.log(this.props)
+    console.log('99999999999999999999999999')
     const { days, hours } = this.state.course
     return (
       <div className='apply'>
@@ -27,7 +36,7 @@ export default class Apply extends Component {
         <h4 className='apply-note'>Select from available options below</h4>
         <PickDay option={days}/>
         <PickDay option={hours}/>
-        <Button className='apply-btn' content='Apply'/>
+        <Button className='apply-btn' content='Apply' onClick={this.handleClick}/>
       </div>
     )
   }

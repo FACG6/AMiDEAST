@@ -5,7 +5,7 @@ import SideBar from '../SideBar';
 import Courses from '../../contanier/staff/Courses';
 import Student from '../../contanier/staff/Student';
 
-export default class Descktop extends Component {
+export default class Desktop extends Component {
   state = {
   }
   render() {

@@ -83,54 +83,35 @@ export default class Login extends Component {
   }
 
   render() {
-    return ( <
-      div className = 'login' >
-      <
-      img src = {
-        logo
-      }
-      alt = "amideast logo"
-      className = 'login-logo' / >
-      <
-      div className = 'mobile-container' >
-      <
-      LabeledInput LabeledInputClassName = 'container'
-      id = 'id'
-      labelClassName = 'login-container--label'
-      labelText = 'ID'
-      name = 'id'
-      placeholder = 'Enter your ID ... '
-      inputClassName = 'login-container--input'
-      onChange = {
-        this.handleChange
-      }
-      type = 'number' /
-      >
-      <
-      LabeledInput LabeledInputClassName = 'container'
-      id = 'pass'
-      labelClassName = 'login-container--label'
-      labelText = 'Password'
-      name = 'password'
-      placeholder = 'Enter your password ...'
-      inputClassName = 'login-container--input'
-      onChange = {
-        this.handleChange
-      }
-      type = 'password' /
-      >
-      <
-      /div>  <
-      Button content = 'Login'
-      className = 'login-btn'
-      onClick = {
-        this.handleClick
-      }
-      />  <
-      h2 > {
-        this.state.loginError
-      } < /h2> < /
-      div >
+    return (
+      <div className='login' >
+        <img src={logo} alt="amideast logo" className='login-logo' />
+        <div className='mobile-container' >
+          <LabeledInput
+            LabeledInputClassName='container'
+            id='id'
+            labelClassName='login-container--label'
+            labelText='ID'
+            name='id'
+            placeholder='Enter your ID ... '
+            inputClassName='login-container--input'
+            type='number' 
+            onChange = { this.handleChange }
+          />
+          <LabeledInput
+            LabeledInputClassName='container'
+            id='pass'
+            labelClassName='login-container--label'
+            labelText='Password'
+            name='password'
+            placeholder='Enter your password ...'
+            inputClassName='login-container--input'
+            onChange={ this.handleChange}
+            type='password' 
+          />
+        </div>  <Button content='Login' className='login-btn' onClick={this.handleClick} />
+        <h2> {this.state.loginError} </h2> 
+      </div>
     )
   }
-}
+};

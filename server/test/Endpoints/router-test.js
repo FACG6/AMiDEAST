@@ -416,7 +416,7 @@ test('Get courses information by level from /api/v1/course/level/3', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description'], 'get same data that expected');
             t.end();
           }
         });
@@ -458,7 +458,7 @@ test('Get courses by student from /api/v1/course/student/12345', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description', 'publish_date', 'days', 'h_from', 'h_to'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description', 'publish_date', 'days', 'h_from', 'h_to'], 'get same data that expected');
             t.end();
           }
         });
