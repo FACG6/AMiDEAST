@@ -1,8 +1,7 @@
 const joi = require('joi');
 
 exports.addCourseSchema = joi.object().keys({
-  title: joi.string().min(3).max(30)
-    .required(),
+  title: joi.string().min(3).max(30),
   numberOfStudent: joi.number().integer().min(0).max(50),
   description: joi.string().min(10).max(500),
   level: joi.number().integer().min(1).max(12),

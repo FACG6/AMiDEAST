@@ -4,6 +4,7 @@
   "proxy": "http://localhost:7777",
   "private": true,
   "dependencies": {
+    "react-toastify": "^5.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",

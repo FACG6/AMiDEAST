@@ -4,7 +4,9 @@ const { insertCourse, insertDates } = require('../../database/queries/addCourse'
 const { addCourseSchema } = require('../../helpers/validation-schema');
 
 exports.addCourse = (req, res) => {
-  const { title,
+  console.log(req.body);
+  const {
+    title,
     description,
     level,
     numberOfStudent,
@@ -14,7 +16,9 @@ exports.addCourse = (req, res) => {
   } = req.body;
 
   const courseInformation = {
-    courseInfo: { title, description, level, numberOfStudent },
+    courseInfo: {
+      title, description, level, numberOfStudent,
+    },
     datesInfo: { start, end, days },
   };
   const { error } = joi.validate({ ...courseInformation.courseInfo, ...courseInformation.datesInfo }, addCourseSchema);

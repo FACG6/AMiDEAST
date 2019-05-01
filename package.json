@@ -28,6 +28,7 @@
     "eslint-plugin-import": "^2.17.2"
   },
   "dependencies": {
+    "show-toast": "^1.1.4",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
   }

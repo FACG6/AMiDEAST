@@ -1,51 +1,123 @@
 import React, { Component } from "react";
+import showToast from 'show-toast';
+
 import "./index.css";
 import LabeledInput from "../../../../common/LabeledInput";
 import Button from "../../../../common/Button";
+import { addCourseSchema, addDatesSchema } from '../../../../../helpers/validation-schema';
+
 
 export default class Addcourse extends Component {
   state = {
     title: '',
     description: '',
     level: 0,
-    numberOfStudent: '',
+    numberOfStudent: 0,
     start: 0,
     end: 0,
     days: '',
+    Error: {},
+    dates: []
   }
-  handleClickAddDates = () => {
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
+
+  handleClickAddDates = (e) => {
+    e.preventDefault();
+    this.setState({ Error: {} })
+    const { Error, days, end, start } = this.state;
+    addDatesSchema
+      .validate({ days, end, start }, {
+        abortEarly: false
+      }).then((value) => {
+        this.state.dates.push(value)
+        document.getElementById('days').value = ''
+        document.getElementById('start').value = '';
+        document.getElementById('end').value = '';
+        showToast({
+          str: "added successfully ",
+          time: 5000,
+          position: 'bottom'
+        })
+      })
+      .catch(({ inner }) => {
+        if (inner) {
+          const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
+          this.setState({ Error: { ...errors } })
+        }
+      })
   }
-  
+
+
   handleSubmitAddCourse = (e) => {
     e.preventDefault();
+    this.setState({ Error: {} })
+    const { Error, ...course } = this.state;
+    addCourseSchema
+      .validate(course, {
+        abortEarly: false
+      }).then((value) => {
+        //write fetch here
+        const dates = this.state.dates;
+        //   this.state.dates.push({value})
+        fetch('/api/v1/course', {
+          method: 'POST',
+          body: JSON.stringify({ value, dates }),
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+          .then(res => res.json())
+          .then(res => console.log('the res', res))
+          .catch(err => console.log(11111111, err))
+      })
+      .catch(({ inner, fetchError }) => {
+        if (fetchError) {
+          // handle fetch Error
+        }
+        if (inner) {
+          const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
+          this.setState({ Error: { ...errors } })
+        }
+      })
   }
   render() {
+    const { title, description, end, start, numberOfStudent, days, level, Error } = this.state;
+
     return (
       <div className='add-course'>
         <h1 className="add-course-title">
           Add Course
         </h1>
-        <form onSubmit={(e) => this.handleSubmitAddCourse(e)} className="add-course-contanier">
+        <form className="add-course-contanier">
           <div className="add-course-left">
             <LabeledInput
-              id="coursename"
+              id="title"
               labelText="Course Name:"
               type="text"
               name="title"
+              value={title}
+              onChange={this.handleInput}
+              Error={Error['title']}
             />
             <LabeledInput
-              id="NO"
+              id="numberOfStudent"
               labelText="Numbers Of Students:"
-              min="3"
-              max="30"
               type="number"
               name="numberOfStudent"
+              value={numberOfStudent}
+              onChange={this.handleInput}
+              Error={Error['numberOfStudent']}
             />
             <LabeledInput
-              id="desc"
+              id="description"
               labelText="Description:"
               type="text"
               name="description"
+              value={description}
+              onChange={this.handleInput}
+              Error={Error['description']}
             />
           </div>
           <div className='add-course-center'></div>
@@ -55,14 +127,18 @@ export default class Addcourse extends Component {
               labelText="Level"
               type="number"
               name="level"
-              min="1"
-              max="12"
+              value={level}
+              onChange={this.handleInput}
+              Error={Error['level']}
             />
             <LabeledInput
               id="days"
               labelText="Days:"
               type="text"
               name="days"
+              value={days}
+              onChange={this.handleInput}
+              Error={Error['days']}
             />
             <div className="add-course-dates">
               <div className='start'>
@@ -71,9 +147,10 @@ export default class Addcourse extends Component {
                   labelText="Start:"
                   type="number"
                   name="start"
-                  min="8"
-                  max="17"
                   inputClassName='dates-start'
+                  value={start}
+                  onChange={this.handleInput}
+                  Error={Error['start']}
                 />
               </div>
               <div className='end'>
@@ -82,14 +159,15 @@ export default class Addcourse extends Component {
                   labelText="End:"
                   type="number"
                   name="end"
-                  min="9"
-                  max="18"
+                  value={end}
                   inputClassName='dates-end'
+                  onChange={this.handleInput}
+                  Error={Error['end']}
                 />
               </div>
-              <Button type='button' className="add-dates-btn" content="Add Dates" onClick={this.handleClickAddDates} />
+              <Button type='button' className="add-dates-btn" content="Add Dates" onClick={(e) => this.handleClickAddDates(e)} />
             </div>
-            <Button type='submit' content='Add' className='add-course-btn' />
+            <Button type='submit' content='Add' className='add-course-btn' onClick={(e) => this.handleSubmitAddCourse(e)} />
           </div>
         </form>
       </div>

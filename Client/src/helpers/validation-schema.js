@@ -10,4 +10,20 @@ let studentSchema = yup.object().shape({
   password: yup.string().min(5).max(50)
 });
 
-export { studentSchema };
+const addCourseSchema = yup.object().shape({
+  title: yup.string().min(3).max(15),
+  description: yup.string().min(5),
+  level: yup.number().lessThan(13).moreThan(0),
+  numberOfStudent: yup.number().lessThan(100).moreThan(5),
+  start: yup.number().lessThan(24).moreThan(0),
+  end: yup.number().lessThan(24).moreThan(0),
+  days: yup.string().min(4).max(30),
+});
+
+const addDatesSchema = yup.object().shape({
+  start: yup.number().lessThan(24).moreThan(0),
+  end: yup.number().lessThan(24).moreThan(0),
+  days: yup.string().min(4).max(30),
+});
+
+export { studentSchema, addCourseSchema, addDatesSchema };
