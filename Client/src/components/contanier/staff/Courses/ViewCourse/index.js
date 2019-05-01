@@ -43,7 +43,6 @@ export default class Viewcourse extends Component {
           <div className="view-course">
             <Table headings={headings} rows={rows} history={this.props.history} pathname={this.props.location.pathname} />
           </div>
-
         </div>
       );
     }

@@ -1,5 +1,5 @@
-import React from 'react';
-import './index.css';
+import React from "react";
+import "./index.css";
 
 const Input = props => {
   const { className } = props;
@@ -8,4 +8,4 @@ const Input = props => {
   )
 };
 
-export default Input
+export default Input;

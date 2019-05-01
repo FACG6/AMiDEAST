@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Footer from '../DesktopFooter';
 import SideBar from '../../common/Sidebar';
@@ -23,9 +23,7 @@ export default class Desktop extends Component {
               <Route exact path={'/staff/courses/:id'} render={(props) => <ViewCourseDetails  {...props} />} />
               <Route exact path={'/staff/courses/viewcourse/:id'} render={(props) => <ViewCourseDetails  {...props} />} />
               <Route exact path={'/staff/student/'} component={Student} />
-            </Switch>
-<div className='a'>
-</div>       
+            </Switch>       
             <Footer />
           </div>
         </div>
