@@ -56,17 +56,18 @@ export default class Login extends Component {
           password
         })
         .then(res => {
-          console.log(res.data.data)
+          console.log(11111, res);
+          console.log(22222, res.data)
           if (res.data.error) {
             this.setState({
               loginError: res.error
             })
-          } else if (res.data.data.length) {
-            if (res.data.data[0].id.toString().length === 5) {
-              this.props.handleLogin(res.data.data[0].id)
+          } else if (res.data.id) {
+            if (res.data.role === 'student') {
+              this.props.handleLogin(res.data.id)
               this.props.history.push('/student/courses')
             } else {
-              this.props.handleLogin(res.data.data[0].id)
+              this.props.handleLogin(res.data.id)
               this.props.history.push('/staff/courses')
             }
           } else {

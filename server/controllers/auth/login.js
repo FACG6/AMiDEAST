@@ -16,6 +16,7 @@ module.exports = (req, res) => {
     checkStudent(id, password)
       .then((result) => {
         if (result.rowCount) {
+          console.log(result.rows)
           const payLoad = {
             id: result.rows[0].id,
             role: 'student',
@@ -27,7 +28,8 @@ module.exports = (req, res) => {
           });
           res.send({
             error: null,
-            data: result.rows,
+            id: result.rows[0].id,
+            role: 'student',
           });
         } else {
           res.send({
@@ -57,7 +59,8 @@ module.exports = (req, res) => {
           });
           res.send({
             error: null,
-            data: result.rows,
+            id: result.rows[0].id,
+            role: 'student',
           });
         } else {
           res.send({
