@@ -19,8 +19,9 @@ export default class App extends Component {
     axios
       .get('/api/v1/auth')
       .then(res => {
+        console.log(res)
         if (res.data.isAuth) {
-          this.setState({ auth: true, isLogin: true, id: res.data.id })
+          this.setState({ auth: true, isLogin: true, id: res.data.id, role: res.data.role })
         } else {
           this.setState({ auth: true, })
         }
@@ -32,16 +33,15 @@ export default class App extends Component {
   }
 
   render() {
-    const {auth, isLogin, id} = this.state;
-    const isStudent = id.toString().length === 5;
+    const {auth, isLogin, id, role} = this.state;
     
-    return(
+    return( 
       !auth ? <h2>Loading ...</h2> : 
       <Router>
       {isLogin ?  
         <Switch>
-          {isStudent && <Route path='/student' component={ (props) => <Mobile id={id} {...props} />} />}
-          {!isStudent && <Route path='/staff' component={Desktop} />}
+          {role === 'student' && <Route path='/student' component={ (props) => <Mobile id={id} {...props} />} />}
+          {role === 'admin' && <Route path='/staff' component={Desktop} />}
         </Switch>
       :
         <Switch >

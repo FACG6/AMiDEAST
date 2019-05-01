@@ -56,6 +56,7 @@ export default class Login extends Component {
           password
         })
         .then(res => {
+          console.log(res.data.data)
           if (res.data.error) {
             this.setState({
               loginError: res.error
