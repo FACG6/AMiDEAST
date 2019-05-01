@@ -4,101 +4,94 @@ import LabeledInput from "../../../../common/LabeledInput";
 import Button from "../../../../common/Button";
 
 export default class Addcourse extends Component {
+  state = {
+    title: '',
+    description: '',
+    level: 0,
+    numberOfStudent: '',
+    start: 0,
+    end: 0,
+    days: '',
+  }
+  handleClickAddDates = () => {
+  }
+  
+  handleSubmitAddCourse = (e) => {
+    e.preventDefault();
+  }
   render() {
     return (
-      <div>
+      <div className='add-course'>
         <h1 className="add-course-title">
-          <span className="add-course-line ">Add Course</span>
+          Add Course
         </h1>
-        <div className="add-course">
-          <div className="left">
+        <form onSubmit={(e) => this.handleSubmitAddCourse(e)} className="add-course-contanier">
+          <div className="add-course-left">
             <LabeledInput
-              LabeledInputClassName="course-name"
-              id="courseName"
+              id="coursename"
               labelText="Course Name:"
-              labelClassName="course-label"
               type="text"
-              name="courseName"
-              inputClassName="course-input"
+              name="title"
             />
             <LabeledInput
-              LabeledInputClassName="numbers-of-students"
               id="NO"
               labelText="Numbers Of Students:"
-              labelClassName="course-label"
               min="3"
               max="30"
               type="number"
               name="numberOfStudent"
-              inputClassName="course-input"
             />
             <LabeledInput
-              LabeledInputClassName="description"
               id="desc"
               labelText="Description:"
-              labelClassName="course-label"
               type="text"
               name="description"
-              inputClassName="course-input"
             />
           </div>
-          <div className="right">
+          <div className='add-course-center'></div>
+          <div className="add-course-right">
             <LabeledInput
-              LabeledInputClassName="level"
               id="level"
               labelText="Level"
-              labelClassName="course-label"
               type="number"
               name="level"
               min="1"
               max="12"
-              inputClassName="course-input"
             />
             <LabeledInput
-              LabeledInputClassName="days"
               id="days"
               labelText="Days:"
-              labelClassName="course-label"
               type="text"
               name="days"
-              inputClassName="course-input"
             />
-            <div className="dates">
+            <div className="add-course-dates">
               <div className='start'>
                 <LabeledInput
-                  LabeledInputClassName="start"
                   id="start"
                   labelText="Start:"
-                  labelClassName="course-label"
                   type="number"
                   name="start"
                   min="8"
                   max="17"
-                  inputClassName="course-input"
+                  inputClassName='dates-start'
                 />
               </div>
               <div className='end'>
                 <LabeledInput
-                  LabeledInputClassName="end"
                   id="end"
                   labelText="End:"
-                  labelClassName="course-label"
                   type="number"
                   name="end"
                   min="9"
                   max="18"
-                  inputClassName="course-input"
+                  inputClassName='dates-end'
                 />
               </div>
-              <div className='add-dates'>
-                <Button btnClassName="add-dates-button" content="Add Dates" />
-              </div>
+              <Button type='button' className="add-dates-btn" content="Add Dates" onClick={this.handleClickAddDates} />
             </div>
-            <div className='add-course-btn'>
-              <Button btnClassName="add-course-button" content="Add" />
-            </div>
+            <Button type='submit' content='Add' className='add-course-btn' />
           </div>
-        </div>
+        </form>
       </div>
     );
   }
