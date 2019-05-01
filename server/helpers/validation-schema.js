@@ -27,6 +27,6 @@ exports.applyCourseSchema = joi.object().keys({
 });
 
 exports.loginSchema = joi.object().keys({
-  id: joi.number().integer(),
+  id: joi.number().integer().min(5),
   password: joi.string().min(5),
 });

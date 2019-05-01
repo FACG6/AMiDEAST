@@ -12,68 +12,29 @@ module.exports = (req, res) => {
       data: null,
       error: error.details[0].message,
     });
-  } else if (id.length === 5) {
-    checkStudent(id, password)
-      .then((result) => {
-        if (result.rowCount) {
-          console.log(result.rows)
-          const payLoad = {
-            id: result.rows[0].id,
-            role: 'student',
-          };
+  } else {
+    checkStudent(id)
+      .then(({ rows: student }) => {
+        if (!student[0]) {
+          checkStaff(id)
+            .then(({ rows: staff }) => {
+              if (staff[0]) {
+                if (password.toString() === staff[0].password) {
+                  const payLoad = { id, role: 'staff' };
+                  const jwt = createCookie(payLoad);
+                  res.cookie('jwt', jwt, { maxAge: 7200000, httpOnly: true });
+                  res.status(200).send({ id, role: 'staff', status: 200 });
+                } else res.status(400).send({ error: 'Check your Password' });
+              } else res.status(400).send({ error: 'Check your Id' });
+            })
+            .catch(() => res.status(400).send({ error: 'Bad Request' }));
+        } else if (password.toString() === student[0].password) {
+          const payLoad = { id, role: 'student' };
           const jwt = createCookie(payLoad);
-          res.cookie('jwt', jwt, {
-            maxAge: 7200000,
-            secure: true,
-          });
-          res.send({
-            error: null,
-            id: result.rows[0].id,
-            role: 'student',
-          });
-        } else {
-          res.send({
-            error: null,
-            data: result.rows,
-          });
-        }
+          res.cookie('jwt', jwt, { maxAge: 7200000, httpOnly: true });
+          res.status(200).send({ id, role: 'student', status: 200 });
+        } else res.status(400).send({ error: 'Check your password' });
       })
-      .catch(() => {
-        res.status(500).send({
-          error: 'Internal Server Error',
-          data: null,
-        });
-      });
-  } else if (id.length === 6) {
-    checkStaff(id, password)
-      .then((result) => {
-        if (result.rowCount) {
-          const payLoad = {
-            id: result.rows[0].id,
-            role: 'admin',
-          };
-          const jwt = createCookie(payLoad);
-          res.cookie('jwt', jwt, {
-            maxAge: 7200000,
-            secure: true,
-          });
-          res.send({
-            error: null,
-            id: result.rows[0].id,
-            role: 'student',
-          });
-        } else {
-          res.send({
-            error: null,
-            data: result.rows,
-          });
-        }
-      })
-      .catch(() => {
-        res.status(500).send({
-          error: 'Internal Server Error',
-          data: null,
-        });
-      });
+      .catch(() => res.status(400).send({ error: 'Bad Request' }));
   }
 };
