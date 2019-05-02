@@ -33,10 +33,11 @@ export default class Addcourse extends Component {
         document.getElementById('days').value = ''
         document.getElementById('start').value = '';
         document.getElementById('end').value = '';
+        this.setState({ days: '', start: 0, end: 0 })
         showToast({
           str: "added successfully ",
           time: 5000,
-          position: 'bottom'
+          position: 'top'
         })
       })
       .catch(({ inner }) => {
@@ -56,9 +57,9 @@ export default class Addcourse extends Component {
       .validate(course, {
         abortEarly: false
       }).then((value) => {
-        //write fetch here
+        const { days, start, end } = value;
         const dates = this.state.dates;
-        //   this.state.dates.push({value})
+        dates.push({ days, end, start })
         fetch('/api/v1/course', {
           method: 'POST',
           body: JSON.stringify({ value, dates }),

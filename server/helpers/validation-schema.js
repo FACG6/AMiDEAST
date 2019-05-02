@@ -8,6 +8,7 @@ exports.addCourseSchema = joi.object().keys({
   days: joi.string().min(3).max(50),
   start: joi.number().integer().min(8).max(17),
   end: joi.number().integer().min(9).max(18),
+  dates: joi.array().items(joi.object()),
 });
 
 exports.studentSchema = joi.object().keys({
