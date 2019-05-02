@@ -39,8 +39,6 @@ export default class AddStudent extends Component {
       .validate(student, {
         abortEarly: false
       }).then((value) => {
-        //write fetch here
-        console.log(value)
         fetch('/api/v1/student', {
           method: 'POST',
           body: JSON.stringify({ ...value }),
@@ -55,6 +53,7 @@ export default class AddStudent extends Component {
             if (res.data) {
               this.setState({ ...initState })
               toast.success('Student added successfuly ');
+              this.props.history.push('/staff/student/viewcourse')
             }
             else {
               toast.error(res.error);

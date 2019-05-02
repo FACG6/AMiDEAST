@@ -5,7 +5,7 @@ import LabeledInput from "../../../../common/LabeledInput";
 import Button from "../../../../common/Button";
 import { addCourseSchema, addDatesSchema } from '../../../../../helpers/validation-schema';
 
-const initState={
+const initState = {
   title: '',
   description: '',
   level: 0,
@@ -44,8 +44,9 @@ export default class Addcourse extends Component {
         document.getElementById('start').value = '';
         document.getElementById('end').value = '';
         this.setState({ days: '', start: 0, end: 0 })
-              toast.success("added successfully ");
-    })
+        toast.success("added successfully ");
+        this.props.history.push('/staff/courses/viewcourse')
+      })
       .catch(({ inner }) => {
         if (inner) {
           const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
@@ -76,14 +77,14 @@ export default class Addcourse extends Component {
         })
           .then(res => res.json())
           .then(res => {
-            if(res.data) {
-              this.setState({...initState })
+            if (res.data) {
+              this.setState({ ...initState })
               toast.success('Course added successfuly ');
             }
             else {
               toast.error(res.error);
             }
-        })
+          })
           .catch(err => toast.error(err))
       })
       .catch(({ inner }) => {

@@ -29,7 +29,8 @@
 }
 .search-button-div input {
   margin: 15px 0 35px 82px;
-  width: 900px;
+  width: 700px;
+  padding-left: 15px;
 }
 .result {
   color: #9d9d9d;

@@ -15,14 +15,24 @@
   margin-bottom: 73px;
 }
 
-.view-course  {
+.view-course {
   margin: 50px 0px 50px 100px;
 }
+
 .view-course table {
   width: 125%;
 }
 
-.delete-icon{
+.delete-icon {
   color: #333;
-  margin: auto 15px;
+  padding: 15px;
+}
+
+.no-courses {
+  color: #333;
+  font-size: 24px;
+}
+.add-coures-link{
+  cursor: pointer;
+  color: #06468f;
 }

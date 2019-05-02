@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
+
 import "./index.css";
 import Table from "../../../../common/Table";
 import Button from "../../../../common/Button";
@@ -9,19 +11,46 @@ export default class ViewStudent extends Component {
   state = {
     headings: [],
     rows: [],
+    search: '',
+    Error: {}
   }
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
+
+  handleDelete = (id) => {
+    console.log(id);
+    fetch(`/api/v1/student/${id}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.data) {
+          toast.success(res.data);
+          this.props.history.push('/staff/student/viewstudent');
+        }
+        else toast.error(res.error);
+      })
+  }
+  handleSearch = () => {
+    if (this.state.search != '') {
+      //fillter the student
+      console.log('search')
+    }
+    else {
+      this.setState({ Error: {'search':'Enter vlaue'} })
+    }
+  }
+  
   componentDidMount() {
     fetch('/api/v1/student', {
       method: 'GET'
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res.data)
         if (res.data) {
           const rows = res.data;
           let rowContent = [];
           rows.map(row => {
-            rowContent.push([row.id, row.firstname + ' ' + row.lastname, row.id, row.level, row.mobile_phone, <a onClick={() => console.log('object')}><i className="fa fa-trash delete-icon" aria-hidden="true" ></i></a>]);
+            rowContent.push([row.id, row.firstname + ' ' + row.lastname, row.id, row.level, row.mobile_phone, <a onClick={() => this.handleDelete(row.id)}><i className="fa fa-trash delete-icon" aria-hidden="true" ></i></a>]);
           })
           this.state.headings = [
             "Student Name",
@@ -36,6 +65,7 @@ export default class ViewStudent extends Component {
       })
       .catch(err => this.setState({ Error: 'Something happen error' }))
   }
+
   render() {
     const { rows } = this.state;
     return (
@@ -46,12 +76,15 @@ export default class ViewStudent extends Component {
         <div className="view-student">
           <div className="search-button-div">
             <Input
+              value={this.state.search}
               name="search"
               placeholder="Search by student number ...."
               inputClassName="search-input"
               type="text"
+              onChange={this.handleInput}
+              Error={this.state.Error['search']}
             />
-            <Button content="search" className="search-button" />
+            <Button content="search" className="search-button" onClick={() => this.handleSearch()} />
           </div>
           {rows ?
             <>
@@ -63,7 +96,6 @@ export default class ViewStudent extends Component {
             :
             !rows ? <h1>no coursesg</h1> : <Loading />
           }
-
         </div>
       </>
     );
