@@ -1,76 +1,44 @@
-const joi = require('joi');
+const joi = require("joi");
 
-const { checkStudent, checkStaff } = require('../../database/queries/checkuser');
-const { loginSchema } = require('../../helpers/validation-schema');
-const { createCookie } = require('../../helpers/createCookie');
+const {
+  checkStudent,
+  checkStaff
+} = require("../../database/queries/checkuser");
+const { loginSchema } = require("../../helpers/validation-schema");
+const { createCookie } = require("../../helpers/createCookie");
 
 module.exports = (req, res) => {
   const { id, password } = req.body;
   const { error } = joi.validate({ id, password }, loginSchema);
   if (error) {
     res.status(400).send({
-      data: null,
-      error: error.details[0].message,
+      error: error.details[0].message
     });
-  } else if (id.length === 5) {
-    checkStudent(id, password)
-      .then((result) => {
-        if (result.rowCount) {
-          const payLoad = {
-            id: result.rows[0].id,
-            role: 'student',
-          };
+  } else {
+    checkStudent(id)
+      .then(({ rows: student }) => {
+        if (!student[0]) {
+          checkStaff(id)
+            .then(({ rows: staff }) => {
+              if (staff[0]) {
+                if (password.toString() === staff[0].password) {
+                  const payLoad = { id, role: "staff" };
+                  const jwt = createCookie(payLoad);
+                  res.cookie("jwt", jwt, { maxAge: 7200000 });
+                  res.status(200).send({ id, role: "staff", status: 200 });
+                } else
+                  res.status(400).send({ error: "Check your Id Or Password" });
+              } else
+                res.status(400).send({ error: "Check your Id Or Password" });
+            })
+            .catch(e => res.status(400).send({ error: "Bad Request" }));
+        } else if (password.toString() === student[0].password) {
+          const payLoad = { id, role: "student" };
           const jwt = createCookie(payLoad);
-          res.cookie('jwt', jwt, {
-            maxAge: 7200000,
-            httpOnly: true,
-          });
-          res.send({
-            error: null,
-            data: result.rows,
-          });
-        } else {
-          res.send({
-            error: null,
-            data: result.rows,
-          });
-        }
+          res.cookie("jwt", jwt, { maxAge: 7200000 });
+          res.status(200).send({ id, role: "student", status: 200 });
+        } else res.status(400).send({ error: "Check your Id Or Password" });
       })
-      .catch(() => {
-        res.status(500).send({
-          error: 'Internal Server Error',
-          data: null,
-        });
-      });
-  } else if (id.length === 6) {
-    checkStaff(id, password)
-      .then((result) => {
-        if (result.rowCount) {
-          const payLoad = {
-            id: result.rows[0].id,
-            role: 'admin',
-          };
-          const jwt = createCookie(payLoad);
-          res.cookie('jwt', jwt, {
-            maxAge: 7200000,
-            httpOnly: true,
-          });
-          res.send({
-            error: null,
-            data: result.rows,
-          });
-        } else {
-          res.send({
-            error: null,
-            data: result.rows,
-          });
-        }
-      })
-      .catch(() => {
-        res.status(500).send({
-          error: 'Internal Server Error',
-          data: null,
-        });
-      });
+      .catch(e => res.status(400).send({ error: "Bad Request" }));
   }
 };
