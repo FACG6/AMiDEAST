@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "NODE_ENV=development nodemon server/index.js",
-    "start": "cd Client && npm i && npm run build && cd .. && cd server $$ npm start",
+    "start": "cd server $$ npm start",
+    "heroku-postbuild": "cd Client && npm install && npm run build",
     "test": "cd ./server && npm run test",
     "start:server": "nodemon index.js --prefix server",
     "start:client": "npm start --prefix Client",
