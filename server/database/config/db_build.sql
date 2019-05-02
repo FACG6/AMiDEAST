@@ -15,7 +15,7 @@ CREATE TABLE student (
 );
 
 CREATE TABLE staff (
-	id SERIAL PRIMARY KEY,
+	id INT,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR NOT NULL,
     email VARCHAR NOT NULL,
@@ -53,10 +53,10 @@ INSERT INTO student
 	('abdullah','ammar',56789,false,'05994433','44578558','gaza',9,'789456');
 
 INSERT INTO staff 
-	(firstname,lastname,email,mobile_phone,password)
+	(id, firstname,lastname,email,mobile_phone,password)
 	values
-	('Nare','Hils','n@nn.com','0599999','741852'),
-	('abd','amr','a@ab.com','054433','456287');
+	(123456, 'Nare','Hils','n@nn.com','0599999','123456'),
+	(234567, 'abd','amr','a@ab.com','054433','123456');
 
 INSERT INTO course 
 	(title,description,target_level,number_of_student,publish_date)

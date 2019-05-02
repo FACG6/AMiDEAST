@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "proxy": "http://localhost:7777",
   "private": true,
+  "proxy": "http://localhost:7777",
   "dependencies": {
+    "axios": "^0.18.0",
+    "browser-cookies": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
