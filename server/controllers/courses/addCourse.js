@@ -28,7 +28,7 @@ exports.addCourse = (req, res) => {
           return courseInformation.datesInfo.map(date => insertDates({ start: date.start, end: date.end, days: date.days }, course[0].id)
             .then(({ rows: courseDates }) => {
               if (!courseDates[0]) throw new Error({ internalError: 'Bad Request' });
-              else res.status(201).send({ data: 'Course added successfuly ' });
+              else res.status(201).send({ data: courseInformation.courseInfo });
             })
             .catch(({ internalError }) => {
               if (internalError) res.status(500).send({ error: internalError });

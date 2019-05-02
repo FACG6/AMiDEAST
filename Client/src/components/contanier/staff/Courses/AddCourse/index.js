@@ -78,7 +78,7 @@ export default class Addcourse extends Component {
           .then(res => {
             if(res.data) {
               this.setState({...initState })
-              toast.success(res.data);
+              toast.success('Course added successfuly ');
             }
             else {
               toast.error(res.error);

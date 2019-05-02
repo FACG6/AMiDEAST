@@ -377,18 +377,21 @@ test('Add new course from /api/v1/course/', (t) => {
         .post('/api/v1/course/')
         .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .send({
-          title: 'new course',
-          numberOfStudent: 30,
-          description: 'desc from new course',
-          level: 8,
-          days: 'sat-mon-wed',
-          start: 17,
-          end: 9,
+          value: {
+            title: 'new course',
+            numberOfStudent: 30,
+            description: 'desc from new course',
+            level: 8,
+            days: 'sat-mon-wed',
+            start: 17,
+            end: 9,
+            dates: [{ start: 10, end: 15, days: 'sat-sun-mon' }],
+          },
         })
         .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
-          const course = (res.body.data.courseInfo);
+          const course = (res.body.data);
           if (err) {
             t.error(err);
           } else {
