@@ -6,6 +6,7 @@ const getCoursesByLevel = level =>
 SELECT * FROM course inner join dates on dates.course_id = course.id WHERE target_level = $1`,
     [level]
   );
+
 const avaliableCourses = (level, studentId) =>
   connection.query(
     `
