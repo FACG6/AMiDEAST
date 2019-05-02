@@ -6,7 +6,7 @@ CREATE TABLE student (
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR(20) NOT NULL,
 	id SERIAL PRIMARY KEY,
-    is_active BOOLEAN default(false),
+    is_active BOOLEAN default(true),
     home_phone VARCHAR(15),
 	mobile_phone VARCHAR(15) NOT NULL,
 	address VARCHAR(50) NOT NULL,
