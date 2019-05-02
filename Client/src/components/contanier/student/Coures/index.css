@@ -1,26 +1,27 @@
 .courses-title {
-  color: rgb(77, 78, 80);
-  margin-left: 20px;
-  margin-top: 35px;
   letter-spacing: 1px;
 }
-
+.courses {
+  min-height: calc(100vh - 177.82px) !important;
+  padding: 3rem;
+}
 .courses-card {
-  position: relative;
+  border: 0.5px solid #eee;
+  margin: 2rem;
 }
 
-.courses-card--div {
-  position: absolute;
-  top: 70%;
-  left: 65%;
+.course-card {
+  min-height: 150px;
 }
-
 .courses-card-btn {
-  width: 80px;
+  width: 200px;
+  height: 50px;
+  border: 0;
+  border-radius: 3px;
+  font-size: 16px;
 }
 
 .courses-card-box {
-  width: 80vw;
-  margin: 30px auto;
+  width: 80%;
+  margin: 0 auto;
 }
-
