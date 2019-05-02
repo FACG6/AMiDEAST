@@ -1,4 +1,4 @@
-const getCoursesStudent = require('../../../database/queries/getCoursesStudent');
+const { getCoursesStudent, appliedCourse } = require('../../../database/queries/getCoursesStudent');
 
 const get = (req, res) => {
   const { studentId } = req.params;

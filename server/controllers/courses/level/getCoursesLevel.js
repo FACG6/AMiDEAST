@@ -1,8 +1,11 @@
-const getCoursesByLevel = require('../../../database/queries/getCoursesLevel');
+const { getCoursesByLevel, avaliableCourses} = require('../../../database/queries/getCoursesLevel');
+// const { appliedCourse, avaliableCourses} = require('../../../database/queries/getCoursesLevel');
+// const avaliableCourses = require('../../../database/queries/getCoursesLevel')
 
 exports.getCoursesLevel = (req, res) => {
   const { level } = req.params;
-  getCoursesByLevel(level)
+  const { student_id } = req.body;
+  avaliableCourses(level, student_id)
     .then((courses) => {
       if (!courses.rowCount) {
         res.send({
