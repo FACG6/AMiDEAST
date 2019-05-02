@@ -19,9 +19,10 @@ export default class Courses extends Component {
 
   componentDidMount() {
     const { level } = this.props;
+    const { id } = auth.isAuthenticated();
     if (level) {
       axios
-        .get(`/api/v1/course/level/${level}`)
+        .post(`/api/v1/course/level/${level}`, { student_id: id })
         .then(res => {
           this.setState({ data: res.data.data, isLoading: false });
         })
@@ -34,7 +35,6 @@ export default class Courses extends Component {
   }
   handleClick = (id, course_id) => {
     const { id: student_id } = auth.isAuthenticated();
-    console.log(id);
     this.setState({ isLoading: true });
     axios
       .post(`/api/v1/course/${course_id}`, { id, student_id })
