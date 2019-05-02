@@ -1,8 +1,8 @@
 const getCourseInformation = require('../../database/queries/getCourse');
 
 const getCourse = (req, res) => {
-  const { id } = req.params;
-  getCourseInformation(id)
+  const { courseId } = req.params;
+  getCourseInformation(courseId)
     .then((course) => {
       if (!course.rowCount) {
         res.status(404).send({
@@ -23,5 +23,4 @@ const getCourse = (req, res) => {
       });
     });
 };
-
 module.exports = { getCourse };

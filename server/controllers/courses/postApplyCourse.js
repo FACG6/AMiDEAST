@@ -1,3 +1,4 @@
+
 const joi = require('joi');
 
 const { postApplyCourse } = require('../../database/queries/postApplyCourse');
@@ -19,7 +20,7 @@ const applyCourse = (req, res) => {
         if (!appliedCourse.rowsCount) {
           res.status(201).send({
             error: null,
-            data: 'Course added succesfuly',
+            data: appliedCourse.rows[0].course_id,
           });
         } else {
           res.status(400).send({
