@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
 import Table from "../../../../common/Table";
+import Loading from '../../../../Layout/Loading'
 
 export default class Viewcourse extends Component {
   state = {
@@ -18,13 +19,14 @@ export default class Viewcourse extends Component {
           const rows = res.data;
           let rowContent = [];
           rows.map(row => {
-            rowContent.push([row.id, row.title, row.publish_date, row.target_level, row.number_of_student]);
+            rowContent.push([row.id, row.title, row.publish_date, row.target_level, row.number_of_student, <a onClick={() => console.log('object')}><i className="fa fa-trash delete-icon" aria-hidden="true" ></i></a>]);
           })
           this.state.headings = [
             "Course Name",
             "Date Of Publish",
             "Target Level",
-            "Percentage Of Total Numbers"
+            "Percentage Of Total Numbers",
+            " "
           ];
           return this.setState({ rows: rowContent, Error: '' })
         }
@@ -46,7 +48,7 @@ export default class Viewcourse extends Component {
         </div>
       );
     }
-    else if (Error) return <h1>Faaaaaaaatma{Error}</h1>
-    else if (!rows) return <h1>Loading....</h1>
+    else if (!rows) return <Loading />
+    else return <h1>no courses</h1>
   }
 }

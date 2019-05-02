@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./index.css";
 import { Redirect } from 'react-router-dom';
 import Table from "../../../../common/Table";
+import Loading from '../../../../Layout/Loading'
 
 export default class ViewCourseDetails extends Component {
   state = {
@@ -51,6 +52,6 @@ export default class ViewCourseDetails extends Component {
       );
     }
     if (Error) return <h1>eEEEEEEEEEEEEEEEEEEEEr{Error}</h1>
-    else if (!rows) return <h1>Loading ...........</h1>
+    else if (!rows) return <Loading />
   }
 }

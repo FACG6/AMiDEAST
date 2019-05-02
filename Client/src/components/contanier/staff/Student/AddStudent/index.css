@@ -13,9 +13,9 @@
   border-bottom: 2px solid;
 }
 .add-student-contanier {
-  width: 80%;
+  width: 100%;
   display: flex;
-  margin: 50px auto;
+  margin: 50px ;
 }
 
 .add-student-contanier-center {

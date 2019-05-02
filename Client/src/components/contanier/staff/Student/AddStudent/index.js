@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
+import { toast } from "react-toastify";
+
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
 import { studentSchema } from './../../../../../helpers/validation-schema'
 import './index.css';
+
+const initState = {
+  firstname: '',
+  address: '',
+  level: 0,
+  phonenumber: '',
+  lastname: '',
+  mobilenumber: '',
+  password: '',
+  Error: {}
+}
 
 export default class AddStudent extends Component {
   state = {
@@ -27,11 +40,29 @@ export default class AddStudent extends Component {
         abortEarly: false
       }).then((value) => {
         //write fetch here
+        console.log(value)
+        fetch('/api/v1/student', {
+          method: 'POST',
+          body: JSON.stringify({ ...value }),
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+          .then(res => res.json())
+          .then(res => {
+            if (res.data) {
+              this.setState({ ...initState })
+              toast.success('Student added successfuly ');
+            }
+            else {
+              toast.error(res.error);
+            }
+          })
+          .catch(err => toast.error(err))
       })
-      .catch(({ inner, fetchError }) => {
-        if (fetchError) {
-          // handle fetch Error
-        }
+      .catch(({ inner }) => {
         if (inner) {
           const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
           this.setState({ Error: { ...errors } })

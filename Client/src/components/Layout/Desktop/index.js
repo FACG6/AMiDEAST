@@ -6,6 +6,9 @@ import Student from '../../contanier/staff/Student';
 import Viewcourse from '../../contanier/staff/Courses/ViewCourse';
 import AddCourse from '../../contanier/staff/Courses/AddCourse'
 import ViewCourseDetails from '../../contanier/staff/Courses/ViewCourse-Details';
+import AddStudent from "../../contanier/staff/Student/AddStudent";
+import ViewStudent from "../../contanier/staff/Student/ViewStudent";
+import EditStudent from "../../contanier/staff/Student/EditStudent";
 
 export default class Desktop extends Component {
   state = {
@@ -22,8 +25,10 @@ export default class Desktop extends Component {
               <Route exact path={'/staff/courses/addcourse'} render={(props) => <AddCourse {...props} />} />
               <Route exact path={'/staff/courses/:id'} render={(props) => <ViewCourseDetails  {...props} />} />
               <Route exact path={'/staff/courses/viewcourse/:id'} render={(props) => <ViewCourseDetails  {...props} />} />
-              <Route exact path={'/staff/student/'} component={Student} />
-            </Switch>       
+              <Route exact path={'/staff/student/addstudent'}  render={(props) => <AddStudent  {...props} />} />
+              <Route exact path={'/staff/student/viewstudent'}  render={(props) => <ViewStudent  {...props} />} />
+              <Route exact path={'/staff/student/viewstudent/:id'}  render={(props) => <EditStudent  {...props} />} />
+            </Switch>
             <Footer />
           </div>
         </div>
