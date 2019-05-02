@@ -3,11 +3,13 @@ const request = require('supertest');
 const app = require('../../app');
 const dbBuild = require('../../database/config/db_build');
 
+
 test('Get all student information from /api/v1/student/', (t) => {
   dbBuild()
     .then(() => {
       request(app)
         .get('/api/v1/student/')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -28,6 +30,7 @@ test('Get student information from /api/v1/student/12345', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/student/12345')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -49,6 +52,7 @@ test('Get student dose not exist from /api/v1/student/123456', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/student/123456')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -69,6 +73,7 @@ test('Delete student from /api/v1/student/12345', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/student/12345')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(202)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -89,6 +94,7 @@ test('Delete student not exist from /api/v1/student/12365645', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/student/123561645')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -109,6 +115,7 @@ test('Add new student from /api/v1/student/', (t) => {
     .then(() => {
       request(app)
         .post('/api/v1/student/')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .send({
           firstname: 'firstname',
           lastname: 'lastname',
@@ -144,6 +151,7 @@ test('Update student from /api/v1/student/1', (t) => {
     .then(() => {
       request(app)
         .put('/api/v1/student/12345')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .send({
           firstname: 'ali',
           lastname: 'hasn',
@@ -174,6 +182,7 @@ test('Get students information by level from /api/v1/student/level/7', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/student/level/7')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -195,6 +204,7 @@ test('Get student information by level dose not exist from /api/v1/student/level
     .then(() => {
       request(app)
         .get('/api/v1/student/level/123456')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -215,6 +225,7 @@ test('Get students by course from /api/v1/student/course/1', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/student/course/1')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -236,6 +247,7 @@ test('Get students by course dose not exist from /api/v1/student/course/123456',
     .then(() => {
       request(app)
         .get('/api/v1/student/course/123456')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -257,6 +269,7 @@ test('Get all courses information from /api/v1/course/', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/course/')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -277,6 +290,7 @@ test('Get course information from /api/v1/course/1', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/course/1')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -298,6 +312,7 @@ test('Get course dose not exist from /api/v1/course/123456', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/course/123456')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -318,6 +333,7 @@ test('Delete course from /api/v1/course/1', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/course/1')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(202)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -338,6 +354,7 @@ test('Delete course not exist from /api/v1/course/12365645', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/course/123561645')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -358,6 +375,7 @@ test('Add new course from /api/v1/course/', (t) => {
     .then(() => {
       request(app)
         .post('/api/v1/course/')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .send({
           title: 'new course',
           numberOfStudent: 30,
@@ -390,6 +408,7 @@ test('Get courses information by level from /api/v1/course/level/3', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/course/level/3')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -397,7 +416,7 @@ test('Get courses information by level from /api/v1/course/level/3', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description'], 'get same data that expected');
             t.end();
           }
         });
@@ -410,6 +429,7 @@ test('Get courses information by level dose not exist from /api/v1/course/level/
     .then(() => {
       request(app)
         .get('/api/v1/course/level/123456')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -430,6 +450,7 @@ test('Get courses by student from /api/v1/course/student/12345', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/course/student/12345')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -437,7 +458,7 @@ test('Get courses by student from /api/v1/course/student/12345', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['title', 'description', 'publish_date', 'days', 'h_from', 'h_to'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description', 'publish_date', 'days', 'h_from', 'h_to'], 'get same data that expected');
             t.end();
           }
         });
@@ -450,6 +471,7 @@ test('Get students by course dose not exist from /api/v1/course/student/15152345
     .then(() => {
       request(app)
         .get('/api/v1/course/student/123554145')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -470,6 +492,7 @@ test('Add new course for student from /api/v1/course/1', (t) => {
     .then(() => {
       request(app)
         .post('/api/v1/course/1')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .send({
           datesId: 2,
           studentid: 12345,
@@ -494,6 +517,7 @@ test('Add new course for student not exist from /api/v1/course/123545145', (t) =
     .then(() => {
       request(app)
         .post('/api/v1/course/125451345')
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .send({
           id: 125451345,
           datesId: 2,

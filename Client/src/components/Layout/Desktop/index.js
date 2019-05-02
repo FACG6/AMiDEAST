@@ -1,33 +1,23 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Footer from "../DesktopFooter";
-import Sidebar from "../../common/Sidebar";
+import SideBar from "../SideBar";
 import Courses from "../../contanier/staff/Courses";
 import Student from "../../contanier/staff/Student";
-import Login from "../../contanier/Auth";
-import "./index.css";
+import auth from "./../../auth";
 
-export default class Descktop extends Component {
-  state = {
-    login: true
-  };
+export default class Desktop extends Component {
+  state = {};
   render() {
-    const { login } = this.state;
+    const { role } = auth.isAuthenticated();
+    if (role === "student") this.props.history.push("/student");
     return (
-      <BrowserRouter className="desktop-container">
-        {login ? (
-          <div className="view-courses-contanier">
-            <Sidebar />
-            <Switch>
-              <Route exact path={"/courses"} component={Courses} />
-              <Route exact path={"/Student"} component={Student} />
-            </Switch>
-            <Footer />
-          </div>
-        ) : null
-          // <Redirect to= '/login' />
-        }
-      </BrowserRouter>
+      <>
+        <SideBar />
+        <Route exact path={"/staff/courses"} component={Courses} />
+        <Route exact path={"/staff/student"} component={Student} />
+        <Footer />
+      </>
     );
   }
 }
