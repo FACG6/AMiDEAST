@@ -7,17 +7,18 @@ const studentCourses = require('./sudent');
 const { applyCourse } = require('./postApplyCourse');
 const { addCourse } = require('./addCourse');
 const { deleteCourseById } = require('./deleteCourse');
+const { studentpermission, staffpermission } = require('../../middlewares/authorization');
 
 router
   .route('/')
-  .get(getAllCourses)
-  .post(addCourse);
+  .get(staffpermission, getAllCourses)
+  .post(staffpermission, addCourse);
 
 router
   .route('/:id')
   .get(getCourse)
-  .post(applyCourse)
-  .delete(deleteCourseById);
+  .post(studentpermission, applyCourse)
+  .delete(staffpermission, deleteCourseById);
 
 router
   .use('/level', coursesLevel);
