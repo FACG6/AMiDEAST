@@ -1,119 +1,131 @@
-import React, {
-  Component
-} from 'react'
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-import Button from '../../common/Button'
-import LabeledInput from '../../common/LabeledInput'
-import logo from '../../assets/Image/amideasblue.png'
-import './index.css'
+import Button from "../../common/Button";
+import LabeledInput from "../../common/LabeledInput";
+import logo from "../../assets/Image/amideasblue.png";
+import auth from "./../../auth";
+import { loginSchema } from "./../../../helpers/validation-schema";
+import Loading from "./../../Layout/Loading";
+import "./index.css";
 
 export default class Login extends Component {
-
   state = {
-    id: '',
-    password: '',
-    loginError: '',
-    role: '',
+    id: "",
+    password: "",
+    isLoading: false
   };
 
-  handleChange = ({
-    target: {
-      name,
-      value
-    }
-  }) => {
+  handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value.trim()
     });
   };
 
-  handleClick = (e) => {
-    e.preventDefault()
-    const {
-      id,
-      password
-    } = this.state;
-    if (!id || !password) {
-      this.setState({
-        loginError: 'All Fields Requier'
+  handleClick = (e, dispatch) => {
+    e.preventDefault();
+    // for loading ...
+    this.setState({ isLoading: true });
+    const { id, password } = this.state;
+    loginSchema
+      .validate({ id, password })
+      .then(({ id, password }) =>
+        axios.post("/api/v1/login", {
+          password,
+          id
+        })
+      )
+      .then(res => {
+        const { id, role, level } = res.data;
+        toast.success("Welcome");
+        auth.login(id, role, level ? level : null, () => {
+          const {
+            location: { state }
+          } = this.props;
+          state
+            ? this.props.history.push(state.from)
+            : this.props.history.push(`/${role}`);
+        });
       })
-    } else if (id.length === 0) {
-      this.setState({
-        loginError: 'ID At least Five Numbers'
-      })
-    } else if (password.length < 5) {
-      this.setState({
-        loginError: 'Password At Least Five'
-      })
-    } else {
-      this.setState({
-        loginError: ''
+      .catch(e => {
+        // errors for validation issues && response for fetch issues
+        const { errors = [], response = {} } = JSON.parse(JSON.stringify(e));
+        errors[0] ? toast.error(errors[0]) : toast.error(response.data.error);
       });
-      axios
-        .post('/api/v1/login', {
-          id,
-          password
-        })
-        .then(res => {
-          console.log(11111, res);
-          console.log(22222, res.data)
-          if (res.data.error) {
-            this.setState({
-              loginError: res.error
-            })
-          } else if (res.data.id) {
-            if (res.data.role === 'student') {
-              this.props.handleLogin(res.data.id)
-              this.props.history.push('/student/courses')
-            } else {
-              this.props.handleLogin(res.data.id)
-              this.props.history.push('/staff/courses')
-            }
-          } else {
-            this.setState({
-              loginError: 'Check your ID or Password'
-            })
-          }
-        })
-        .catch((e) => {
+    axios
+      .post('/api/v1/login', {
+        id,
+        password
+      })
+      .then(res => {
+        console.log(11111, res);
+        console.log(22222, res.data)
+        if (res.data.error) {
           this.setState({
-            loginError: 'Try Againe'
+            loginError: res.error
           })
+        } else if (res.data.id) {
+          if (res.data.role === 'student') {
+            this.props.handleLogin(res.data.id)
+            this.props.history.push('/student/courses')
+          } else {
+            this.props.handleLogin(res.data.id)
+            this.props.history.push('/staff/courses')
+          }
+        } else {
+          this.setState({
+            loginError: 'Check your ID or Password'
+          })
+        }
+      })
+      .catch((e) => {
+        this.setState({
+          loginError: 'Try Againe'
         })
-    }
+      })
   }
+}
 
-  render() {
-    return (
-      <div className='login' >
-        <img src={logo} alt="amideast logo" className='login-logo' />
-        <div className='mobile-container' >
-          <LabeledInput
-            LabeledInputClassName='container'
-            id='id'
-            labelClassName='login-container--label'
-            labelText='ID'
-            name='id'
-            placeholder='Enter your ID ... '
-            inputClassName='login-container--input'
-            type='number' 
-            onChange = { this.handleChange }
-          />
-          <LabeledInput
-            LabeledInputClassName='container'
-            id='pass'
-            labelClassName='login-container--label'
-            labelText='Password'
-            name='password'
-            placeholder='Enter your password ...'
-            inputClassName='login-container--input'
-            onChange={ this.handleChange}
-            type='password' 
-          />
-        </div>  <Button content='Login' className='login-btn' onClick={this.handleClick} />
-        <h2> {this.state.loginError} </h2> 
-      </div>
-    )
+render() {
+  // to redirect the signed user to his page
+  const { authenticated, role } = auth.isAuthenticated();
+  const { isLoading } = this.state;
+  if (authenticated) {
+    this.props.history.push(`/${role}`);
   }
-};
+  if (isLoading) return <Loading />;
+  return (
+    <div className="login">
+      <img src={logo} alt="amideast logo" className="login-logo" />
+      <div className="mobile-container">
+        <LabeledInput
+          id="id"
+          labelClassName="login-container--label"
+          labelText="ID"
+          name="id"
+          placeholder="Enter your ID ... "
+          inputClassName="login-container--input"
+          type="number"
+          onChange={this.handleChange}
+        />
+        <LabeledInput
+          id="pass"
+          labelClassName="login-container--label"
+          labelText="Password"
+          name="password"
+          placeholder="Enter your password ..."
+          inputClassName="login-container--input"
+          onChange={this.handleChange}
+          type="password"
+        />
+      </div>
+      <Button
+        content="Login"
+        className="login-btn"
+        onClick={this.handleClick}
+      />
+    </div>
+  );
+}
+

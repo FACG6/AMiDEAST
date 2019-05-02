@@ -4,10 +4,12 @@
   "description": "",
   "scripts": {
     "dev": "NODE_ENV=development nodemon server/index.js",
+    "start": "cd server $$ npm start",
+    "heroku-postbuild": "cd Client && npm install && npm run build",
     "test": "cd ./server && npm run test",
     "start:server": "nodemon index.js --prefix server",
     "start:client": "npm start --prefix Client",
-    "start": "NODE_ENV=development concurrently  \"npm run start:client\" \" npm run start:server\" ",
+    "start:dev": "NODE_ENV=development concurrently  \"npm run start:client\" \" npm run start:server\" ",
     "kill": "fuser -k 7777/tcp && fuser -k 3000/tcp"
   },
   "repository": {
@@ -26,5 +28,9 @@
     "eslint": "5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2"
+  },
+  "dependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
   }
 }
