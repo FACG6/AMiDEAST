@@ -1,11 +1,21 @@
 import React, { Component } from "react";
-import showToast from 'show-toast';
-
+//import showToast from 'show-toast';
+import { toast } from "react-toastify";
 import "./index.css";
 import LabeledInput from "../../../../common/LabeledInput";
 import Button from "../../../../common/Button";
 import { addCourseSchema, addDatesSchema } from '../../../../../helpers/validation-schema';
-
+const initState={
+  title: '',
+  description: '',
+  level: 0,
+  numberOfStudent: 0,
+  start: 0,
+  end: 0,
+  days: '',
+  Error: {},
+  dates: []
+}
 
 export default class Addcourse extends Component {
   state = {
@@ -34,12 +44,8 @@ export default class Addcourse extends Component {
         document.getElementById('start').value = '';
         document.getElementById('end').value = '';
         this.setState({ days: '', start: 0, end: 0 })
-        showToast({
-          str: "added successfully ",
-          time: 5000,
-          position: 'top'
-        })
-      })
+              toast.success("added successfully ");
+    })
       .catch(({ inner }) => {
         if (inner) {
           const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
@@ -47,7 +53,6 @@ export default class Addcourse extends Component {
         }
       })
   }
-
 
   handleSubmitAddCourse = (e) => {
     e.preventDefault();
@@ -70,13 +75,18 @@ export default class Addcourse extends Component {
           }
         })
           .then(res => res.json())
-          .then(res => console.log('the res', res))
-          .catch(err => console.log(11111111, err))
+          .then(res => {
+            if(res.data) {
+              this.setState({...initState })
+              toast.success(res.data);
+            }
+            else {
+              toast.error(res.error);
+            }
+        })
+          .catch(err => toast.error(err))
       })
-      .catch(({ inner, fetchError }) => {
-        if (fetchError) {
-          // handle fetch Error
-        }
+      .catch(({ inner }) => {
         if (inner) {
           const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
           this.setState({ Error: { ...errors } })
