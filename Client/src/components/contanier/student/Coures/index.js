@@ -29,26 +29,29 @@ export default class Courses extends Component {
     ) : (
       <div className="courses">
         <h1 className="courses-title">Available Courses</h1>
-        {data.map(item => {
-          console.log(item.id);
-          return (
-            <div className="courses-card" key={item.id}>
-              <div className="courses-card-box">
-                <Course {...item} />
+        {data.length === 0 ? (
+          <h1>There is no any avaliable courses</h1>
+        ) : (
+          data.map(item => {
+            return (
+              <div className="courses-card" key={item.id}>
+                <div className="courses-card-box">
+                  <Course {...item} />
+                </div>
+                <div className="courses-card--div">
+                  <Link to="/student/apply">
+                    <Button
+                      content="Apply"
+                      className="courses-card-btn"
+                      id={item.id}
+                      onClick={this.props.handleCourseId}
+                    />
+                  </Link>
+                </div>
               </div>
-              <div className="courses-card--div">
-                <Link to="/student/apply">
-                  <Button
-                    content="Apply"
-                    className="courses-card-btn"
-                    id={item.id}
-                    onClick={this.props.handleCourseId}
-                  />
-                </Link>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
     );
   }
