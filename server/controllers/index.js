@@ -18,10 +18,11 @@ router.use(permission);
 router
   .post('/login', login);
 
-router.use(authorization);
+
 router
   .use(auth);
 
+router.use(authorization);
 router
   .use('/student', student);
 

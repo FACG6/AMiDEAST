@@ -9,7 +9,7 @@ test('Get all student information from /api/v1/student/', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/student/')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -73,7 +73,7 @@ test('Delete student from /api/v1/student/12345', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/student/12345')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .expect(202)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -94,7 +94,7 @@ test('Delete student not exist from /api/v1/student/12365645', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/student/123561645')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -115,7 +115,7 @@ test('Add new student from /api/v1/student/', (t) => {
     .then(() => {
       request(app)
         .post('/api/v1/student/')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .send({
           firstname: 'firstname',
           lastname: 'lastname',
@@ -151,7 +151,7 @@ test('Update student from /api/v1/student/1', (t) => {
     .then(() => {
       request(app)
         .put('/api/v1/student/12345')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .send({
           firstname: 'ali',
           lastname: 'hasn',
@@ -269,7 +269,7 @@ test('Get all courses information from /api/v1/course/', (t) => {
     .then(() => {
       request(app)
         .get('/api/v1/course/')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -333,7 +333,7 @@ test('Delete course from /api/v1/course/1', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/course/1')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .expect(202)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -354,7 +354,7 @@ test('Delete course not exist from /api/v1/course/12365645', (t) => {
     .then(() => {
       request(app)
         .delete('/api/v1/course/123561645')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .expect(404)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -375,7 +375,7 @@ test('Add new course from /api/v1/course/', (t) => {
     .then(() => {
       request(app)
         .post('/api/v1/course/')
-        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
+        .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .send({
           title: 'new course',
           numberOfStudent: 30,
@@ -384,6 +384,7 @@ test('Add new course from /api/v1/course/', (t) => {
           days: 'sat-mon-wed',
           start: 17,
           end: 9,
+          dates: [{ start: 10, end: 10, days: 'starday-sund' }],
         })
         .expect(201)
         .expect('Content-Type', /json/)
