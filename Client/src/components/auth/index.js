@@ -5,11 +5,13 @@ class Auth {
   authenticated = false;
   id = "";
   role = "";
+  level = "";
 
-  login(id = "", role = "", callback) {
+  login(id = "", role = "", level = "", callback) {
     this.authenticated = true;
     this.id = id;
     this.role = role;
+    this.level = level;
     if (typeof callback === "function") callback();
   }
 
@@ -29,15 +31,17 @@ class Auth {
     return {
       authenticated: this.authenticated,
       id: this.id,
-      role: this.role
+      role: this.role,
+      level: this.level
     };
   }
 
   checkUser(callback) {
     const token = cookie.get("jwt");
     if (token) {
-      const { role, id } = jwt.decode(token);
-      this.login(id, role, callback);
+      const { role, id, level } = jwt.decode(token);
+      console.log(role, id, level);
+      this.login(id, role, level, callback);
     }
   }
 }

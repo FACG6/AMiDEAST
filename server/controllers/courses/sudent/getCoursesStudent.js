@@ -1,25 +1,26 @@
-const { getCoursesStudent, appliedCourse } = require('../../../database/queries/getCoursesStudent');
+const getCoursesStudent = require("../../../database/queries/getCoursesStudent");
 
 const get = (req, res) => {
   const { studentId } = req.params;
   getCoursesStudent(studentId)
-    .then((courses) => {
+    .then(courses => {
       if (!courses.rowCount) {
         res.status(404).send({
-          error: 'No courses for this student',
-          data: null,
+          error: "No courses for this student",
+          data: null
         });
       } else {
         res.send({
           error: null,
-          data: courses.rows,
+          data: courses.rows
         });
       }
     })
-    .catch(() => {
+    .catch(error => {
+      console.log(error);
       res.status(500).send({
-        error: 'Sorry we have some issues',
-        data: null,
+        error: "Sorry we have some issues",
+        data: null
       });
     });
 };

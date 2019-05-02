@@ -14,7 +14,7 @@ import auth from "./../../auth";
 export default class Mobile extends Component {
   state = {
     menuOpen: false,
-    level: [],
+    level: "",
     courseId: null
   };
   handleLinkClick = () => {
@@ -24,18 +24,9 @@ export default class Mobile extends Component {
     this.setState({ menuOpen: !this.state.menuOpen });
   };
 
-  handleCourseId = e => {
-    e.preventDefault();
-    this.setState({ courseId: e.target.id });
-    this.props.history.push("/student/apply");
-  };
-
   componentDidMount() {
-    const { id } = auth.isAuthenticated();
-    // you can pass level by cookies .
-    axios.get(`/api/v1/student/${id}`).then(res => {
-      this.setState({ level: res.data.data.level });
-    });
+    const { level } = auth.isAuthenticated();
+    this.setState({ level });
   }
 
   render() {
@@ -62,7 +53,6 @@ export default class Mobile extends Component {
                 id={id}
                 level={this.state.level}
                 history={this.props.history}
-                handleCourseId={this.handleCourseId}
               />
             )}
           />
