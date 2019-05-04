@@ -12,31 +12,12 @@ exports.addCourseSchema = joi.object().keys({
 });
 
 exports.studentSchema = joi.object().keys({
-  firstname: joi
-    .string()
-    .min(3)
-    .max(15),
-  lastname: joi
-    .string()
-    .min(3)
-    .max(15),
-  phonenumber: joi
-    .string()
-    .min(7)
-    .max(10),
-  mobilenumber: joi
-    .string()
-    .min(6)
-    .max(8),
-  address: joi
-    .string()
-    .min(3)
-    .max(50),
-  level: joi
-    .number()
-    .integer()
-    .min(0)
-    .max(12),
+  firstname: joi.string().min(3).max(15),
+  lastname: joi.string().min(3).max(15),
+  phonenumber: joi.string().min(6).max(8),
+  mobilenumber: joi.string().min(7).max(10),
+  address: joi.string().min(3).max(50),
+  level: joi.number().integer().min(0).max(12),
   password: joi.string().min(3),
 });
 
@@ -46,9 +27,6 @@ exports.applyCourseSchema = joi.object().keys({
 });
 
 exports.loginSchema = joi.object().keys({
-  id: joi
-    .number()
-    .integer()
-    .min(5),
+  id: joi.number().integer().min(5),
   password: joi.string().min(5),
 });

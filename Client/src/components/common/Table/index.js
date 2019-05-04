@@ -20,6 +20,7 @@ const Table = ({ headings, rows, history, pathname }) => {
       <tbody>
         {rows.map((row, index) => {
           const rowContents = row.slice(1);
+          console.log(pathname);
           return (
             <tr className='table-row' key={index} onClick={() => history.push(`${pathname}/${row[0]}`)}>
               {rowContents.map((rowcontent, index) =>

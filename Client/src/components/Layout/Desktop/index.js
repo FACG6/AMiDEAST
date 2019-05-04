@@ -20,7 +20,7 @@ export default class Desktop extends Component {
           <SideBar />
           <div>
             <Switch>
-              <Route exact path={'/staff/'} render={(props) => <Viewcourse {...props} />} />
+              <Route exact path={'/staff/'} render={() => <Redirect to='/staff/courses/viewcourse'/>} />
               <Route exact path={'/staff/courses/'} render={(props) => <Viewcourse {...props} />} />
               <Route exact path={'/staff/courses/viewcourse'} render={(props) => <Viewcourse {...props} />} />
               <Route exact path={'/staff/courses/addcourse'} render={(props) => <AddCourse {...props} />} />
@@ -29,6 +29,8 @@ export default class Desktop extends Component {
               <Route exact path={'/staff/student/addstudent'} render={(props) => <AddStudent  {...props} />} />
               <Route exact path={'/staff/student/viewstudent'} render={(props) => <ViewStudent  {...props} />} />
               <Route exact path={'/staff/student/viewstudent/:id'} render={(props) => <EditStudent  {...props} />} />
+              <Route exact path={'/staff/student/editstudent'} render={(props) => <Redirect to='/staff/student/viewstudent'/>} />
+
             </Switch>
             <Footer />
           </div>

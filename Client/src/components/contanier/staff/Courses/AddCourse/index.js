@@ -45,7 +45,6 @@ export default class Addcourse extends Component {
         document.getElementById('end').value = '';
         this.setState({ days: '', start: 0, end: 0 })
         toast.success("added successfully ");
-        this.props.history.push('/staff/courses/viewcourse')
       })
       .catch(({ inner }) => {
         if (inner) {
@@ -80,6 +79,7 @@ export default class Addcourse extends Component {
             if (res.data) {
               this.setState({ ...initState })
               toast.success('Course added successfuly ');
+              this.props.history.push('/staff/courses/viewcourse')
             }
             else {
               toast.error(res.error);

@@ -42,7 +42,7 @@ export const loginSchema = yup.object().shape({
 });
 
 const addCourseSchema = yup.object().shape({
-  title: yup.string().min(3).max(15),
+  title: yup.string().min(3).max(30),
   description: yup.string().min(5),
   level: yup.number().lessThan(13).moreThan(0),
   numberOfStudent: yup.number().lessThan(100).moreThan(5),

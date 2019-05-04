@@ -38,13 +38,15 @@ export default class Viewcourse extends Component {
           rows.map(row => {
             rowContent.push([row.id, row.title, row.publish_date, row.target_level, row.number_of_student, <a onClick={() => this.handleDelete(row.id)}><i className="fa fa-trash delete-icon" aria-hidden="true" ></i></a>]);
           })
-          this.state.headings = [
-            "Course Name",
-            "Date Of Publish",
-            "Target Level",
-            "Percentage Of Total Numbers",
-            " "
-          ];
+          this.setState({
+            headings: [
+              "Course Name",
+              "Date Of Publish",
+              "Target Level",
+              "Percentage Of Total Numbers",
+              " "
+            ]
+          });
           return this.setState({ rows: rowContent, Error: '', isloading: false })
         }
         return this.setState({ Error: res.error, isloading: false })
@@ -53,7 +55,6 @@ export default class Viewcourse extends Component {
   }
   render() {
     const { headings, rows, isloading } = this.state;
-    console.log(isloading);
     if (!isloading) {
       return (
         <div>
@@ -68,7 +69,7 @@ export default class Viewcourse extends Component {
                 There is no courses untill now
                 <br />
                 Click <a
-                  className='add-coures-link'
+                  className='add-course-link'
                   onClick={() => this.props.history.push('/staff/courses/addcourse')}
                 >
                   here </a>

@@ -53,7 +53,7 @@ export default class AddStudent extends Component {
             if (res.data) {
               this.setState({ ...initState })
               toast.success('Student added successfuly ');
-              this.props.history.push('/staff/student/viewcourse')
+              this.props.history.push('/staff/student/viewstudent')
             }
             else {
               toast.error(res.error);

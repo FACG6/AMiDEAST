@@ -8,6 +8,7 @@
     "browser-cookies": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "react": "^16.8.6",
+    "react-bootstrap-sweetalert": "^4.4.1",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
