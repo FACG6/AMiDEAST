@@ -1,3 +1,7 @@
 .view-courses-contanier {
   display: flex;
 }
+
+.content{
+  margin-left: 20%;
+}

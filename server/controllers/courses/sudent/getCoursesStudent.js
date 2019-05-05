@@ -17,7 +17,6 @@ const get = (req, res) => {
       }
     })
     .catch(error => {
-      console.log(error);
       res.status(500).send({
         error: "Sorry we have some issues",
         data: null

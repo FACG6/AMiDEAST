@@ -1,3 +1,7 @@
+import auth from "./../../auth";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 const data = {
   linklist: [
     {
@@ -21,6 +25,21 @@ const data = {
         { title: 'view Student', to: '/staff/student/viewstudent' },
         { title: 'Edit Student', to: '/staff/student/editstudent' }
       ]
+    }, {
+      fontawesome: 'fas fa-sign-out-alt sidebar-icon',
+      title: 'logout',
+      links: []
+      , handleLogout: (e, props) => {
+        e.preventDefault();
+        auth.logout(() =>
+          axios.get("/api/v1/logout/").then(() => {
+            toast.success('Goodbye !!');
+            props.history.push("/login");
+
+          })
+        );
+      }
+
     }
   ]
 };

@@ -19,14 +19,12 @@ export default class ViewStudent extends Component {
   handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
 
   handleDelete = (id) => {
-    console.log(id);
-    if (window.confirm('Delete the item?')) {
+    if (window.confirm('Delete the student?')) {
       fetch(`/api/v1/student/${id}`, {
         method: 'DELETE',
       })
         .then(res => res.json())
         .then(res => {
-          console.log(res);
           if (res.data) {
             toast.success(res.data);
             this.props.history.push('/staff/student/viewstudent');

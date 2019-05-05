@@ -15,16 +15,16 @@ let studentSchema = yup.object().shape({
     .moreThan(0),
   phonenumber: yup
     .string()
-    .min(3)
-    .max(50),
+    .min(6)
+    .max(8),
   lastname: yup
     .string()
     .min(3)
     .max(50),
   mobilenumber: yup
     .string()
-    .min(3)
-    .max(50),
+    .min(7)
+    .max(10),
   password: yup
     .string()
     .min(5)
