@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import "./index.css";
 import Table from "../../../../common/Table";
 import Loading from '../../../../Layout/Loading'
+import pageTitle from "../../../../../helpers/pageTitle";
 
 export default class Viewcourse extends Component {
   state = {
@@ -27,6 +28,7 @@ export default class Viewcourse extends Component {
       })
   }
   componentDidMount() {
+    pageTitle('View Course')
     fetch('/api/v1/course', {
       method: 'GET'
     })
@@ -77,7 +79,6 @@ export default class Viewcourse extends Component {
           </div>
         </div>
       );
-
     }
     else return <Loading />
   }

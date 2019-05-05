@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { toast } from "react-toastify";
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
+import { toast } from 'react-toastify';
 
-import "./index.css";
-import Table from "../../../../common/Table";
-import Button from "../../../../common/Button";
-import Input from "../../../../common/Input";
+import './index.css';
+import Table from '../../../../common/Table';
+import Button from '../../../../common/Button';
 import Loading from '../../../../Layout/Loading'
+import pageTitle from './../../../../../helpers/pageTitle'
+import LabeledInput from '../../../../common/LabeledInput';
 
 export default class ViewStudent extends Component {
   state = {
@@ -34,14 +34,17 @@ export default class ViewStudent extends Component {
     }
   }
   handleSearch = () => {
-    /*console.log('object')
-    this.state.rows[0].filter(a =>
-
-      console.log(a.toString().search(/Fatma/))
-    )*/
+    const { search, rows } = this.state;
+    if (search.length >= 3) {
+      search.toLocaleLowerCase()
+      rows.map(row => console.log(row))
+      this.setState({ Error: {} })
+    }
+    else return this.setState({ Error: { 'search': 'Search value must be more than 3 characters ' } })
   }
 
   componentDidMount() {
+    pageTitle('View Students')
     fetch('/api/v1/student', {
       method: 'GET'
     })
@@ -53,17 +56,17 @@ export default class ViewStudent extends Component {
           rows.map(row => {
             rowContent.push([row.id, row.firstname + ' ' + row.lastname, row.id, row.level, row.mobile_phone,
             <a onClick={() => this.handleDelete(row.id)}>
-              <i className="fa fa-trash delete-icon" aria-hidden="true" >
+              <i className='fa fa-trash delete-icon' aria-hidden='true' >
               </i>
             </a>
             ]);
           })
           this.setState({
             headings: [
-              "Student Name",
-              "Student Number",
-              "Level ",
-              "Mobile Number",
+              'Student Name',
+              'Student Number',
+              'Level ',
+              'Mobile Number',
               ' '
             ]
           })
@@ -75,45 +78,40 @@ export default class ViewStudent extends Component {
   }
 
   render() {
-    const { rows, isloadding } = this.state;
+    const { rows, isloadding, Error, search } = this.state;
     return (
-      <>
-        <h1 className="view-student-titel">
-          <span className="view-student-line ">View Student</span>
+      <div className='view-student'>
+        <h1 className='view-student-title'>
+          View Student
         </h1>
-        <div className="view-student">
-          <div className="search-button-div">
-            <Input
-              value={this.state.search}
-              name="search"
-              placeholder="Search by student number ...."
-              inputClassName="search-input"
-              type="text"
-              onChange={this.handleInput}
-              Error={this.state.Error['search']}
-            />
-            <Button content="search" className="search-button" onClick={() => this.handleSearch()} />
-          </div>
-
-
-          <div className="result">Result:</div>
-          <div className="view-student">
-            {isloadding ? <Loading /> : rows.length !== 0 ?
-              <Table headings={this.state.headings} rows={this.state.rows} history={this.props.history} pathname={this.props.location.pathname} />
-              :
-              <div className='no-student'>
-                There is no student untill now
-            <br />
-                Click <a
-                  className='add-student-link'
-                  onClick={() => this.props.history.push('/staff/student/addstudent')}
-                >
-                  here </a>
-                to add student</div>
-            }
-          </div>
+        <div className='search-button-div'>
+          <LabeledInput
+            value={search}
+            name='search'
+            placeholder='Search by student number ....'
+            inputClassName='search-input'
+            type='text'
+            onChange={this.handleInput}
+            Error={Error['search']}
+          />
+          <Button content='search' className='search-button' onClick={() => this.handleSearch()} />
         </div>
-      </>
+
+        <div className='result'>Result:</div>
+        {isloadding ? <Loading /> : rows.length !== 0 ?
+          <Table headings={this.state.headings} rows={this.state.rows} history={this.props.history} pathname={this.props.location.pathname} />
+          :
+          <div className='no-student'>
+            There is no student untill now
+            <br />
+            Click <a
+              className='add-student-link'
+              onClick={() => this.props.history.push('/staff/student/addstudent')}
+            >
+              here </a>
+            to add student</div>
+        }
+      </div>
     );
   }
 }

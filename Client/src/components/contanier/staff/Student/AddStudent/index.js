@@ -4,18 +4,8 @@ import { toast } from "react-toastify";
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
 import { studentSchema } from './../../../../../helpers/validation-schema'
+import pageTitle  from './../../../../../helpers/pageTitle'
 import './index.css';
-
-const initState = {
-  firstname: '',
-  address: '',
-  level: 0,
-  phonenumber: '',
-  lastname: '',
-  mobilenumber: '',
-  password: '',
-  Error: {}
-}
 
 export default class AddStudent extends Component {
   state = {
@@ -28,6 +18,10 @@ export default class AddStudent extends Component {
     password: '',
     Error: {}
   }
+
+componentDidMount(){
+  pageTitle('Add Student');
+}
 
   handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
 
@@ -51,7 +45,6 @@ export default class AddStudent extends Component {
           .then(res => res.json())
           .then(res => {
             if (res.data) {
-              this.setState({ ...initState })
               toast.success('Student added successfuly ');
               this.props.history.push('/staff/student/viewstudent')
             }

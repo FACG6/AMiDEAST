@@ -4,18 +4,7 @@ import "./index.css";
 import LabeledInput from "../../../../common/LabeledInput";
 import Button from "../../../../common/Button";
 import { addCourseSchema, addDatesSchema } from '../../../../../helpers/validation-schema';
-
-const initState = {
-  title: '',
-  description: '',
-  level: 0,
-  numberOfStudent: 0,
-  start: 0,
-  end: 0,
-  days: '',
-  Error: {},
-  dates: []
-}
+import pageTitle from '../../../../../helpers/pageTitle';
 
 export default class Addcourse extends Component {
   state = {
@@ -29,8 +18,11 @@ export default class Addcourse extends Component {
     Error: {},
     dates: []
   }
-  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
 
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
+  componentDidMount() {
+    pageTitle('Add Course');
+  }
   handleClickAddDates = (e) => {
     e.preventDefault();
     this.setState({ Error: {} })
@@ -77,7 +69,6 @@ export default class Addcourse extends Component {
           .then(res => res.json())
           .then(res => {
             if (res.data) {
-              this.setState({ ...initState })
               toast.success('Course added successfuly ');
               this.props.history.push('/staff/courses/viewcourse')
             }

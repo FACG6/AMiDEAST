@@ -6,6 +6,7 @@ import Button from './../../../../common/Button';
 import { studentSchema } from './../../../../../helpers/validation-schema'
 import { leftSectionInfo, rightSectionInfo } from './staticdata';
 import { Redirect } from 'react-router-dom';
+import pageTitle  from './../../../../../helpers/pageTitle'
 
 import './index.css';
 
@@ -69,8 +70,8 @@ export default class EditStudent extends Component {
   }
 
   componentDidMount() {
+    pageTitle('Edit Student');
     const { id } = this.props.match.params;
-    if (id) {
       fetch(`/api/v1/student/${id}`)
         .then(res => res.json())
         .then(res => {
@@ -89,8 +90,7 @@ export default class EditStudent extends Component {
           if (res.error) this.setState({ Error: res.error })
         })
         .catch(err => this.setState({ Error: 'Something happen error' }))
-    }
-    else return <Redirect to='/staff/student/viewstudent/' />
+   
   }
   render() {
     return (
