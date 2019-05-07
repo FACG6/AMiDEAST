@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 
 import './index.css';
 import Table from '../../../../common/Table';
-import Button from '../../../../common/Button';
 import Loading from '../../../../Layout/Loading'
 import pageTitle from './../../../../../helpers/pageTitle'
 import LabeledInput from '../../../../common/LabeledInput';
@@ -12,11 +11,17 @@ export default class ViewStudent extends Component {
   state = {
     headings: [],
     rows: [],
+    filter: [],
     search: '',
     Error: {},
     isloadding: true
   }
-  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
+  handleChange = ({ target: { value, name } }) => {
+    let filter = this.state.rows.filter((item) => 
+        item[1].startsWith(value)
+      )
+    this.setState({filter, [name]: value})
+  };
 
   handleDelete = (id) => {
     if (window.confirm('Delete the student?')) {
@@ -32,15 +37,6 @@ export default class ViewStudent extends Component {
           else toast.error(res.error);
         })
     }
-  }
-  handleSearch = () => {
-    const { search, rows } = this.state;
-    if (search.length >= 3) {
-      search.toLocaleLowerCase()
-      rows.map(row => console.log(row))
-      this.setState({ Error: {} })
-    }
-    else return this.setState({ Error: { 'search': 'Search value must be more than 3 characters ' } })
   }
 
   componentDidMount() {
@@ -70,7 +66,7 @@ export default class ViewStudent extends Component {
               ' '
             ]
           })
-          return this.setState({ rows: rowContent, Error: '', isloadding: false })
+          return this.setState({ rows: rowContent, filter: rowContent, Error: '', isloadding: false })
         }
         return this.setState({ Error: res.error, isloadding: false })
       })
@@ -91,15 +87,14 @@ export default class ViewStudent extends Component {
             placeholder='Search by student number ....'
             inputClassName='search-input'
             type='text'
-            onChange={this.handleInput}
+            onChange={this.handleChange}
             Error={Error['search']}
           />
-          <Button content='search' className='search-button' onClick={() => this.handleSearch()} />
         </div>
 
         <div className='result'>Result:</div>
         {isloadding ? <Loading /> : rows.length !== 0 ?
-          <Table headings={this.state.headings} rows={this.state.rows} history={this.props.history} pathname={this.props.location.pathname} />
+          <Table headings={this.state.headings} rows={this.state.filter} history={this.props.history} pathname={this.props.location.pathname} />
           :
           <div className='no-student'>
             There is no student untill now

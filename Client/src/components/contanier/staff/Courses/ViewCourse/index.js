@@ -5,14 +5,25 @@ import "./index.css";
 import Table from "../../../../common/Table";
 import Loading from '../../../../Layout/Loading'
 import pageTitle from "../../../../../helpers/pageTitle";
+import LabeledInput from '../../../../common/LabeledInput';
 
 export default class Viewcourse extends Component {
   state = {
     headings: [],
     rows: [],
+    filter: [],
     Error: null,
-    isloading: true
+    isloading: true,
+    search: ''
   }
+
+  handleChange = ({ target: { value, name } }) => {
+    let filter = this.state.rows.filter((item) => 
+      item[1].startsWith(value)
+      )
+    this.setState({filter, [name]: value})
+  };
+
   handleDelete = (id) => {
     if (window.confirm('Delete the course?')) {
       fetch(`/api/v1/course/${id}`, {
@@ -51,23 +62,34 @@ export default class Viewcourse extends Component {
               " "
             ]
           });
-          return this.setState({ rows: rowContent, Error: '', isloading: false })
+          return this.setState({ rows: rowContent, filter: rowContent, Error: '', isloading: false })
         }
         return this.setState({ Error: res.error, isloading: false })
       })
       .catch(err => this.setState({ Error: 'Something happen error', isloading: false }))
   }
   render() {
-    const { headings, rows, isloading } = this.state;
+    const { headings, filter, isloading, search } = this.state;
     if (!isloading) {
       return (
         <div>
           <h1 className="view-course-titel">
             <span className="view-course-line">View Course</span>
           </h1>
+          <div className='search-button-div'>
+          <LabeledInput
+            value={search}
+            name='search'
+            placeholder='Search by course number ....'
+            inputClassName='search-input'
+            type='text'
+            onChange={this.handleChange}
+            Error={Error['search']}
+          />
+        </div>
           <div className="view-course">
-            {rows.length != 0 ?
-              <Table headings={headings} rows={rows} history={this.props.history} pathname={this.props.location.pathname} />
+            {filter.length != 0 ?
+              <Table headings={headings} rows={filter} history={this.props.history} pathname={this.props.location.pathname} />
               :
               <div className='no-courses'>
                 There is no courses untill now

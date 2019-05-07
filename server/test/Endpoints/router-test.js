@@ -409,7 +409,10 @@ test('Get courses information by level from /api/v1/course/level/3', (t) => {
   dbBuild()
     .then(() => {
       request(app)
-        .get('/api/v1/course/level/3')
+        .post('/api/v1/course/level/3')
+        .send({
+          studentid: 12345,
+        })
         .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
@@ -418,7 +421,7 @@ test('Get courses information by level from /api/v1/course/level/3', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description', 'target_level', 'number_of_student', 'publish_date', 'h_from', 'h_to', 'course_id', 'days'], 'get same data that expected');
             t.end();
           }
         });
@@ -430,7 +433,10 @@ test('Get courses information by level dose not exist from /api/v1/course/level/
   dbBuild()
     .then(() => {
       request(app)
-        .get('/api/v1/course/level/123456')
+        .post('/api/v1/course/level/123456')
+        .send({
+          studentid: 12345,
+        })
         .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
