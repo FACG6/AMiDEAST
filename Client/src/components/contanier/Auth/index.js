@@ -37,9 +37,9 @@ export default class Login extends Component {
         })
       )
       .then(res => {
-        const { id, role } = res.data;
+        const { id, role, level } = res.data;
         toast.success("Welcome");
-        auth.login(id, role, () => {
+        auth.login(id, role, level ? level : null, () => {
           const {
             location: { state }
           } = this.props;

@@ -4,6 +4,6 @@ const { getCoursesLevel } = require('./getCoursesLevel');
 
 router
   .route('/:level')
-  .get(getCoursesLevel);
+  .post(getCoursesLevel);
 
 module.exports = router;
