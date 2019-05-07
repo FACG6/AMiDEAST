@@ -20,12 +20,12 @@
 }
 
 .view-course table {
-  width: 125%;
+  width: 90%;
 }
 
 .delete-icon {
   color: #333;
-  padding: 0 15px;
+  padding: 10px 15px;
 }
 
 .no-courses {

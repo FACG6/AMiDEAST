@@ -28,7 +28,7 @@
 .add-student-btn {
   border: none;
   background-color: #2980B9;
-  margin-top: 47px;
+  margin-top: 7px;
   height: 40px;
   width: 100%;
 }
@@ -37,4 +37,13 @@
   outline: none;
   margin-top: 8px;
   padding-left: 15px;
+}
+
+.general-label-input {
+  margin: 0 0 15px 0;
+}
+
+.add-student-contanier-left,
+.add-student-contanier-right {
+  width: 42%;
 }

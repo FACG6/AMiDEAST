@@ -14,18 +14,20 @@ export default class Viewcourse extends Component {
     isloading: true
   }
   handleDelete = (id) => {
-    fetch(`/api/v1/course/${id}`, {
-      method: 'DELETE',
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.data) {
-          toast.success(res.data);
-          this.props.history.push('/staff/courses/viewcourse');
-          this.setState({ isloading: false })
-        }
-        else toast.error(res.error);
+    if (window.confirm('Delete the course?')) {
+      fetch(`/api/v1/course/${id}`, {
+        method: 'DELETE',
       })
+        .then(res => res.json())
+        .then(res => {
+          if (res.data) {
+            toast.success(res.data);
+            this.props.history.push('/staff/courses/viewcourse');
+            this.setState({ isloading: false })
+          }
+          else toast.error(res.error);
+        })
+    }
   }
   componentDidMount() {
     pageTitle('View Course')

@@ -14,7 +14,7 @@
 
 .search-button-div {
   display: flex;
-  margin: 15px auto 0 auto;
+  margin: 15px 0 0 50px;
 }
 
 .search-button {
@@ -26,7 +26,7 @@
 
 .delete-icon {
   color: #333;
-  padding: 0 15px;
+  padding: 10px 15px;
 }
 
 .search-button-div input {
@@ -35,9 +35,6 @@
   padding-left: 15px;
 }
 
-.general-label-input {
-  margin: 0 0 15px 40px;
-}
 
 .result {
   display: inline-block;
