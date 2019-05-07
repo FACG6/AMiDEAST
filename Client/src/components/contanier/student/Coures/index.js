@@ -22,8 +22,9 @@ export default class Courses extends Component {
     const { id } = auth.isAuthenticated();
     if (level) {
       axios
-        .post(`/api/v1/course/level/${level}`, { student_id: id })
+        .post(`/api/v1/course/level/${level}`, { studentId: id })
         .then(res => {
+          console.log(res)
           this.setState({ data: res.data.data, isLoading: false });
         })
         .catch(err => {
