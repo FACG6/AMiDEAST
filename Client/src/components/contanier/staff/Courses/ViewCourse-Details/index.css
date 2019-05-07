@@ -1,23 +1,17 @@
-.view-course-titel {
+.view-course-details-titel {
   color: #06468f;
   font-size: 34px;
   font-weight: bold;
   margin-top: 50px;
-  margin-left: 39px;
+  margin-left: 50px;
   margin-bottom: 9px;
-}
-
-.view-course-line {
-  width: 204px;
+  width: fit-content;
   border-bottom: 1.5px solid #06468f;
-  margin-top: 100px;
-  margin-left: 39px;
-  margin-bottom: 73px;
 }
 
-.view-course  {
+.view-course-details {
   margin: 50px 0px 50px 100px;
 }
-.view-course table {
+.view-course-details table {
   width: 90%;
 }

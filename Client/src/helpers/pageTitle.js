@@ -1,1 +1,1 @@
-export default function  pageTitle(title){ return document.title=`El | ${title}`}
+export default function pageTitle(title) { return document.title = `El | ${title}` }

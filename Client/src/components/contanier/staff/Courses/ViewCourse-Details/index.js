@@ -50,7 +50,7 @@ export default class ViewCourseDetails extends Component {
     return (
       <>
         <h1 className='view-course-details-titel'>
-          <span className='view-course-details-line'>View Course</span>
+          View Course
         </h1>
         {!isloading ?
           <div className='view-course-details'>

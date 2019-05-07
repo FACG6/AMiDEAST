@@ -1,0 +1,1 @@
+export default function pageTitleStd(title) { return document.title = `${title}` }

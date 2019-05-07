@@ -17,7 +17,7 @@ test('Get all student information from /api/v1/student/', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['firstname', 'lastname', 'id', 'is_active', 'home_phone', 'mobile_phone', 'address', 'level', 'password'], 'get same data that expected');
             t.end();
           }
         });
@@ -38,7 +38,7 @@ test('Get student information from /api/v1/student/12345', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data), ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data), ['firstname', 'lastname', 'id', 'is_active', 'home_phone', 'mobile_phone', 'address', 'level', 'password'], 'get same data that expected');
             t.equal(obj.data.id, 12345, 'User ID for the correct');
             t.end();
           }
@@ -119,8 +119,8 @@ test('Add new student from /api/v1/student/', (t) => {
         .send({
           firstname: 'firstname',
           lastname: 'lastname',
-          phonenumber: '1234567898',
-          mobilenumber: '12345678',
+          phonenumber: '12345678',
+          mobilenumber: '123456789',
           address: 'address',
           level: 5,
           password: 'password',
@@ -133,9 +133,9 @@ test('Add new student from /api/v1/student/', (t) => {
             t.error(err);
           } else {
             t.equal(student.password, 'password', 'Same password');
-            t.equal(student.mobile_phone, '12345678', 'Same mobile_phone');
+            t.equal(student.mobile_phone, '123456789', 'Same mobile_phone');
             t.equal(student.lastname, 'lastname', 'Same lastname');
-            t.equal(student.home_phone, '1234567898', 'Same home_phone');
+            t.equal(student.home_phone, '12345678', 'Same home_phone');
             t.equal(student.level, 5, 'Same level');
             t.equal(student.address, 'address', 'Same address');
             t.equal(student.firstname, 'firstname', 'Same firstname');
@@ -155,8 +155,8 @@ test('Update student from /api/v1/student/1', (t) => {
         .send({
           firstname: 'ali',
           lastname: 'hasn',
-          home_phone: '49628462',
-          mobile_phone: '562649',
+          phonenumber: '49628462',
+          mobilenumber: '1234567',
           address: 'gaza',
           level: 7,
           password: 'new student',
@@ -169,7 +169,6 @@ test('Update student from /api/v1/student/1', (t) => {
             t.error(err);
           } else {
             t.equal(obj.data, 'Updated successfully', 'Updated successfully');
-
             t.end();
           }
         });
