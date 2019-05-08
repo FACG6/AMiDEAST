@@ -51,6 +51,7 @@ export default class Login extends Component {
       .catch(e => {
         // errors for validation issues && response for fetch issues
         const { errors = [], response = {} } = JSON.parse(JSON.stringify(e));
+        console.log(1111, response)
         errors[0] ? toast.error(errors[0]) : toast.error(response.data.error);
       });
   };

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-// import data from './staticData'
 import Course from "../../../common/Course";
 import "./index.css";
 import Loading from "./../../../Layout/Loading";
