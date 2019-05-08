@@ -96,15 +96,19 @@ export default class Viewcourse extends Component {
           </div>
           <div className="view-course">
             {filter.length !== 0 ?
-              <Table headings={headings} rows={filter} history={this.props.history} pathname={this.props.location.pathname} />
+              <Table headings={headings} rows={filter} history={this.props.history} pathname={this.props.location.pathname}  />
               :
               <div className='no-courses'>
                 There is no courses untill now
                 <br />
-                Click <a
+                Click
+                <a
                   href='/'
                   className='add-course-link'
-                  onClick={() => this.props.history.push('/staff/courses/addcourse')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.props.history.push('/staff/courses/addcourse')
+                  }}
                 >
                   here </a>
                 to add coures</div>}
