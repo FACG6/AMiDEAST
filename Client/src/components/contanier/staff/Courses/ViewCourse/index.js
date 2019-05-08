@@ -18,10 +18,11 @@ export default class Viewcourse extends Component {
   }
 
   handleChange = ({ target: { value, name } }) => {
+    value.toLowerCase()
     let filter = this.state.rows.filter((item) =>
-      item[1].startsWith(value)
+      item[1].toLowerCase().startsWith(value)
     )
-    this.setState({ filter, [name]: value })
+    this.setState({ filter, [name]: value.toLowerCase() })
   };
 
   handleDelete = (id) => {
