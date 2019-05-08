@@ -34,7 +34,6 @@ export default class Apply extends Component {
 
   render() {
     const { isLoading, course, days, hours } = this.state;
-    console.log(this.props);
     return (
       <div className="apply">
         <h1 className="apply-title">Apply</h1>

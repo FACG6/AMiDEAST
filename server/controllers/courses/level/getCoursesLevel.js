@@ -1,25 +1,24 @@
-const {
-  avaliableCourses
-} = require("../../../database/queries/getCoursesLevel");
+const getCoursesByLevel = require('../../../database/queries/getCoursesLevel');
 
 exports.getCoursesLevel = (req, res) => {
   const { level } = req.params;
-  avaliableCourses(level)
-    .then(courses => {
+  const { studentId } = req.body;
+  getCoursesByLevel(level, studentId)
+    .then((courses) => {
       if (!courses.rowCount) {
         res.send({
           error: null,
-          data: []
+          data: [],
         });
       } else {
         res.send({
-          data: courses.rows
+          data: courses.rows,
         });
       }
     })
-    .catch(error => {
+    .catch(() => {
       res.status(500).send({
-        error: "Sorry we have some issues"
+        error: 'Sorry we have some issues',
       });
     });
 };

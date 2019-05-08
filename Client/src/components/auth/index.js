@@ -40,7 +40,6 @@ class Auth {
     const token = cookie.get("jwt");
     if (token) {
       const { role, id, level } = jwt.decode(token);
-      console.log(role, id, level);
       this.login(id, role, level, callback);
     }
   }

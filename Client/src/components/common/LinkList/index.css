@@ -10,3 +10,9 @@
 .sidebar-icon {
   padding-right: 7px;
 }
+
+.sidebar-logout {
+  cursor: pointer;
+  text-decoration: none;
+  color: #eee;
+}

@@ -1,45 +1,55 @@
-.view-student-titel {
+.view-student-title {
   color: #06468f;
-  font-size: 34px;
   font-weight: bold;
-  margin: 50px 0 9px 39px;
-}
-.view-student-line {
-  width: 204px;
+  margin: 50px 0 0 50px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   border-bottom: 1.5px solid #06468f;
-  margin-top: 100px;
-  margin-left: 39px;
 }
+
 .view-student {
-  width: 80%;
+  width: 100%;
   height: 641px;
 }
 
-.search-button-div {
-  display: flex;
-}
-
-.search-button-div button {
+.search-button {
   font-size: 14px;
   border: none;
-  margin-top: 16px;
-  margin-left: 20px;
-  width: 180px;
-  height: 38px;
+  height: 40px;
+  background-color: #2980b9;
 }
+
+.delete-icon {
+  color: #333;
+  padding: 10px 15px;
+}
+
 .search-button-div input {
-  margin: 15px 0 35px 82px;
-  width: 900px;
+  margin: 15px 0 0 50px;
+  width: 85%;
+  padding-left: 15px;
 }
+
 .result {
-  color: #9d9d9d;
-  margin-left: 111px;
-  font-size: 16px;
-  margin-bottom: -40px;
+  display: inline-block;
+  color: #676767;
+  margin-left: 80px;
+  font-size: 22px;
 }
-.view-student table {
-  margin-top: 50px;
-  margin-left: 20%;
-  width: 800px;
-  height: 160px;
+
+.no-student {
+  color: #333;
+  font-size: 20px;
+  margin: 20px 150px;
+}
+
+.add-student-link {
+  cursor: pointer;
+  color: #06468f;
+}
+
+.view-student table{
+  width: 80%;
+  margin: 20px auto;
 }
