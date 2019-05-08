@@ -14,7 +14,7 @@ const data = {
       title: 'Courses',
       links: [
         { title: 'Add Course', to: '/staff/courses/addcourse' },
-        { title: 'view Course', to: '/staff/courses/viewcourse' }
+        { title: 'view Course', to: '/staff/courses/viewcourse/' }
       ]
     },
     {
@@ -22,7 +22,7 @@ const data = {
       title: 'Student',
       links: [
         { title: 'Add student', to: '/staff/student/addstudent' },
-        { title: 'view Student', to: '/staff/student/viewstudent' },
+        { title: 'view Student', to: '/staff/student/viewstudent/' },
         { title: 'Edit Student', to: '/staff/student/editstudent' }
       ]
     }, {
