@@ -18,13 +18,11 @@ export default class Courses extends Component {
   };
 
   componentDidMount() {
-    console.log("Hello From CDM");
     const { id, level } = auth.isAuthenticated();
     if (level) {
       axios
         .post(`/api/v1/course/level/${level}`, { studentId: id })
         .then(res => {
-          console.log(res);
           this.setState({ data: res.data.data, isLoading: false });
         })
         .catch(err => {
@@ -33,12 +31,12 @@ export default class Courses extends Component {
           toast.error("Sorry, something went wrong");
         });
     } else {
+      console.log(auth.isAuthenticated());
       console.log("The Level IS  :  ", level, id);
     }
   }
   handleClick = (id, course_id) => {
     const { id: student_id } = auth.isAuthenticated();
-    console.log("ASD     ::   ", auth.isAuthenticated());
     this.setState({ isLoading: true });
     axios
       .post(`/api/v1/course/${course_id}`, { id, student_id })
