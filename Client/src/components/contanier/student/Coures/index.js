@@ -18,13 +18,11 @@ export default class Courses extends Component {
   };
 
   componentDidMount() {
-    const { level } = this.props;
-    const { id } = auth.isAuthenticated();
+    const { id, level } = auth.isAuthenticated();
     if (level) {
       axios
         .post(`/api/v1/course/level/${level}`, { studentId: id })
         .then(res => {
-          console.log(res)
           this.setState({ data: res.data.data, isLoading: false });
         })
         .catch(err => {
@@ -32,6 +30,9 @@ export default class Courses extends Component {
           this.setState({ isLoading: false });
           toast.error("Sorry, something went wrong");
         });
+    } else {
+      console.log(auth.isAuthenticated());
+      console.log("The Level IS  :  ", level, id);
     }
   }
   handleClick = (id, course_id) => {
@@ -59,6 +60,7 @@ export default class Courses extends Component {
 
   render() {
     const { data, isLoading, appledCourses } = this.state;
+    console.log(isLoading);
     return isLoading ? (
       <Loading />
     ) : (

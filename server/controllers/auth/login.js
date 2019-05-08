@@ -31,10 +31,11 @@ module.exports = (req, res) => {
             })
             .catch(e => res.status(400).send({ error: 'Bad Request' }));
         } else if (password.toString() === student[0].password) {
+          console.log(student);
           const payLoad = { id, role: 'student', level: student[0].level };
           const jwt = createCookie(payLoad);
           res.cookie('jwt', jwt, { maxAge: 7200000 });
-          res.status(200).send({ id, role: 'student', status: 200 });
+          res.status(200).send({ id, role: 'student', level: student[0].level, status: 200 });
         } else res.status(400).send({ error: 'Check your Id Or Password' });
       })
       .catch(e => res.status(400).send({ error: 'Bad Request' }));

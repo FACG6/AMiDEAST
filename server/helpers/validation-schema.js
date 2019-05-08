@@ -23,7 +23,7 @@ exports.studentSchema = joi.object().keys({
 
 exports.applyCourseSchema = joi.object().keys({
   datesId: joi.number().integer(),
-  studentid: joi.number().integer(),
+  student_id: joi.number().integer(),
 });
 
 exports.loginSchema = joi.object().keys({

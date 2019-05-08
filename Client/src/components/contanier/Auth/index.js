@@ -39,6 +39,7 @@ export default class Login extends Component {
       .then(res => {
         const { id, role, level } = res.data;
         toast.success("Welcome");
+        console.log('asdgsadgsad', res.data);
         auth.login(id, role, level ? level : null, () => {
           const {
             location: { state }
@@ -49,9 +50,7 @@ export default class Login extends Component {
         });
       })
       .catch(e => {
-        // errors for validation issues && response for fetch issues
         const { errors = [], response = {} } = JSON.parse(JSON.stringify(e));
-        console.log(1111, response)
         errors[0] ? toast.error(errors[0]) : toast.error(response.data.error);
       });
   };
