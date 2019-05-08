@@ -18,9 +18,9 @@ export default class ViewStudent extends Component {
   }
   handleChange = ({ target: { value, name } }) => {
     let filter = this.state.rows.filter((item) =>
-      item[1].startsWith(value)
+      item[1].toLowerCase().startsWith(value)
     )
-    this.setState({ filter, [name]: value })
+    this.setState({ filter, [name]: value.toLowerCase() })
   };
 
   handleDelete = (id) => {
