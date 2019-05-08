@@ -7,6 +7,7 @@ const studentCourses = require('./sudent');
 const { applyCourse } = require('./postApplyCourse');
 const { addCourse } = require('./addCourse');
 const { deleteCourseById } = require('./deleteCourse');
+const { studentpermission, staffpermission } = require('../../middlewares/authorization');
 const { getCourseDetails } = require('./getCourseDetails');
 
 router
