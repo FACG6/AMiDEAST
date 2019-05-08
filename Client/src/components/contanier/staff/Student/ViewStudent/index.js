@@ -23,7 +23,9 @@ export default class ViewStudent extends Component {
     this.setState({ filter, [name]: value.toLowerCase() })
   };
 
-  handleDelete = (id) => {
+  handleDelete = (e, id) => {
+    e.stopPropagation();
+    e.preventDefault();
     if (window.confirm('Delete the student?')) {
       fetch(`/api/v1/student/${id}`, {
         method: 'DELETE',
@@ -32,8 +34,9 @@ export default class ViewStudent extends Component {
         .then(res => {
           if (res.data) {
             toast.success(res.data);
-            this.props.history.push('/staff/student/viewstudent/');
-          }
+            const newRows = this.state.rows.filter(row => row[0] !== id);
+            this.setState({ rows: newRows });
+          } 
           else toast.error(res.error);
         })
     }
@@ -53,7 +56,7 @@ export default class ViewStudent extends Component {
             return rowContent.push([row.id, row.firstname + ' ' + row.lastname, row.id, row.level, row.mobile_phone,
             <a
               href='/'
-              onClick={() => this.handleDelete(row.id)}>
+              onClick={(e) => this.handleDelete(e, row.id)}>
               <i className='fa fa-trash delete-icon' aria-hidden='true' >
               </i>
             </a>
@@ -90,7 +93,6 @@ export default class ViewStudent extends Component {
             inputClassName='search-input'
             type='text'
             onChange={this.handleChange}
-            Error={Error['search']}
           />
         </div>
 

@@ -25,7 +25,9 @@ export default class Viewcourse extends Component {
     this.setState({ filter, [name]: value.toLowerCase() })
   };
 
-  handleDelete = (id) => {
+  handleDelete = (e, id) => {
+    e.stopPropagation();
+    e.preventDefault();
     if (window.confirm('Delete the course?')) {
       fetch(`/api/v1/course/${id}`, {
         method: 'DELETE',
@@ -34,8 +36,8 @@ export default class Viewcourse extends Component {
         .then(res => {
           if (res.data) {
             toast.success(res.data);
-            this.props.history.push('/staff/courses/viewcourse/');
-            this.setState({ isloading: false })
+            const newRows = this.state.rows.filter(row => row[0] !== id);
+            this.setState({ rows: newRows, isloading: false });
           }
           else toast.error(res.error);
         })
@@ -55,7 +57,7 @@ export default class Viewcourse extends Component {
             return rowContent.push([row.id, row.title, row.publish_date, row.target_level, row.number_of_student,
             <a
               href='/'
-              onClick={() => this.handleDelete(row.id)}>
+              onClick={(e) => this.handleDelete(e, row.id)}>
               <i className="fa fa-trash delete-icon" aria-hidden="true" ></i>
             </a>
             ]);
@@ -76,7 +78,8 @@ export default class Viewcourse extends Component {
       .catch(err => this.setState({ Error: 'Something happen error', isloading: false }))
   }
   render() {
-    const { headings, filter, isloading, search } = this.state;
+    const { headings, filter, isloading, search, rows } = this.state;
+
     if (!isloading) {
       return (
         <div>
@@ -95,8 +98,8 @@ export default class Viewcourse extends Component {
             />
           </div>
           <div className="view-course">
-            {filter.length !== 0 ?
-              <Table headings={headings} rows={filter} history={this.props.history} pathname={this.props.location.pathname}  />
+            {rows.length !== 0 ?
+              <Table headings={headings} rows={filter} history={this.props.history} pathname={this.props.location.pathname} />
               :
               <div className='no-courses'>
                 There is no courses untill now

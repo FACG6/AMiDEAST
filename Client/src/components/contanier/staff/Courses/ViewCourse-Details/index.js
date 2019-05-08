@@ -24,20 +24,20 @@ export default class ViewCourseDetails extends Component {
       .then(res => {
         if (res.data) {
           fetch(`/api/v1/course/${id}`)
-          .then(res => res.json())
-          .then(res => {
-            if (res.data) {
-              res.data.map(row => this.setState({ coursename: row.title, description: row.description, isloading: false }))
-            }
-            if (res.error) {
-              toast.error(res.error)
+            .then(res => res.json())
+            .then(res => {
+              if (res.data) {
+                res.data.map(row => this.setState({ coursename: row.title, description: row.description, isloading: false }))
+              }
+              if (res.error) {
+                toast.error(res.error)
+                this.setState({ isloading: false })
+              }
+            })
+            .catch(() => {
+              toast.error('There is Something error')
               this.setState({ isloading: false })
-            }
-          })
-          .catch(() => {
-            toast.error('There is Something error')
-            this.setState({ isloading: false })
-          });
+            });
 
           const rows = res.data;
           let rowContent = [];
@@ -68,14 +68,18 @@ export default class ViewCourseDetails extends Component {
         <h1 className='view-course-details-title'>
           {coursename}   <span className='count-std'>({totalCount})</span>
         </h1>
+
         <p className='view-course-details-description'>Description :  {description}</p>
-        {!isloading ?
-          <div className='view-course-details'>
-            <Table headings={headings} rows={rows} history={this.props.history} />
-          </div>
-          :
-          <Loading />
-        }
+        <div className='view-course-details'>
+          {!isloading ?
+            totalCount !== 0 ?
+              <Table headings={headings} rows={rows} history={this.props.history} />
+              :
+              <div> Theres no student applied</div>
+            :
+            <Loading />
+          }
+        </div>
       </>
     );
   }
