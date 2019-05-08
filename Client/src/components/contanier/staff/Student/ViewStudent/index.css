@@ -13,11 +13,6 @@
   height: 641px;
 }
 
-.search-button-div {
-  display: flex;
-  margin: 15px 0 0 50px;
-}
-
 .search-button {
   font-size: 14px;
   border: none;
@@ -31,11 +26,10 @@
 }
 
 .search-button-div input {
-  width: 750px;
-  margin: 0 20px 0 0;
+  margin: 15px 0 0 50px;
+  width: 85%;
   padding-left: 15px;
 }
-
 
 .result {
   display: inline-block;

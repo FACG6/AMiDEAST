@@ -53,7 +53,7 @@ export default class EditStudent extends Component {
             .then(res => {
               if (res.data) {
                 toast.success(res.data);
-                this.props.history.push('/staff/student/viewstudent');
+                this.props.history.push('/staff/student/viewstudent/');
               }
               else toast.error(res.error);
             })

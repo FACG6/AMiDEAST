@@ -50,7 +50,8 @@ INSERT INTO student
 	(firstname,lastname,id,is_active,home_phone,mobile_phone,address,level,password) 
 	values
 	('Nareman','Hilles',12345,true,'05999999','445788','rafh',7,'123456'),
-	('abdullah','ammar',56789,false,'05994433','44578558','gaza',9,'789456');
+	('abdullah','ammar',56789,false,'05994433','44578558','gaza',9,'789456'),
+	('abdullah','ammar',11111,false,'05994433','44578558','gaza',3,'789456');
 
 INSERT INTO staff 
 	(id, firstname,lastname,email,mobile_phone,password)

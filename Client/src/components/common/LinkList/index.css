@@ -11,6 +11,8 @@
   padding-right: 7px;
 }
 
-.sidebar-logout{
+.sidebar-logout {
   cursor: pointer;
+  text-decoration: none;
+  color: #eee;
 }

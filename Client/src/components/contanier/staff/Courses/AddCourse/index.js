@@ -26,7 +26,7 @@ export default class Addcourse extends Component {
   handleClickAddDates = (e) => {
     e.preventDefault();
     this.setState({ Error: {} })
-    const { Error, days, end, start } = this.state;
+    const { days, end, start } = this.state;
     addDatesSchema
       .validate({ days, end, start }, {
         abortEarly: false
@@ -70,7 +70,7 @@ export default class Addcourse extends Component {
           .then(res => {
             if (res.data) {
               toast.success('Course added successfuly ');
-              this.props.history.push('/staff/courses/viewcourse')
+              this.props.history.push('/staff/courses/viewcourse/')
             }
             else {
               toast.error(res.error);

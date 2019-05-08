@@ -22,7 +22,7 @@ export default class ViewCourseDetails extends Component {
           const rows = res.data;
           let rowContent = [];
           rows.map(row => {
-            rowContent.push([row.id, row.title, row.publish_date, row.target_level, row.number_of_student]);
+            return rowContent.push([row.id, row.title, row.publish_date, row.target_level, row.number_of_student]);
           })
           this.setState({
             headings: [
