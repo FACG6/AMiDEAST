@@ -7,13 +7,13 @@ import './index.css'
 export default class SideBar extends Component {
 
   state = {
-    studentName: 'Abdallah Ammar'
+    studentName: ''
   }
 
   render() {
     const { menuOpen, handleLinkClick } = this.props;
     const { studentName } = this.state;
-
+    
     if (menuOpen) {
       return (
         <div className='SideBar'>

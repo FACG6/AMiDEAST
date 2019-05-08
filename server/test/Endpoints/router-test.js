@@ -17,7 +17,7 @@ test('Get all student information from /api/v1/student/', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['firstname', 'lastname', 'id', 'is_active', 'home_phone', 'mobile_phone', 'address', 'level', 'password'], 'get same data that expected');
             t.end();
           }
         });
@@ -38,7 +38,7 @@ test('Get student information from /api/v1/student/12345', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data), ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data), ['firstname', 'lastname', 'id', 'is_active', 'home_phone', 'mobile_phone', 'address', 'level', 'password'], 'get same data that expected');
             t.equal(obj.data.id, 12345, 'User ID for the correct');
             t.end();
           }
@@ -119,8 +119,8 @@ test('Add new student from /api/v1/student/', (t) => {
         .send({
           firstname: 'firstname',
           lastname: 'lastname',
-          phonenumber: '1234567898',
-          mobilenumber: '12345678',
+          phonenumber: '12345678',
+          mobilenumber: '123456789',
           address: 'address',
           level: 5,
           password: 'password',
@@ -133,9 +133,9 @@ test('Add new student from /api/v1/student/', (t) => {
             t.error(err);
           } else {
             t.equal(student.password, 'password', 'Same password');
-            t.equal(student.mobile_phone, '12345678', 'Same mobile_phone');
+            t.equal(student.mobile_phone, '123456789', 'Same mobile_phone');
             t.equal(student.lastname, 'lastname', 'Same lastname');
-            t.equal(student.home_phone, '1234567898', 'Same home_phone');
+            t.equal(student.home_phone, '12345678', 'Same home_phone');
             t.equal(student.level, 5, 'Same level');
             t.equal(student.address, 'address', 'Same address');
             t.equal(student.firstname, 'firstname', 'Same firstname');
@@ -155,8 +155,8 @@ test('Update student from /api/v1/student/1', (t) => {
         .send({
           firstname: 'ali',
           lastname: 'hasn',
-          home_phone: '49628462',
-          mobile_phone: '562649',
+          phonenumber: '49628462',
+          mobilenumber: '1234567',
           address: 'gaza',
           level: 7,
           password: 'new student',
@@ -169,7 +169,6 @@ test('Update student from /api/v1/student/1', (t) => {
             t.error(err);
           } else {
             t.equal(obj.data, 'Updated successfully', 'Updated successfully');
-
             t.end();
           }
         });
@@ -377,19 +376,21 @@ test('Add new course from /api/v1/course/', (t) => {
         .post('/api/v1/course/')
         .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2LCJyb2xlIjoic3RhZmYiLCJpYXQiOjE1NTY2MDYyNDh9.GUMWp4rMegfXDjBFxDA43oI4dTO0lzTLD86F8nNBc2M'])
         .send({
-          title: 'new course',
-          numberOfStudent: 30,
-          description: 'desc from new course',
-          level: 8,
-          days: 'sat-mon-wed',
-          start: 17,
-          end: 9,
-          dates: [{ start: 10, end: 10, days: 'starday-sund' }],
+          value: {
+            title: 'new course',
+            numberOfStudent: 30,
+            description: 'desc from new course',
+            level: 8,
+            days: 'sat-mon-wed',
+            start: 17,
+            end: 9,
+            dates: [{ start: 10, end: 15, days: 'sat-sun-mon' }],
+          },
         })
         .expect(201)
         .expect('Content-Type', /json/)
         .end((err, res) => {
-          const course = (res.body.data.courseInfo);
+          const course = (res.body.data);
           if (err) {
             t.error(err);
           } else {
@@ -408,7 +409,10 @@ test('Get courses information by level from /api/v1/course/level/3', (t) => {
   dbBuild()
     .then(() => {
       request(app)
-        .get('/api/v1/course/level/3')
+        .post('/api/v1/course/level/3')
+        .send({
+          studentid: 12345,
+        })
         .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)
@@ -417,7 +421,7 @@ test('Get courses information by level from /api/v1/course/level/3', (t) => {
           if (err) {
             t.error(err);
           } else {
-            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description'], 'get same data that expected');
+            t.deepEqual(Object.keys(obj.data[0]), ['id', 'title', 'description', 'target_level', 'number_of_student', 'publish_date', 'h_from', 'h_to', 'course_id', 'days'], 'get same data that expected');
             t.end();
           }
         });
@@ -429,7 +433,10 @@ test('Get courses information by level dose not exist from /api/v1/course/level/
   dbBuild()
     .then(() => {
       request(app)
-        .get('/api/v1/course/level/123456')
+        .post('/api/v1/course/level/123456')
+        .send({
+          studentid: 12345,
+        })
         .set('Cookie', ['jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDUsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNTU2NjA2MjQ4fQ.jxmj_2S-sGc7XKoZPkh0JDDTR1AoWJvNggokoC54QP4'])
         .expect(200)
         .expect('Content-Type', /json/)

@@ -4,6 +4,9 @@ import axios from "axios";
 import CourseCard from "../../../common/Course";
 import PickDay from "../../../common/PickDay";
 import Button from "../../../common/Button";
+import { toast } from "react-toastify";
+import Loading from "./../../../Layout/Loading";
+
 import "./index.css";
 
 export default class Apply extends Component {
@@ -20,15 +23,17 @@ export default class Apply extends Component {
         "10:00 - 12:00 PM",
         "12:00 - 14:00 AM"
       ]
-    }
+    },
+    isLoading: true
   };
 
   handleClick(e) {
     e.preventDefault();
     axios.post();
   }
+
   render() {
-    const { days, hours } = this.state.course;
+    const { isLoading, course, days, hours } = this.state;
     return (
       <div className="apply">
         <h1 className="apply-title">Apply</h1>

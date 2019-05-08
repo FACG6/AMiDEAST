@@ -10,18 +10,11 @@ exports.deleteStudent = (req, res) => {
           data: null,
         });
       } return deleteStudent(id)
-        .then((studentInfo) => {
-          if (!studentInfo.rowCount) {
-            res.status(404).send({
-              error: 'student not found ',
-              data: null,
-            });
-          } else {
-            res.status(202).send({
-              error: null,
-              data: 'Deleted successfully',
-            });
-          }
+        .then(() => {
+          res.status(202).send({
+            error: null,
+            data: 'Deleted successfully',
+          });
         });
     })
     .catch(() => {
