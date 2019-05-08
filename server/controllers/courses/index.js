@@ -7,6 +7,7 @@ const studentCourses = require('./sudent');
 const { applyCourse } = require('./postApplyCourse');
 const { addCourse } = require('./addCourse');
 const { deleteCourseById } = require('./deleteCourse');
+const { getCourseDetails } = require('./getCourseDetails');
 
 router
   .route('/')
@@ -18,6 +19,10 @@ router
   .get(getCourse)
   .post(applyCourse)
   .delete(deleteCourseById);
+
+router
+  .route('/details/:id')
+  .get(getCourseDetails);
 
 router
   .use('/level', coursesLevel);

@@ -24,7 +24,6 @@ export default class Courses extends Component {
       axios
         .post(`/api/v1/course/level/${level}`, { studentId: id })
         .then(res => {
-          console.log(res)
           this.setState({ data: res.data.data, isLoading: false });
         })
         .catch(err => {

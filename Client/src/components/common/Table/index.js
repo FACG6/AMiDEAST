@@ -21,7 +21,7 @@ const Table = ({ headings, rows, history, pathname }) => {
         {rows.map((row, index) => {
           const rowContents = row.slice(1);
           return (
-            <tr className='table-row' key={index} onClick={() => history.push(`${pathname}${row[0]}`)}>
+            <tr className='table-row' key={index} onClick={() => (!pathname)? "" : history.push(`${pathname}${row[0]}`)}>
               {rowContents.map((rowcontent, index) =>
                 <Cell
                   key={index}
