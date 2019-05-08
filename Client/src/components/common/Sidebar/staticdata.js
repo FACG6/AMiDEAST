@@ -1,3 +1,7 @@
+import auth from "./../../auth";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 const data = {
   linklist: [
     {
@@ -9,18 +13,33 @@ const data = {
       fontawesome: 'fas fa-certificate sidebar-icon',
       title: 'Courses',
       links: [
-        { title: 'Add Course', to: '/add-course' },
-        { title: 'view Course', to: '/view-course' }
+        { title: 'Add Course', to: '/staff/courses/addcourse' },
+        { title: 'view Course', to: '/staff/courses/viewcourse/' }
       ]
     },
     {
       fontawesome: 'fas fa-users sidebar-icon',
       title: 'Student',
       links: [
-        { title: 'Add student', to: '/add-student' },
-        { title: 'view Student', to: '/view-student' },
-        { title: 'Edit Student', to: '/Edit-student' }
+        { title: 'Add student', to: '/staff/student/addstudent' },
+        { title: 'view Student', to: '/staff/student/viewstudent/' },
+        { title: 'Edit Student', to: '/staff/student/editstudent' }
       ]
+    }, {
+      fontawesome: 'fas fa-sign-out-alt sidebar-icon',
+      title: 'logout',
+      links: []
+      , handleLogout: (e, props) => {
+        e.preventDefault();
+        auth.logout(() =>
+          axios.get("/api/v1/logout/").then(() => {
+            toast.success('Goodbye !!');
+            props.history.push("/login");
+
+          })
+        );
+      }
+
     }
   ]
 };

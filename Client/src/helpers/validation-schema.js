@@ -15,16 +15,16 @@ let studentSchema = yup.object().shape({
     .moreThan(0),
   phonenumber: yup
     .string()
-    .min(3)
-    .max(50),
+    .min(6)
+    .max(8),
   lastname: yup
     .string()
     .min(3)
     .max(50),
   mobilenumber: yup
     .string()
-    .min(3)
-    .max(50),
+    .min(7)
+    .max(10),
   password: yup
     .string()
     .min(5)
@@ -41,4 +41,20 @@ export const loginSchema = yup.object().shape({
     .max(10)
 });
 
-export { studentSchema };
+const addCourseSchema = yup.object().shape({
+  title: yup.string().min(3).max(30),
+  description: yup.string().min(5),
+  level: yup.number().lessThan(13).moreThan(0),
+  numberOfStudent: yup.number().lessThan(100).moreThan(5),
+  start: yup.number().lessThan(24).moreThan(0),
+  end: yup.number().lessThan(24).moreThan(0),
+  days: yup.string().min(4).max(30),
+});
+
+const addDatesSchema = yup.object().shape({
+  start: yup.number().lessThan(24).moreThan(0),
+  end: yup.number().lessThan(24).moreThan(0),
+  days: yup.string().min(4).max(30),
+});
+
+export { studentSchema, addCourseSchema, addDatesSchema };

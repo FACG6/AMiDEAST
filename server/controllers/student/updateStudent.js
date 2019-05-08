@@ -3,8 +3,12 @@ const { putStudent } = require('../../database/queries/updateStudent');
 const { studentSchema } = require('../../helpers/validation-schema');
 
 exports.updateStudent = (req, res) => {
-  const { firstname, lastname, phonenumber, mobilenumber, address, level, password } = req.body;
-  const userInfo = { firstname, lastname, phonenumber, mobilenumber, address, level, password };
+  const {
+    firstname, lastname, phonenumber, mobilenumber, address, level, password,
+  } = req.body;
+  const userInfo = {
+    firstname, lastname, phonenumber, mobilenumber, address, level, password,
+  };
 
   const { error } = joi.validate(userInfo, studentSchema);
   if (error) {
@@ -14,7 +18,7 @@ exports.updateStudent = (req, res) => {
     });
   } else {
     const { id } = req.params;
-    putStudent(req.body, id)
+    putStudent({ ...userInfo }, id)
       .then((updatedStudent) => {
         if (!updatedStudent.rowCount) {
           res.status(404).send({

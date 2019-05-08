@@ -1,104 +1,178 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import "./index.css";
 import LabeledInput from "../../../../common/LabeledInput";
 import Button from "../../../../common/Button";
+import { addCourseSchema, addDatesSchema } from '../../../../../helpers/validation-schema';
+import pageTitle from '../../../../../helpers/pageTitle';
 
 export default class Addcourse extends Component {
+  state = {
+    title: '',
+    description: '',
+    level: 0,
+    numberOfStudent: 0,
+    start: 0,
+    end: 0,
+    days: '',
+    Error: {},
+    dates: []
+  }
+
+  handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
+  componentDidMount() {
+    pageTitle('Add Course');
+  }
+  handleClickAddDates = (e) => {
+    e.preventDefault();
+    this.setState({ Error: {} })
+    const { days, end, start } = this.state;
+    addDatesSchema
+      .validate({ days, end, start }, {
+        abortEarly: false
+      }).then((value) => {
+        this.state.dates.push(value)
+        document.getElementById('days').value = ''
+        document.getElementById('start').value = '';
+        document.getElementById('end').value = '';
+        this.setState({ days: '', start: 0, end: 0 })
+        toast.success("added successfully ");
+      })
+      .catch(({ inner }) => {
+        if (inner) {
+          const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
+          this.setState({ Error: { ...errors } })
+        }
+      })
+  }
+
+  handleSubmitAddCourse = (e) => {
+    e.preventDefault();
+    this.setState({ Error: {} })
+    const { Error, ...course } = this.state;
+    addCourseSchema
+      .validate(course, {
+        abortEarly: false
+      }).then((value) => {
+        const { days, start, end } = value;
+        const dates = this.state.dates;
+        dates.push({ days, end, start })
+        fetch('/api/v1/course', {
+          method: 'POST',
+          body: JSON.stringify({ value, dates }),
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+          .then(res => res.json())
+          .then(res => {
+            if (res.data) {
+              toast.success('Course added successfuly ');
+              this.props.history.push('/staff/courses/viewcourse/')
+            }
+            else {
+              toast.error(res.error);
+            }
+          })
+          .catch(err => toast.error(err))
+      })
+      .catch(({ inner }) => {
+        if (inner) {
+          const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
+          this.setState({ Error: { ...errors } })
+        }
+      })
+  }
   render() {
+    const { title, description, end, start, numberOfStudent, days, level, Error } = this.state;
+
     return (
-      <div>
+      <div className='add-course'>
         <h1 className="add-course-title">
-          <span className="add-course-line ">Add Course</span>
+          Add Course
         </h1>
-        <div className="add-course">
-          <div className="left">
+        <form className="add-course-contanier">
+          <div className="add-course-left">
             <LabeledInput
-              LabeledInputClassName="course-name"
-              id="courseName"
+              id="title"
               labelText="Course Name:"
-              labelClassName="course-label"
               type="text"
-              name="courseName"
-              inputClassName="course-input"
+              name="title"
+              value={title}
+              onChange={this.handleInput}
+              Error={Error['title']}
             />
             <LabeledInput
-              LabeledInputClassName="numbers-of-students"
-              id="NO"
+              id="numberOfStudent"
               labelText="Numbers Of Students:"
-              labelClassName="course-label"
-              min="3"
-              max="30"
               type="number"
               name="numberOfStudent"
-              inputClassName="course-input"
+              value={numberOfStudent}
+              onChange={this.handleInput}
+              Error={Error['numberOfStudent']}
             />
             <LabeledInput
-              LabeledInputClassName="description"
-              id="desc"
+              id="description"
               labelText="Description:"
-              labelClassName="course-label"
               type="text"
               name="description"
-              inputClassName="course-input"
+              value={description}
+              onChange={this.handleInput}
+              Error={Error['description']}
             />
           </div>
-          <div className="right">
+          <div className='add-course-center'></div>
+          <div className="add-course-right">
             <LabeledInput
-              LabeledInputClassName="level"
               id="level"
               labelText="Level"
-              labelClassName="course-label"
               type="number"
               name="level"
-              min="1"
-              max="12"
-              inputClassName="course-input"
+              value={level}
+              onChange={this.handleInput}
+              Error={Error['level']}
             />
             <LabeledInput
-              LabeledInputClassName="days"
               id="days"
               labelText="Days:"
-              labelClassName="course-label"
               type="text"
               name="days"
-              inputClassName="course-input"
+              value={days}
+              onChange={this.handleInput}
+              Error={Error['days']}
             />
-            <div className="dates">
+            <div className="add-course-dates">
               <div className='start'>
                 <LabeledInput
-                  LabeledInputClassName="start"
                   id="start"
                   labelText="Start:"
-                  labelClassName="course-label"
                   type="number"
                   name="start"
-                  min="8"
-                  max="17"
-                  inputClassName="course-input"
+                  inputClassName='dates-start'
+                  value={start}
+                  onChange={this.handleInput}
+                  Error={Error['start']}
                 />
               </div>
               <div className='end'>
                 <LabeledInput
-                  LabeledInputClassName="end"
                   id="end"
                   labelText="End:"
-                  labelClassName="course-label"
                   type="number"
                   name="end"
-                  min="9"
-                  max="18"
-                  inputClassName="course-input"
+                  value={end}
+                  inputClassName='dates-end'
+                  onChange={this.handleInput}
+                  Error={Error['end']}
                 />
               </div>
-              <div className='add-dates'>
-                <Button btnClassName="add-dates-button" content="Add Dates" />
-              </div>
+              <Button type='button' className="add-dates-btn" content="Add Dates" onClick={(e) => this.handleClickAddDates(e)} />
             </div>
-            <div className='add-course-btn'>
-              <Button btnClassName="add-course-button" content="Add" />
-            </div>
+            <Button type='submit' content='Add' className='add-course-btn' onClick={(e) => this.handleSubmitAddCourse(e)} />
           </div>
-        </div>
+        </form>
       </div>
     );
   }

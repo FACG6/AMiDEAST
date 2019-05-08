@@ -9,6 +9,7 @@
   text-align: center;
   border-radius: 5px;
   color: #333;
+  cursor: pointer;
 }
 
 .table-row:nth-child(odd) {

@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { toast } from "react-toastify";
+
 import LabeledInput from './../../../../common/LabeledInput'
 import Button from './../../../../common/Button';
 import { studentSchema } from './../../../../../helpers/validation-schema'
+import pageTitle  from './../../../../../helpers/pageTitle'
 import './index.css';
 
 export default class AddStudent extends Component {
@@ -16,6 +19,10 @@ export default class AddStudent extends Component {
     Error: {}
   }
 
+componentDidMount(){
+  pageTitle('Add Student');
+}
+
   handleInput = ({ target: { value, name } }) => this.setState({ [name]: value });
 
   handleClick = (e) => {
@@ -26,12 +33,28 @@ export default class AddStudent extends Component {
       .validate(student, {
         abortEarly: false
       }).then((value) => {
-        //write fetch here
+        fetch('/api/v1/student', {
+          method: 'POST',
+          body: JSON.stringify({ ...value }),
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+          .then(res => res.json())
+          .then(res => {
+            if (res.data) {
+              toast.success('Student added successfuly ');
+              this.props.history.push('/staff/student/viewstudent/')
+            }
+            else {
+              toast.error(res.error);
+            }
+          })
+          .catch(err => toast.error(err))
       })
-      .catch(({ inner, fetchError }) => {
-        if (fetchError) {
-          // handle fetch Error
-        }
+      .catch(({ inner }) => {
         if (inner) {
           const errors = inner.reduce((acc, item) => ({ ...acc, [item.path]: (item.message) }), {});
           this.setState({ Error: { ...errors } })
