@@ -6,7 +6,7 @@ import Header from '../Header'
 export default class SideNav extends Component {
 
   state = {
-    menuOpen: false,
+    menuOpen: false
   }
 
   handleLinkClick = () => {
