@@ -5,8 +5,8 @@ const { applyCourseSchema } = require('../../helpers/validation-schema');
 
 const applyCourse = (req, res) => {
   const { id } = req.params;
-  const { datesId, studentid } = req.body;
-  const applyInfo = { datesId, studentid };
+  const { id: datesId, student_id } = req.body;
+  const applyInfo = { datesId, student_id };
   const { error } = joi.validate(applyInfo, applyCourseSchema);
   if (error) {
     res.status(400).send({
@@ -14,7 +14,7 @@ const applyCourse = (req, res) => {
       error: error.details[0].message,
     });
   } else {
-    postApplyCourse(id, studentid, datesId)
+    postApplyCourse(id, student_id, datesId)
       .then((appliedCourse) => {
         if (!appliedCourse.rowsCount) {
           res.status(201).send({
