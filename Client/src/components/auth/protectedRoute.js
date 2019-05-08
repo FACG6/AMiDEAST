@@ -1,6 +1,5 @@
 import React from "react";
 import { Redirect, Route, withRouter } from "react-router-dom";
-import { Consumer } from "./../context";
 import { toast } from "react-toastify";
 
 import Auth from "./index";

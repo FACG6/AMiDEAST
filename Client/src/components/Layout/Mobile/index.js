@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 
 import Footer from "./../MobileFooter";
 import Courses from "../../contanier/student/Coures";
-import Apply from "../../contanier/student/Apply";
 import Profile from "../../contanier/student/Profile";
 import StudentCourses from "../../contanier/student/StudentCourses";
 import auth from "./../../auth";

@@ -36,7 +36,7 @@
 
 .SidBar-link{
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 20px 10px;
   padding-right: 0px;
   text-decoration: none;
