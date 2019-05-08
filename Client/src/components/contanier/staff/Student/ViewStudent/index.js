@@ -104,7 +104,10 @@ export default class ViewStudent extends Component {
             Click <a
               href='/'
               className='add-student-link'
-              onClick={() => this.props.history.push('/staff/student/addstudent')}
+              onClick={(e) => {
+                e.preventDefault();
+                this.props.history.push('/staff/student/addstudent')
+              }}
             >
               here </a>
             to add student</div>

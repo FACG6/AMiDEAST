@@ -1,4 +1,4 @@
-.view-course-details-titel {
+.view-course-details-title {
   color: #06468f;
   font-size: 34px;
   font-weight: bold;
@@ -12,6 +12,16 @@
 .view-course-details {
   margin: 50px 0px 50px 100px;
 }
+
 .view-course-details table {
   width: 90%;
+}
+
+.view-course-details-description {
+  color: #333;
+  margin-left: 70px;
+}
+
+.count-std{
+  
 }

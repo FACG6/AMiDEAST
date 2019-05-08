@@ -14,7 +14,9 @@ export default class Linklist extends Component {
           <a
             href='/'
             className='sidebar-logout'
-            onClick={(e) => links.handleLogout(e, this.props)}
+            onClick={(e) => {
+              links.handleLogout(e, this.props)
+            }}
           >
             {links.title}
           </a> :
