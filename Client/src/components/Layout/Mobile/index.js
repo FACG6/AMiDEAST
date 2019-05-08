@@ -15,13 +15,8 @@ export default class Mobile extends Component {
     courseId: null
   };
 
-  componentDidMount() {
-    const { level } = auth.isAuthenticated();
-    this.setState({ level });
-  }
-
   render() {
-    const { id } = auth.isAuthenticated();
+    const { id, level } = auth.isAuthenticated();
     const { role } = auth.isAuthenticated();
     if (role === "staff") this.props.history.push("/staff");
     return (
@@ -33,24 +28,12 @@ export default class Mobile extends Component {
           <Route
             exact
             path={"/student/courses"}
-            component={props => (
-              <Courses
-                {...props}
-                id={id}
-                level={this.state.level}
-                history={this.props.history}
-              />
-            )}
+            component={props => <Courses {...props} id={id} level={level} />}
           />
           <Route
             exact
             path={"/student/mycourses"}
             component={() => <StudentCourses id={id} />}
-          />
-          <Route
-            exact
-            path={"/student/apply"}
-            component={() => <Apply id={id} courseId={this.state.courseId} />}
           />
           <Route
             exact
