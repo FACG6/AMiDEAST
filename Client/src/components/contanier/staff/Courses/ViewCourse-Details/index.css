@@ -1,4 +1,4 @@
-.view-course-titel {
+.view-course-details-titel {
   color: #06468f;
   font-size: 34px;
   font-weight: bold;
@@ -7,28 +7,11 @@
   margin-bottom: 9px;
   width: fit-content;
   border-bottom: 1.5px solid #06468f;
-
 }
 
-.view-course {
+.view-course-details {
   margin: 50px 0px 50px 100px;
 }
-
-.view-course table {
+.view-course-details table {
   width: 90%;
-}
-
-.delete-icon {
-  color: #333;
-  padding: 10px 15px;
-}
-
-.no-courses {
-  color: #333;
-  font-size: 24px;
-}
-
-.add-course-link{
-  cursor: pointer;
-  color: #06468f;
 }

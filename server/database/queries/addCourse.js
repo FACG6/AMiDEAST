@@ -4,7 +4,7 @@ exports.insertCourse = (courseInfo) => {
   const queryValues = Object.values(courseInfo);
   const sql = {
     text: 'INSERT INTO course(title, description, target_level, number_of_student, publish_date) values ($1, $2, $3, $4, $5)  RETURNING *',
-    values: [...queryValues, new Date()],
+    values: [...queryValues, new Date().toLocaleDateString()],
   };
   return connection.query(sql);
 };

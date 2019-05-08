@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
-
 * {
   padding: 0px;
   margin: 0px;
@@ -7,9 +6,13 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 i {
   color: white;
+}
+
+.contanier {
+  display: flex;
 }

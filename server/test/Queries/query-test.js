@@ -25,7 +25,7 @@ test('Test query for get one student information', (t) => {
         const student = res.rows[0];
         t.deepEqual(
           Object.keys(student),
-          ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'Same Data',
+          ['firstname', 'lastname', 'id', 'is_active', 'home_phone', 'mobile_phone', 'address', 'level', 'password'], 'Same Data',
         );
         t.end();
       } else {
@@ -46,7 +46,7 @@ test('Test query for get one student information dose not exist', (t) => {
         const student = res.rows[0];
         t.deepEqual(
           Object.keys(student),
-          ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'Same Data',
+          ['firstname', 'lastname', 'id', 'is_active', 'home_phone', 'mobile_phone', 'address', 'level', 'password'], 'Same Data',
         );
         t.end();
       } else {
@@ -67,7 +67,7 @@ test('Test query for get all student information', (t) => {
         const students = res.rows[0];
         t.deepEqual(
           Object.keys(students),
-          ['id', 'firstname', 'lastname', 'mobile_phone', 'level', 'is_active'], 'Same Data',
+          ['firstname', 'lastname', 'id', 'is_active', 'home_phone', 'mobile_phone', 'address', 'level', 'password'], 'Same Data',
         );
         t.end();
       } else {

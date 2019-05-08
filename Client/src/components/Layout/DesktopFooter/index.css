@@ -1,0 +1,18 @@
+.desktop-footer {
+  background-color: #EDEDED;
+  text-align: center;
+  width: 80%;
+  height: 50px;
+  border-top: 1px solid #333;
+  position: fixed;
+  bottom: 0;
+  padding: 15px;
+}
+
+.desktop-footer-copyright {
+  color: #333;
+}
+
+.desktop-footer-text {
+  color: #55ACEE;
+}
