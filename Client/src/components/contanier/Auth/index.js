@@ -39,7 +39,6 @@ export default class Login extends Component {
       .then(res => {
         const { id, role, level } = res.data;
         toast.success("Welcome");
-        console.log('asdgsadgsad', res.data);
         auth.login(id, role, level ? level : null, () => {
           const {
             location: { state }

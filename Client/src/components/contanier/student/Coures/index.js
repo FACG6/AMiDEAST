@@ -31,7 +31,6 @@ export default class Courses extends Component {
           toast.error("Sorry, something went wrong");
         });
     } else {
-      console.log(auth.isAuthenticated());
       console.log("The Level IS  :  ", level, id);
     }
   }
@@ -60,7 +59,6 @@ export default class Courses extends Component {
 
   render() {
     const { data, isLoading, appledCourses } = this.state;
-    console.log(isLoading);
     return isLoading ? (
       <Loading />
     ) : (
