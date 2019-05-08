@@ -12,6 +12,7 @@ export default class Linklist extends Component {
         <i className={links.fontawesome} ></i>
         {links.title === 'logout' ?
           <a
+            href='/'
             className='sidebar-logout'
             onClick={(e) => links.handleLogout(e, this.props)}
           >

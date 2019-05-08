@@ -17,10 +17,10 @@ export default class ViewStudent extends Component {
     isloadding: true
   }
   handleChange = ({ target: { value, name } }) => {
-    let filter = this.state.rows.filter((item) => 
-        item[1].startsWith(value)
-      )
-    this.setState({filter, [name]: value})
+    let filter = this.state.rows.filter((item) =>
+      item[1].startsWith(value)
+    )
+    this.setState({ filter, [name]: value })
   };
 
   handleDelete = (id) => {
@@ -32,7 +32,7 @@ export default class ViewStudent extends Component {
         .then(res => {
           if (res.data) {
             toast.success(res.data);
-            this.props.history.push('/staff/student/viewstudent');
+            this.props.history.push('/staff/student/viewstudent/');
           }
           else toast.error(res.error);
         })
@@ -50,8 +50,10 @@ export default class ViewStudent extends Component {
           const rows = res.data;
           let rowContent = [];
           rows.map(row => {
-            rowContent.push([row.id, row.firstname + ' ' + row.lastname, row.id, row.level, row.mobile_phone,
-            <a onClick={() => this.handleDelete(row.id)}>
+            return rowContent.push([row.id, row.firstname + ' ' + row.lastname, row.id, row.level, row.mobile_phone,
+            <a
+              href='/'
+              onClick={() => this.handleDelete(row.id)}>
               <i className='fa fa-trash delete-icon' aria-hidden='true' >
               </i>
             </a>
@@ -100,6 +102,7 @@ export default class ViewStudent extends Component {
             There is no student untill now
             <br />
             Click <a
+              href='/'
               className='add-student-link'
               onClick={() => this.props.history.push('/staff/student/addstudent')}
             >

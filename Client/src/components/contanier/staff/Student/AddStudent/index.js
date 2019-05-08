@@ -46,7 +46,7 @@ componentDidMount(){
           .then(res => {
             if (res.data) {
               toast.success('Student added successfuly ');
-              this.props.history.push('/staff/student/viewstudent')
+              this.props.history.push('/staff/student/viewstudent/')
             }
             else {
               toast.error(res.error);
